@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <title>Porter's Turkey Color Calculator - Porter's Rare Heritage Turkeys</title>
+    <link rel="stylesheet" href="https://porters-rare-heritage-turkeys.neocities.org/VariousFunctions/styles.css">
+</head>
+<body>
+
+<!-- Site Title -->
+    <center><div class="site-title"><i>Porter's Rare Heritage Turkeys</i></div></center>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <!-- Toggle button, visible only on mobile -->
+    <div class="menu-toggle">
+        <div class="toggle-wrapper">
+            <span class="hamburger">&#9776;</span>
+            <span class="menu-text">Menu</span>
+        </div>
+    </div>
+
+    <!-- The actual menu bar -->
+    <ul class="menu-bar">
+        <li><a href="https://porters-rare-heritage-turkeys.neocities.org/index.html">Home</a></li>
+        <li><a href="https://porters-rare-heritage-turkeys.neocities.org/Varieties">Varieties</a></li>
+        <li><a href="https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator2">Beginner Color Calculator</a></li>
+        <li><a href="https://porters-rare-heritage-turkeys.neocities.org/TurkeyParentageCalculator">Parentage Color Calculator</a></li>
+        <li><a href="https://porters-rare-heritage-turkeys.neocities.org/Phenotypes-Genotypes">Phenotypes/Genotypes</a></li>
+    </ul>
+</nav>
+
+
+
+<center>
+    <p style="background-color: white; display: inline-block;">
+        <strong>Click <a href="https://porters-rare-heritage-turkeys.neocities.org/InstructionsAdvancedCalculator">Here</a> For Operating Instructions</strong>
+    </p>
+</center>
+
+<div class="header-container">
+<img src="https://porters-rare-heritage-turkeys.neocities.org/Pictures/Tails.jpg" alt="Left Image" class="logo" style="width: 150px; height: auto;">
+<h1>Porter's Turkey Color Calculator<br>"Advanced User Version"</h1>
+<img src="https://porters-rare-heritage-turkeys.neocities.org/Pictures/Tails.jpg" alt="Right Image" class="logo" style="width: 150px; height: auto;">
+</div>
+
+
+    <center>
+    <p>For help with genotypes enter a variety name and click <strong>Search</strong>.</p>
+    
+    <label for="searchInput" style="font-weight: bold; color: black; font-size: 18px;">
+        Enter a Variety Name:
+    </label>
+    <input type="text" id="searchInput" placeholder="" aria-label="Search for genotype or phenotype">
+    <div class="button-container">
+        <button class="search-btn" onclick="searchResults()">Search</button>
+        <button class="reset-btn" onclick="resetSearch()">Reset</button>
+    </div>
+
+    <h2 id="resultsHeader" style="display: none;">Search Results:</h2>
+    <ul id="results" style="display: none;" role="list" aria-live="polite"></ul>
+    <div id="resultsAdditionalText" style="display: none; text-align: center; margin-top: 10px;">
+    
+</div>
+
+</center>
+
+<center><p>For each involved locus in sire and dam genotype, select an allele combination from dropdown list below.</p></center>
+<div class="container">
+</div>
+<center><label for="imageSizeSlider">Adjust Sire and Dam Image Size:</label>
+<input type="range" id="imageSizeSlider" min="50" max="500" value="200" step="10" oninput="updateImageSize(this.value)"></center>
+<div class="horizontal-images-container">
+
+<div class="genotype-container" id="sireGenotypeContainer">
+
+<h2>Sire</h2>
+<div>
+<input type="text" id="sireNameInput" placeholder="Name a Favorite">
+<button onclick="saveSireGenotype()">Save Sire</button>
+<select id="sireFavoritesDropdown"></select>
+<button onclick="recallSireGenotype()">Recall a Saved Sire</button>
+<button onclick="deleteSireGenotype()">Delete Sire</button>
+
+</div>
+<!-- Sire Genotype Container -->
+    <div class="genotype-selection sire-genotypes">
+        <!-- Add the 'Long Genotype' label here -->
+        <div class="genotype-label">Long Genotype</div>
+        
+
+        <!-- Sire genotype selections here -->
+<select id="sireAlleleb" title="Bronze Locus">
+<option value="BB">B/B</option>
+<option value="Bb">B/b</option>
+<option value="Bb1">B/b1</option>
+<option value="bb">b/b</option>
+<option value="bb1">b/b1</option>
+<option value="b1b1">b1/b1</option>
+</select>
+<select id="sireAlleleC" title="Color Locus">
+<option value="CC" title="Normal Color, No Mutations">C/C</option>
+<option value="Ccg" title="Semi-Color, Split Gray">C/cg</option>
+<option value="Ccm" title="Semi-Color, Split Mottling">C/cm</option>
+<option value="Cc" title="Semi-Color, Split White">C/c</option>
+<option value="cgcg" title="Gray">cg/cg</option>
+<option value="cgcm" title="Semi-Gray, Split Mottling">cg/cm</option>
+<option value="cgc" title="Semi-Gray, Split White">cg/c</option>
+<option value="cmcm" title="Mottling">cm/cm</option>
+<option value="cmc" title="Semi-Mottling, Split White">cm/c</option>
+<option value="cc" title="White">c/c</option>
+</select>
+<select id="sireAlleled" title="Dominant Slate Locus">
+<option value="dd">d/d</option>
+<option value="DD">D/D</option>
+<option value="Dd">D/d</option>
+</select>
+<select id="sireAlleleE" title="Brown Locus">
+<option value="EE">E/E</option>
+<option value="Ee">E/e</option>
+<option value="ee">e/e</option>
+</select>
+<select id="sireAlleleFd" title="Fading Locus">
+<option value="FdFd">Fd/Fd</option>
+<option value="Fdfd">Fd/fd</option>
+<option value="fdfd">fd/fd</option>
+</select>
+<select id="sireAlleleN" title="Narragansett Locus">
+<option value="NN">N/N</option>
+<option value="Nn">N/n</option>
+<option value="nn">n/n</option>
+</select>
+<select id="sireAllelePn" title="Pencilling Locus">
+<option value="PnPn">Pn/Pn</option>
+<option value="Pnpn">Pn/pn</option>
+<option value="pnpn">pn/pn</option>
+</select>
+<select id="sireAlleleR" title="Red Locus">
+<option value="RR">R/R</option>
+<option value="Rr">R/r</option>
+<option value="rr">r/r</option>
+</select>
+<select id="sireAlleleSl" title="Recessive Slate Locus">
+<option value="SlSl">Sl/Sl</option>
+<option value="Slsl">Sl/sl</option>
+<option value="slsl">sl/sl</option>
+</select>
+<select id="sireAlleleSp" title="Spotting Locus">
+<option value="SpSp">Sp/Sp</option>
+<option value="Spsp">Sp/sp</option>
+<option value="spsp">sp/sp</option>
+</select>
+</div>
+
+<div class="genotype-image" id="sireImageContainer"></div>
+<div class="genotype-info" id="sireInfoContainer" data-long-genotype="" data-short-genotype=""></div>
+
+</div>
+<div class="genotype-container" id="damGenotypeContainer">
+<h2>Dam</h2>
+<div>
+<input type="text" id="damNameInput" placeholder="Name a Favorite">
+<button onclick="saveDamGenotype()">Save Dam</button>
+<select id="damFavoritesDropdown"></select>
+<button onclick="recallDamGenotype()">Recall a Saved Dam</button>
+<button onclick="deleteDamGenotype()">Delete Dam</button>
+</div>
+<!-- Dam Genotype Container -->
+    <div class="genotype-selection dam-genotypes">
+        <!-- Add the 'Long Genotype' label here -->
+        <div class="genotype-label">Long Genotype</div>
+      
+        <!-- Dam genotype selections here -->
+<select id="damAlleleb" title="Bronze Locus">
+<option value="BB">B/B</option>
+<option value="Bb">B/b</option>
+<option value="Bb1">B/b1</option>
+<option value="bb">b/b</option>
+<option value="bb1">b/b1</option>
+<option value="b1b1">b1/b1</option>
+</select>
+<select id="damAlleleC" title="Color Locus">
+<option value="CC" title="Normal Color, No Mutations">C/C</option>
+<option value="Ccg" title="Semi-Color, Split Gray">C/cg</option>
+<option value="Ccm" title="Semi-Color, Split Mottling">C/cm</option>
+<option value="Cc" title="Semi-Color, Split White">C/c</option>
+<option value="cgcg" title="Gray">cg/cg</option>
+<option value="cgcm" title="Semi-Gray, Split Mottling">cg/cm</option>
+<option value="cgc" title="Semi-Gray, Split White">cg/c</option>
+<option value="cmcm" title="Mottling">cm/cm</option>
+<option value="cmc" title="Semi-Mottling, Split White">cm/c</option>
+<option value="cc" title="White">c/c</option>
+</select>
+<select id="damAlleled" title="Dominant Slate Locus">
+<option value="dd">d/d</option>
+<option value="DD">D/D</option>
+<option value="Dd">D/d</option>
+</select>
+<select id="damAlleleE" title="Brown Locus">
+<option value="E-">E/-</option>
+<option value="e-">e/-</option>
+</select>
+<select id="damAlleleFd" title="Fading Locus">
+<option value="FdFd">Fd/Fd</option>
+<option value="Fdfd">Fd/fd</option>
+<option value="fdfd">fd/fd</option>
+</select>
+<select id="damAlleleN" title="Narragansett Locus">
+<option value="N-">N/-</option>
+<option value="n-">n/-</option>
+</select>
+<select id="damAllelePn" title="Pencilling Locus">
+<option value="PnPn">Pn/Pn</option>
+<option value="Pnpn">Pn/pn</option>
+<option value="pnpn">pn/pn</option>
+</select>
+<select id="damAlleleR" title="Red Locus">
+<option value="RR">R/R</option>
+<option value="Rr">R/r</option>
+<option value="rr">r/r</option>
+</select>
+<select id="damAlleleSl" title="Recessive Slate Locus">
+<option value="SlSl">Sl/Sl</option>
+<option value="Slsl">Sl/sl</option>
+<option value="slsl">sl/sl</option>
+</select>
+<select id="damAlleleSp" title="Spotting Locus">
+<option value="SpSp">Sp/Sp</option>
+<option value="Spsp">Sp/sp</option>
+<option value="spsp">sp/sp</option>
+</select>
+</div>
+<div class="genotype-image" id="damImageContainer"></div>
+<div class="genotype-info" id="damInfoContainer" data-long-genotype="" data-short-genotype=""></div>
+</div>
+</div>
+
+<div class="buttons-container" style="text-align: center; margin-bottom: 20px;">
+    <!-- Calculate and Reset Buttons -->
+    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-bottom: 20px;">
+        <button onclick="calculateOffspring()" style="border: 3px solid blue; padding: 10px 20px; font-size: 16px; height: 50px;">Calculate Offspring</button>
+        <button onclick="resetCalculator()" style="border: 3px solid blue; padding: 10px 20px; font-size: 16px; height: 50px;">Reset Calculator</button>
+    </div>
+
+    <!-- Sound Slider and Mute Button -->
+    <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <label for="volumeSlider" style="margin-right: 5px; font-size: 14px;">Sound Volume:</label>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1" style="width: 150px;">
+        <button id="soundToggle" class="sound-toggle" 
+            style="border: 2px solid blue; padding: 5px 10px; font-size: 12px; cursor: pointer;">
+            Mute Sounds
+        </button>
+    </div>
+</div>
+<p class="genotypes-note">Offspring genotypes are initially displayed in short format</p>
+
+<div class="buttons-container" style="margin-top: 20px;">
+    <button onclick="playSound('shortGenotypeSound'); toggleGenotypeDisplay('short')" style="margin-right: 10px; border: 3px solid blue; padding: 5px 10px;">
+        Short Offspring Genotype Display (Default)
+    </button>
+    <button onclick="playSound('longGenotypeSound'); toggleGenotypeDisplay('long')" style="margin-right: 10px; border: 3px solid blue; padding: 5px 10px;">
+        Long Offspring Genotype Display
+    </button>
+    <button onclick="playSound('hideshowGenoSound'); toggleGenotypeVisibility()" style="border: 3px solid blue; padding: 5px 10px;">
+        Hide/Show Genotypes
+    </button>
+</div>
+
+<br>
+
+<div class="click-to-enlarge-note" style="text-align: center; margin-bottom: 10px; color: black;">
+    <strong>"Click on an image to enlarge, then again to return"</strong>
+</div>
+
+<div class="results-container">
+    <div class="offspring-title">
+        <h2>Male Offspring Results:</h2>
+    </div>
+    <div class="offspring-title">
+        <h2>Female Offspring Results:</h2>
+    </div>
+</div>
+<div class="results-container">
+    <div class="offspring-container">
+        <ul id="maleOffspringResults" class="offspring-list"></ul>
+    </div>
+    <div class="offspring-container">
+        <ul id="femaleOffspringResults" class="offspring-list"></ul>
+    </div>
+</div>
+
+<style>
+    #donationPopup p {
+        font-size: 1.2em; 
+    }
+</style>
+<div id="donationPopup" class="popup" style="display: none;">
+    <p>
+        "Please consider donating $1 or more to help support this calculator. Your contribution helps keep this tool available for everyone!"
+    </p>
+    <form action="https://www.paypal.com/donate" method="post" target="_top">
+<input type="hidden" name="hosted_button_id" value="VL7Q7PC2NHVV8" />
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+</form>
+
+
+     <button onclick="closeDonationPopup()" style="margin-top: 10px; padding: 10px 15px; font-size: 1em;">Close</button>
+</div>
+
+<div id="summaryChartContainer" class="summary-chart-container">
+<div>
+<h2>Summary Chart:</h2>
+<table id="summaryChart" class="summary-chart">
+<thead>
+<tr>
+<th>Sex</th>
+<th>Phenotype (Variety)</th>
+<th>Genotype (Short)</th>
+<th>Ratio (%)</th>
+</tr>
+</thead>
+<tbody>
+<!-- Summary Rows -->
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+<div id="ackModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background-color: white; padding: 10px; border: 4px solid green; border-radius: 15px; text-align: center; z-index: 1000;">
+    <p id="ackMessage"></p>
+</div>
+
+<div id="loading-container">
+    <div class="helix-wrapper">
+        <div class="dna-strand" id="dnaStrand"></div>
+    </div>
+    <p id="loading-text">Loading genetic data...</p>
+</div>
+
+
+<audio id="calSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/LongGeno.mp3"></audio>
+<audio id="resetSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/reset.mp3"></audio>
+<audio id="returntopSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/pop-error.mp3"></audio>
+<audio id="sireSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/Cal-alert.mp3"></audio>
+<audio id="damSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/Cal-alert.mp3"></audio>
+<script src="https://porters-rare-heritage-turkeys.neocities.org/akzzfjhfys4493.js"></script>
+<audio id="shortGenotypeSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/Short-geno.mp3" preload="auto"></audio>
+<audio id="longGenotypeSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/newcalcomplete.mp3" preload="auto"></audio>
+<audio id="hideshowGenoSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/hide-n-show-geno.mp3" preload="auto"></audio>
+<audio id="alleleClickSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/AlleleClick.mp3" preload="auto"></audio>
+<audio id="imageToggleSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/AlleleSelect.mp3" preload="auto"></audio>
+<audio id="searchSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/LongGeno.mp3"></audio>
+<audio id="resetSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/reset.mp3"></audio>
+
+
+<button id="returnToTop" style="position: fixed; bottom: 20px; right: 20px; padding: 5px 10px; background-color: #1E82E6; color: white; border: 2px solid black; border-radius: 5px; cursor: pointer; font-size: 20px; display: none;">Return to Top</button>
+
+<style>
+
+</style>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    const dnaStrand = document.getElementById("dnaStrand");
+    const numPairs = 14; // Number of base pairs
+    const radius = 45; // Reduced slightly to fit the new height
+    const widthStep = 620 / (numPairs - 1); // Ensures full width extension
+    const twistFactor = 1.2; // Controls the twisting effect
+
+    // Array of 12 colors including white and teal
+    const colors = ["red", "blue", "green", "yellow", "orange", "purple", "cyan", "magenta", "lime", "pink", "white", "teal"];
+
+    for (let i = 0; i < numPairs; i++) {
+        let angle = (i / numPairs) * Math.PI * 2 * twistFactor; // Angle for each pair
+        let colorIndex = i % colors.length; // Cycle through colors
+
+        // Create left and right DNA dots
+        let leftDot = document.createElement("div");
+        let rightDot = document.createElement("div");
+        leftDot.classList.add("cell");
+        rightDot.classList.add("cell");
+
+        // Assign colors from the array
+        leftDot.style.backgroundColor = colors[colorIndex];
+        rightDot.style.backgroundColor = colors[(colorIndex + 1) % colors.length]; // Offset colors
+
+        // Perfectly position dots for full visibility
+        leftDot.style.transform = `translate3d(${(i * widthStep) - 310}px, ${Math.cos(angle) * radius}px, ${Math.sin(angle) * radius}px)`;
+        rightDot.style.transform = `translate3d(${(i * widthStep) - 310}px, ${Math.cos(angle + Math.PI) * radius}px, ${Math.sin(angle + Math.PI) * radius}px)`;
+
+        dnaStrand.appendChild(leftDot);
+        dnaStrand.appendChild(rightDot);
+    }
+
+    // Remove loading screen after 5 seconds
+    setTimeout(() => {
+        document.getElementById("loading-container").style.display = "none";
+    }, 5000);
+});
+
+// Shows the button when the user scrolls down 100px from the top of the document
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    const returnToTopButton = document.getElementById("returnToTop");
+    if (document.body.scrollTop > 2000 || document.documentElement.scrollTop > 2000) {
+        returnToTopButton.style.display = "block";
+    } else {
+        returnToTopButton.style.display = "none";
+    }
+}
+
+// Scrolls smoothly back to the top when the button is clicked
+document.getElementById("returnToTop").addEventListener("click", function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+function clearSummaryChart() {
+const summaryTableBody = document.getElementById('summaryChart').querySelector('tbody');
+summaryTableBody.innerHTML = '';
+}
+
+function resetCalculator(showPopup = true) {
+    const defaultGenotypes = {
+        sireAlleleb: 'bb',
+        sireAlleleC: 'CC',
+        sireAlleled: 'dd',
+        sireAlleleE: 'EE',
+        sireAlleleFd: 'FdFd',
+        sireAlleleN: 'NN',
+        sireAllelePn: 'PnPn',
+        sireAlleleR: 'RR',
+        sireAlleleSl: 'SlSl',
+        sireAlleleSp: 'SpSp',
+        damAlleleb: 'bb',
+        damAlleleC: 'CC',
+        damAlleled: 'dd',
+        damAlleleE: 'E-',
+        damAlleleFd: 'FdFd',
+        damAlleleN: 'N-',
+        damAllelePn: 'PnPn',
+        damAlleleR: 'RR',
+        damAlleleSl: 'SlSl',
+        damAlleleSp: 'SpSp'
+    };
+    
+    // Sets default values to the genotype dropdowns
+    Object.keys(defaultGenotypes).forEach(function(id) {
+        document.getElementById(id).value = defaultGenotypes[id];
+    });
+
+    // Reset the sire and dam favorites dropdowns to default
+    document.getElementById('sireFavoritesDropdown').selectedIndex = 0;
+    document.getElementById('damFavoritesDropdown').selectedIndex = 0;
+
+    // Calls functions to update genotype and images
+    updateSireGenotype();
+    updateDamGenotype();
+
+    // Clear offspring results
+    document.getElementById('maleOffspringResults').innerHTML = '';
+    document.getElementById('femaleOffspringResults').innerHTML = '';
+
+    // Clear summary chart
+    clearSummaryChart();
+
+// Show the popup message only if showPopup is true
+    if (showPopup) {
+        showPopupMessage('Calculator Reset');
+    }
+}
+
+    
+// Call resetCalculator with false when the DOM is loaded
+window.addEventListener('DOMContentLoaded', function() {
+    resetCalculator(false);
+});
+
+function setDefaultImages() {
+const defaultMalePath = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/';
+const defaultFemalePath = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/';
+
+document.getElementById('sireImageContainer').innerHTML = `<img src="${defaultMalePath}" alt="Default Sire Image" style="max-width: 300px; height: auto;">`;
+document.getElementById('damImageContainer').innerHTML = `<img src="${defaultFemalePath}" alt="Default Dam Image" style="max-width: 300px; height: auto;">`;
+}
+
+window.addEventListener('DOMContentLoaded', setDefaultImages);
+
+function removeUnusedAlleles(genotype) {
+const unusedAlleles = ['CC', 'dd', 'EE', 'E-', 'FdFd', 'NN', 'N-', 'PnPn', 'RR', 'SlSl', 'SpSp'];
+
+const alleles = genotype.split(' ');
+
+const filteredAlleles = alleles.filter(allele => !unusedAlleles.includes(allele));
+
+const shortGenotype = filteredAlleles.join(' ');
+
+return shortGenotype.trim(); // Trim to remove leading/trailing spaces
+}
+
+let showGenotypes = true;
+let genotypeDisplayFormat = 'short'; // Default to short format
+
+function toggleGenotypeDisplay(format) {
+genotypeDisplayFormat = format;
+updateDisplayedGenotypes(); // Function to update displayed genotypes based on the selected format
+}
+
+function toggleGenotypeVisibility() {
+showGenotypes = !showGenotypes;
+updateDisplayedGenotypes(); // Function to update displayed genotypes based on visibility
+}
+
+function updateDisplayedGenotypes() {
+const maleOffspring = document.querySelectorAll('#maleOffspringResults .offspring-item');
+const femaleOffspring = document.querySelectorAll('#femaleOffspringResults .offspring-item');
+const sireGenotypeElem = document.querySelector('.sire-genotype');
+const damGenotypeElem = document.querySelector('.dam-genotype');
+
+maleOffspring.forEach(item => {
+const genotypeElem = item.querySelector('.genotype');
+updateGenotypeElement(genotypeElem);
+});
+
+femaleOffspring.forEach(item => {
+const genotypeElem = item.querySelector('.genotype');
+updateGenotypeElement(genotypeElem);
+});
+
+if (sireGenotypeElem) {
+updateGenotypeElement(sireGenotypeElem);
+}
+
+if (damGenotypeElem) {
+updateGenotypeElement(damGenotypeElem);
+}
+}
+
+function updateGenotypeElement(element) {
+    if (!element) return;
+
+    if (showGenotypes) {
+        element.style.display = 'block';
+    } else {
+        element.style.display = 'none';
+    }
+
+    const longGenotype = element.dataset.longGenotype;
+    const shortGenotype = element.dataset.shortGenotype;
+
+    if (genotypeDisplayFormat === 'long') {
+    element.innerHTML = '<u>Long Genotype:</u><br><span class="genotype-value">' + longGenotype + '</span>';
+} else {
+    element.innerHTML = '<u>Short Genotype:</u><br><span class="genotype-value">' + shortGenotype + '</span>';
+}
+
+    }
+
+ function updateSireGenotype() {
+const sireAlleleb = document.getElementById('sireAlleleb').value;
+const sireAlleleC = document.getElementById('sireAlleleC').value;
+const sireAlleled = document.getElementById('sireAlleled').value;
+const sireAlleleE = document.getElementById('sireAlleleE').value;
+const sireAlleleFd = document.getElementById('sireAlleleFd').value;
+const sireAlleleN = document.getElementById('sireAlleleN').value;
+const sireAllelePn = document.getElementById('sireAllelePn').value;
+const sireAlleleR = document.getElementById('sireAlleleR').value;
+const sireAlleleSl = document.getElementById('sireAlleleSl').value;
+const sireAlleleSp = document.getElementById('sireAlleleSp').value;
+
+console.log("Updated Sire Genotype: ", {sireAlleleb, sireAlleleC, sireAlleled, sireAlleleE, sireAlleleFd, sireAlleleN, sireAllelePn, sireAlleleR, sireAlleleSl, sireAlleleSp});
+
+const genotype = `${sireAlleleb} ${sireAlleleC} ${sireAlleled} ${sireAlleleE} ${sireAlleleFd} ${sireAlleleN} ${sireAllelePn} ${sireAlleleR} ${sireAlleleSl} ${sireAlleleSp}`;
+const heterozygousGenotype = getHeterozygousGenotype(genotype);
+setGenotypeImage('sireImageContainer', sireAlleleb, sireAlleleC, sireAlleled, sireAlleleE, sireAlleleFd, sireAlleleN, sireAllelePn, sireAlleleR, sireAlleleSl, sireAlleleSp, 'male');
+const sireInfoContainer = document.getElementById('sireInfoContainer');
+sireInfoContainer.innerHTML = `${heterozygousGenotype}`;
+sireInfoContainer.dataset.longGenotype = genotype;
+sireInfoContainer.dataset.shortGenotype = removeUnusedAlleles(genotype);
+
+updateDisplayedGenotypes();
+}
+
+function updateDamGenotype() {
+const damAlleleb = document.getElementById('damAlleleb').value;
+const damAlleleC = document.getElementById('damAlleleC').value;
+const damAlleled = document.getElementById('damAlleled').value;
+const damAlleleE = document.getElementById('damAlleleE').value;
+const damAlleleFd = document.getElementById('damAlleleFd').value;
+const damAlleleN = document.getElementById('damAlleleN').value;
+const damAllelePn = document.getElementById('damAllelePn').value;
+const damAlleleR = document.getElementById('damAlleleR').value;
+const damAlleleSl = document.getElementById('damAlleleSl').value;
+const damAlleleSp = document.getElementById('damAlleleSp').value;
+
+console.log("Updated Dam Genotype: ", {damAlleleb, damAlleleC, damAlleled, damAlleleE, damAlleleFd, damAlleleN, damAllelePn, damAlleleR, damAlleleSl, damAlleleSp});
+
+const genotype = `${damAlleleb} ${damAlleleC} ${damAlleled} ${damAlleleE} ${damAlleleFd} ${damAlleleN} ${damAllelePn} ${damAlleleR} ${damAlleleSl} ${damAlleleSp}`;
+const heterozygousGenotype = getHeterozygousGenotype(genotype);
+setGenotypeImage('damImageContainer', damAlleleb, damAlleleC, damAlleled, damAlleleE, damAlleleFd, damAlleleN, damAllelePn, damAlleleR, damAlleleSl, damAlleleSp, 'female');
+const damInfoContainer = document.getElementById('damInfoContainer');
+damInfoContainer.innerHTML = `${heterozygousGenotype}`;
+damInfoContainer.dataset.longGenotype = genotype;
+damInfoContainer.dataset.shortGenotype = removeUnusedAlleles(genotype);
+
+updateDisplayedGenotypes();
+}
+
+
+window.addEventListener('DOMContentLoaded', function() {
+resetCalculator();
+updateDisplayedGenotypes();
+});
+
+
+
+// Updates the setDefaultImages function
+function setDefaultImages() {
+const defaultMalePath = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/MBronze.jpg';
+const defaultFemalePath = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/FBronze.jpg';
+
+document.getElementById('sireImageContainer').innerHTML = `<img src="${defaultMalePath}" alt="Default Sire Image" style="max-width: 460px; height: auto;">`;
+document.getElementById('damImageContainer').innerHTML = `<img src="${defaultFemalePath}" alt="Default Dam Image" style="max-width: 460px; height: auto;">`;
+}
+
+
+  // Adds event listeners for sire's alleles
+const sireAlleles = document.querySelectorAll('.sire-genotypes select');
+sireAlleles.forEach(select => {
+select.addEventListener('change', updateSireGenotype);
+});  
+    
+
+
+// Adds event listeners for dam's alleles
+const damAlleles = document.querySelectorAll('.dam-genotypes select');
+damAlleles.forEach(select => {
+select.addEventListener('change', updateDamGenotype);
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+// Default genotype values
+const defaultValues = {
+sireAlleleb: 'bb',
+sireAlleleC: 'CC',
+sireAlleled: 'dd',
+sireAlleleE: 'EE',
+sireAlleleFd: 'FdFd',
+sireAlleleN: 'NN',
+sireAllelePn: 'PnPn',
+sireAlleleR: 'RR',
+sireAlleleSl: 'SlSl',
+sireAlleleSp: 'SpSp',
+damAlleleb: 'bb',
+damAlleleC: 'CC',
+damAlleled: 'dd',
+damAlleleE: 'E-',
+damAlleleFd: 'FdFd',
+damAlleleN: 'N-',
+damAllelePn: 'PnPn',
+damAlleleR: 'RR',
+damAlleleSl: 'SlSl',
+damAlleleSp: 'SpSp'
+};
+
+// Set default values to the dropdowns
+Object.keys(defaultValues).forEach(function(id) {
+document.getElementById(id).value = defaultValues[id];
+});
+
+// Calls functions to update genotype and images
+updateSireGenotype();
+updateDamGenotype();
+});
+
+function updateImageSize(value) {
+const sireImage = document.getElementById('sireImageContainer').querySelector('img');
+const damImage = document.getElementById('damImageContainer').querySelector('img');
+
+sireImage.style.width = `${value}px`;
+damImage.style.width = `${value}px`;
+}
+
+const slider = document.getElementById('your-slider');
+const image = document.getElementById('your-image');
+
+slider.addEventListener('input', function() {
+const newSize = this.value + '%';
+image.style.width = newSize;
+});
+
+function displaySummaryChart(maleOffspring, femaleOffspring) {
+    const summaryTableBody = document.getElementById('summaryChart').querySelector('tbody');
+    summaryTableBody.innerHTML = '';
+
+    const addSummaryRow = (gender, phenotype, genotype, ratio) => {
+        const shortGenotype = removeUnusedAlleles(genotype);
+        const fraction = `1/${(1 / ratio).toFixed(0)}`;
+        const percentage = (ratio * 100).toFixed(7).replace(/\.?0+$/, '');
+        const minSpecimens = Math.ceil(1 / ratio);
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${gender}</td>
+            <td>${phenotype}</td>
+            <td>${shortGenotype}</td>
+            <td>${fraction} = ${percentage}%, minimum offspring to breed: ${minSpecimens}</td>
+        `;
+        summaryTableBody.appendChild(row);
+    };
+
+    maleOffspring.forEach(offspring => {
+        addSummaryRow('Male', removeUnusedAlleles(offspring.phenotype), offspring.genotype, offspring.ratio);
+    });
+
+    femaleOffspring.forEach(offspring => {
+        addSummaryRow('Female', removeUnusedAlleles(offspring.phenotype), offspring.genotype, offspring.ratio);
+    });
+}
+
+
+window.addEventListener('DOMContentLoaded', function() {
+resetCalculator();
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+updateSireFavoritesDropdown();
+updateDamFavoritesDropdown();
+resetCalculator();
+});
+
+window.addEventListener('DOMContentLoaded', function () {
+updateSireFavoritesDropdown();
+updateDamFavoritesDropdown();
+resetCalculator();
+});
+
+function showPopupMessage(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '50%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    popup.style.color = 'white';
+    popup.style.padding = '20px';
+    popup.style.borderRadius = '5px';
+    popup.style.zIndex = '1000';
+    popup.style.textAlign = 'center';
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        popup.remove();
+    }, 1000); // Removes the popup after 1 second
+}
+
+function resetCalculator(initial = false) {
+    const defaultGenotypes = {
+        sireAlleleb: 'bb',
+        sireAlleleC: 'CC',
+        sireAlleled: 'dd',
+        sireAlleleE: 'EE',
+        sireAlleleFd: 'FdFd',
+        sireAlleleN: 'NN',
+        sireAllelePn: 'PnPn',
+        sireAlleleR: 'RR',
+        sireAlleleSl: 'SlSl',
+        sireAlleleSp: 'SpSp',
+        damAlleleb: 'bb',
+        damAlleleC: 'CC',
+        damAlleled: 'dd',
+        damAlleleE: 'E-',
+        damAlleleFd: 'FdFd',
+        damAlleleN: 'N-',
+        damAllelePn: 'PnPn',
+        damAlleleR: 'RR',
+        damAlleleSl: 'SlSl',
+        damAlleleSp: 'SpSp'
+    };
+    // Set default values to the genotype dropdowns
+    Object.keys(defaultGenotypes).forEach(function(id) {
+        document.getElementById(id).value = defaultGenotypes[id];
+    });
+
+    // Reset the sire and dam favorites dropdowns to default
+    document.getElementById('sireFavoritesDropdown').selectedIndex = 0;
+    document.getElementById('damFavoritesDropdown').selectedIndex = 0;
+
+    // Calls functions to update genotype and images
+    updateSireGenotype();
+    updateDamGenotype();
+
+    // Clear offspring results
+    document.getElementById('maleOffspringResults').innerHTML = '';
+    document.getElementById('femaleOffspringResults').innerHTML = '';
+
+    // Clear summary chart
+    clearSummaryChart();
+
+    // Shows the popup message only if it's not the initial reset
+    if (!initial) {
+        showPopupMessage('Calculator Reset');
+    }
+}
+
+function initialSetup() {
+    resetCalculator(true);
+}
+
+// Calls initialSetup when the DOM is loaded
+window.addEventListener('DOMContentLoaded', function() {
+    initialSetup();
+});
+
+</script>
+  <p style="text-align: center;"><strong>"If you like what you see please considering leaving a donation for our time and work"</strong>
+  </p>
+
+  <center><form action="https://www.paypal.com/donate" method="post" target="_top">
+<input type="hidden" name="hosted_button_id" value="VL7Q7PC2NHVV8" />
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+</form></center>
+
+ <div id="shareSection"></div>
+  <br>
+
+<script type="text/javascript" src="https://pub40.bravenet.com/counter/code.php?id=410845&amp;usernum=3351720541&amp;cpv=3"></script>
+
+<footer style="text-align: center; margin-top: 40px;">
+  &copy; 2024 Porter's Rare Heritage Turkeys
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.menu-bar');
+
+    menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('active');  // Toggle active class
+    });
+});
+
+// Toggle enlargement specifically for offspring images within offspring containers
+document.addEventListener('click', function (event) {
+    if (event.target.closest('.offspring-container') && event.target.tagName === 'IMG') {
+        event.target.classList.toggle('enlarged'); // Toggle enlargement
+        event.target.classList.toggle('enlarged-offspring'); // Additional enlargement for offspring
+        playSound('imageToggleSound'); // Play sound on toggle
+    }
+});
+
+
+// Function to play a sound
+function playSound(audioId) {
+    const audio = document.getElementById(audioId);
+    if (audio) {
+        audio.currentTime = 0; // Reset the audio to the start
+        audio.play().catch(err => console.error(`Error playing sound ${audioId}:`, err)); // Handle play errors
+    }
+}
+
+function showDonationPopup() {
+    const donationPopup = document.getElementById('donationPopup');
+    if (donationPopup) {
+        donationPopup.style.display = 'block';
+    } else {
+        console.error("Donation popup element not found.");
+    }
+}
+
+function closeDonationPopup() {
+    const donationPopup = document.getElementById('donationPopup');
+    if (donationPopup) {
+        donationPopup.style.display = 'none';
+    }
+}
+
+function searchResults() {
+    const input = document.getElementById('searchInput').value.trim();
+    const results = document.getElementById('results');
+    const resultsHeader = document.getElementById('resultsHeader');
+    const additionalText = document.getElementById('resultsAdditionalText');
+
+    // Clear previous results
+    results.innerHTML = '';
+    results.style.display = 'none';
+    resultsHeader.style.display = 'none';
+    additionalText.style.display = 'none';
+
+    if (!input) {
+        resultsHeader.style.display = 'block';
+        results.style.display = 'block';
+        results.innerHTML = '<li style="color: blue;">Please enter a valid search term.</li>';
+        return;
+    }
+
+    // Ensure mappings are loaded
+    const allMappings = [
+        phenotypeMapping1, phenotypeMapping1A, phenotypeMapping1B, phenotypeMapping1C,
+        phenotypeMapping1D, phenotypeMapping1E, phenotypeMapping2, phenotypeMapping2A,
+        phenotypeMapping3, phenotypeMapping3A, phenotypeMapping4, phenotypeMapping5,
+        phenotypeMapping6, phenotypeMapping7, phenotypeMapping8, phenotypeMapping9,
+        phenotypeMapping10, phenotypeMapping11, phenotypeMapping12, phenotypeMapping13,
+        phenotypeMapping14, phenotypeMapping15
+    ].filter(mapping => typeof mapping !== 'undefined'); // Remove undefined mappings
+
+    if (allMappings.length === 0) {
+        console.error("Phenotype mappings are not loaded.");
+        resultsHeader.style.display = 'block';
+        results.style.display = 'block';
+        results.innerHTML = '<li style="color: red;">Error: Data not loaded. Please refresh.</li>';
+        return;
+    }
+
+    let maleMatch = null;
+    let femaleMatch = null;
+    let sharedMatch = null;
+
+    // **Normalize input to preserve exact spaces and capitalization**
+    let normalizedInput = input.replace(/\s+/g, ' ').trim();
+
+    // **Handle common word reordering and simplifications**
+    const synonymMap = {
+        "red bourbon": "bourbon red",
+        "blue slate": "slate",
+        "slate blue": "slate",
+        "mottled blue slate": "mottled slate",
+        "black spanish": "black",
+        "spanish black": "black",
+        "slate blue palm": "blue palm",
+        "blue royal palm": "blue palm",
+        "royal blue palm": "blue palm",
+        "firefall": "fall fire",
+        "fireball": "fall fire",
+        "sweetwater": "sweet grass",
+        "black norfolk": "black",
+        "norfolk black": "black", 
+        "bronze breasted": "bronze",
+        "eastern wild": "bronze",
+        "wild": "bronze",
+        "rio grande wild": "bronze",
+        "osceola wild": "bronze",
+        "bronze breasted": "bronze",
+        "eastern": "bronze",
+        "rio grande": "bronze",
+        "osceola": "bronze",
+        
+             
+    };
+
+    if (synonymMap[normalizedInput.toLowerCase()]) {
+        normalizedInput = synonymMap[normalizedInput.toLowerCase()];
+    }
+
+    // **Sort words alphabetically to handle order reversals**
+    function normalizeWordOrder(str) {
+        return str.split(" ").sort().join(" ");
+    }
+
+    const sortedInput = normalizeWordOrder(normalizedInput.toLowerCase());
+
+    // **Levenshtein Distance (Edit Distance) Function for Finding Closest Phenotype Name**
+    function getEditDistance(a, b) {
+        const matrix = Array.from({ length: a.length + 1 }, () => []);
+        for (let i = 0; i <= a.length; i++) matrix[i][0] = i;
+        for (let j = 0; j <= b.length; j++) matrix[0][j] = j;
+        for (let i = 1; i <= a.length; i++) {
+            for (let j = 1; j <= b.length; j++) {
+                matrix[i][j] = Math.min(
+                    matrix[i - 1][j] + 1,
+                    matrix[i][j - 1] + 1,
+                    matrix[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)
+                );
+            }
+        }
+        return matrix[a.length][b.length];
+    }
+
+    let bestMatch = null;
+    let bestDistance = Infinity;
+
+    for (let mapping of allMappings) {
+        for (let [, phenotype] of Object.entries(mapping)) {
+            const normalizedPhenotype = phenotype.toLowerCase().trim();
+            const sortedPhenotype = normalizeWordOrder(normalizedPhenotype);
+
+            // **Compare using both normal and sorted versions to handle reversals**
+            const distance = Math.min(
+                getEditDistance(normalizedInput.toLowerCase(), normalizedPhenotype),
+                getEditDistance(sortedInput, sortedPhenotype)
+            );
+
+            if (distance === 0) {
+                bestMatch = phenotype;
+                bestDistance = 0;
+                break;
+            } else if (distance < bestDistance && distance <= 3) { // Allow minor typos
+                bestMatch = phenotype;
+                bestDistance = distance;
+            }
+        }
+        if (bestDistance === 0) break; // Stop if an exact match is found
+    }
+
+    // If we found a close match, override the input
+    const finalSearchInput = bestMatch || input;
+
+    // **Phenotype Search (Using Corrected Input)**
+    for (let mapping of allMappings) {
+        for (let [genotype, phenotype] of Object.entries(mapping)) {
+            const normalizedGenotype = genotype.replace(/\s+/g, ' ').trim();
+            const normalizedPhenotype = phenotype.toLowerCase().trim();
+
+            if (normalizedPhenotype === finalSearchInput.toLowerCase()) {
+                if (genotype.includes('Ee') || genotype.includes('ee') || genotype.includes('Nn') || genotype.includes('nn')) {
+                    if (!maleMatch) maleMatch = { genotype, phenotype };
+                } else if (genotype.includes('e-') || genotype.includes('n-')) {
+                    if (!femaleMatch) femaleMatch = { genotype, phenotype };
+                } else {
+                    if (!sharedMatch) sharedMatch = { genotype, phenotype };
+                }
+            }
+
+            // **Genotype Search (Now Requires an Exact Match)**
+            if (normalizedGenotype === normalizedInput) {
+                if (genotype.includes('Ee') || genotype.includes('ee') || genotype.includes('Nn') || genotype.includes('nn')) {
+                    if (!maleMatch) maleMatch = { genotype, phenotype };
+                } else if (genotype.includes('e-') || genotype.includes('n-')) {
+                    if (!femaleMatch) femaleMatch = { genotype, phenotype };
+                } else {
+                    if (!sharedMatch) sharedMatch = { genotype, phenotype };
+                }
+            }
+        }
+        if (maleMatch && femaleMatch && sharedMatch) break;
+    }
+
+    // **Display results**
+    resultsHeader.style.display = 'block';
+    results.style.display = 'block';
+
+    if (sharedMatch) {
+        results.innerHTML += `<li><strong>Shared Results (Male & Female):</strong></li>`;
+        results.innerHTML += `<li>Genotype: ${sharedMatch.genotype}, Phenotype: ${sharedMatch.phenotype}</li>`;
+    } else if (maleMatch || femaleMatch) {
+        if (maleMatch) {
+            results.innerHTML += `<li><strong>Male Results:</strong></li>`;
+            results.innerHTML += `<li>Genotype: ${maleMatch.genotype}, Phenotype: ${maleMatch.phenotype}</li>`;
+        }
+        if (femaleMatch) {
+            results.innerHTML += `<li><strong>Female Results:</strong></li>`;
+            results.innerHTML += `<li>Genotype: ${femaleMatch.genotype}, Phenotype: ${femaleMatch.phenotype}</li>`;
+        }
+    } else {
+        if (bestMatch) {
+            results.innerHTML = `<li style="color: blue;">No exact match found. Did you mean <strong>${bestMatch}</strong>?</li>`;
+        } else {
+            results.innerHTML = `<li style="color: blue;">No matches found. Please try again.</li>`;
+        }
+    }
+
+    // **Show additional text**
+    additionalText.style.display = 'block';
+    additionalText.innerHTML = `<p style="font-size: 18px; color: blue;">Enter a genotype from above into the calculator to determine the offspring results.</p>`;
+}
+
+
+
+// function to reset search input and results
+function resetSearch() {
+    const results = document.getElementById('results');
+    const resultsHeader = document.getElementById('resultsHeader');
+    const additionalText = document.getElementById('resultsAdditionalText');
+
+    document.getElementById('searchInput').value = ''; // Clear input
+    results.innerHTML = ''; // Clear results
+    results.style.display = 'none'; // Hide results
+    resultsHeader.style.display = 'none'; // Hide header
+    additionalText.style.display = 'none'; // Hide additional text
+}
+
+// Function to play sound (Only adds sound, does not interfere with logic)
+        function playButtonSound(soundId) {
+            let sound = document.getElementById(soundId);
+            if (sound) {
+                sound.currentTime = 0; // Reset to start if played before
+                sound.play();
+            }
+        }
+
+
+</script>
+
+</body></html>
