@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auburn - Porter's Rare Heritage Turkeys</title>
+    <meta name="description" content="Auburn turkey variety page.">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5e1c1;
+        }
+
+       /* Title Section */
+      .site-title {
+    font-size: 3em;
+    font-weight: bold;
+    color: black; /* Black text color for the title */
+    background-color: #1E82E6; /* Blue background */
+    text-shadow: 
+        -2px -2px 0 tan, /* White shadow on the top-left */
+        2px 2px 8px rgba(0, 0, 0, 0.7); /* Black shadow with a blur */
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    width: 100%; /* Extend the background to the full width of the page */
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .site-title {
+        font-size: 2em; /* Smaller font size for mobile */
+        padding: 15px; /* Adjust padding to fit better on small screens */
+    }
+}
+
+        /* Navbar Styles */
+        .navbar {
+            width: 100%;
+            background-image: url("https://porters-rare-heritage-turkeys.neocities.org/Pictures/wood%20background.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 5px 0;
+            box-sizing: border-box;
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .navbar li {
+            padding: 0 14px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1em;
+            display: block;
+            padding: 10px;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            background-color: #575757;
+            color: yellow;
+            border-radius: 4px;
+        }
+
+        /* Menu Toggle Button (Hidden on Desktop) */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: white;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 4px;
+        }
+
+        /* Header Styles */
+        .header {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+
+        /* Content Styles */
+        .content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .content img {
+            width: 100%;
+            max-width: 507px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .content p {
+            margin: 1em 0;
+            color: rgb(0, 0, 0);
+            font-size: 1.1em;
+        }
+
+        .content .centered-text {
+            text-align: center;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: black;
+            font-weight: bold; 
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                display: none;
+                width: 100%;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+
+            .navbar ul.active {
+                display: flex;
+            }
+
+            .navbar li {
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .navbar a {
+                padding: 10px 0;
+                width: 100%;
+            }
+
+            .content img {
+                max-width: 100%;
+                height: auto;
+                object-fit: contain;
+                margin: 10px auto;
+            }
+
+            .content p {
+                font-size: 1em;
+            }
+        }
+
+        /* Adjust image size for mobile landscape */
+        @media screen and (max-width: 1024px) and (orientation: landscape) {
+            .content img {
+                max-width: 75%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Website Title -->
+    <div class="site-title"><i>Porter's Rare Heritage Turkeys</i></div>
+
+    <div class="navbar">
+        <div class="navbar-container">
+            <button class="menu-toggle">☰ Menu</button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="https://porters-rare-heritage-turkeys.neocities.org/Varieties" class="active">Varieties</a></li>
+                <li><a href="https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator">Advanced Color Calculator</a></li>
+                <li><a href="https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator2">Beginner Color Calculator</a></li>
+                <li><a href="https://porters-rare-heritage-turkeys.neocities.org/TurkeyPoultsforSale">Turkey Poults for Sale</a></li>
+                <li><a href="https://porters-rare-heritage-turkeys.neocities.org/TurkeyFeathersforSale">Feathers for Sale</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="header">
+        <h1>Auburn</h1>
+    </div>
+
+    <div class="content">
+        <p class="centered-text">
+            <img src="https://porters-rare-heritage-turkeys.neocities.org/Pictures/MAuburn.jpg" alt="Auburn" style="width: 100%; max-width: 600px; height: auto;">
+
+
+</p>
+
+<p class="centered-text"><strong>Formerly known as "Brown"</strong></p>
+<p>This is an old variety that was listed in receipts when transporting turkeys to markets in "turkey trots" during the late 1700s and early 1800s in Philadelphia. They carry the sex-linked brown gene and thus were important at the beginning of this century for producing poults that could be sexed at hatching. Breedings of Auburn toms and bronze hens will produce bronze toms and auburn hens, making it quite easy to sex poults by color at hatch. However, this did not become a serious market requirement and they never became very popular.</p>
+<p>Auburn describes a variation in the typical bronze plumage color in which bronze is replaced with a red-brown pigmentation. At day of age, the auburn poult resembles the bronze but with black stripes replaced with a red-brown coloration. In the adult bird, the bronze pigmentation is also replaced by a red-brown color. The barring present in the primary and secondary flight feathers is red-brown and white, in contrast to the black and white typical in the bronze bird. Genotype (bb ee) for toms and (bb e-) for hens. Bronze-based with the sex-linked brown modifying gene. Basically a "Brown Bronze."</p>
+<p>Initially, when this color pattern was first described, it was noted as brown, but in 1990, Savage and Attamangkune decided that "auburn" was a more accurately descriptive name for this "brown color pattern."</p>
+<p>Weights: (33 lbs. old toms and 18 lbs. old hens)</p>
+<p>Here's what Asmundson had to say about brown: "There are two alleles at the sex-linked brown locus. The dominant allele (E) permits expression of the bronze plumage color. The mutant allele (e) gives brown pigmentation. (Asmundson 1950). The brown phenotype in the day-old poult has the same pattern as the bronze, but the down color is reddish-brown. In the adult, the plumage pattern is the same as that of the bronze, except that brown pigment is present in place of the typical black and bronze. Barring is still present, but it consists of brown and white bars. The brown color is often described as auburn."</p>
+<p class="centered-text"><img src="https://porters-rare-heritage-turkeys.neocities.org/Pictures/FAuburn.jpg" alt="Auburn hen"></p>
+<p class="centered-text">Note the brown and white barring replacing black and white, unlike in a typical bronze.</p>
+<p class="centered-text">The addition of the brown gene (e) on a bronze turns all areas normally black to brown.</p>
+<p class="centered-text"><img src="https://porters-rare-heritage-turkeys.neocities.org/Pictures/PAuburn.jpg" width="368" height="366" alt="Newly hatched Auburn poults"></p>
+
+    <p class="centered-text">Newly hatched Auburn poults</p>
+    <p class="centered-text">Note the red-brown coloration with brown stripes replacing black.</p>
+</div>
+
+
+    <footer>
+        &copy;2024 Porter's Rare Heritage Turkeys
+    </footer>
+
+    <!-- JavaScript to toggle the menu on mobile -->
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.navbar ul').classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>
