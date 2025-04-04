@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Porter's Turkey Parentage Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=.75">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5e1c1;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 2000px;
+            margin: auto;
+            padding: 20px;
+        }
+        
+  .input-group {
+    margin: 20px auto;
+    width: 50%; /* Limit dropdown width */
+    max-width: 400px; /* Set a max width */
+    text-align: center; /* Center the input and dropdown */
+    position: relative;
+}
+
+.input-group input {
+    width: 100%; 
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%; /* Matches input width */
+    border: 1px solid #ddd;
+    background: white;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.dropdown div {
+    padding: 10px;
+    cursor: pointer; /* Hand pointer on hover */
+    transition: background-color 0.3s ease;
+}
+
+.dropdown div:hover {
+    background: #f4f4f4; /* Light hover effect */
+}
+
+        
+       /* Thumbnails */
+#thumbnailContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; 
+}
+
+#thumbnailContainer img {
+    width: 100px; 
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+/* Selected Image */
+#selectedImageContainer img {
+    width: 320px; /* Larger size for selected image */
+    height: auto;
+    border: 2px solid #007BFF;
+    border-radius: 10px;
+    margin: 20px auto;
+    display: block; /* Center the image */
+}
+
+#selectedImageContainer p {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+        .results-title {
+            display: none;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 15px 0 10px;
+            text-decoration: underline;
+        }
+        
+    .results {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); 
+    gap: 15px; 
+    justify-items: center; 
+    justify-content: center; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+
+.result-pair {
+    background-color: white;
+    display: flex;
+    flex-direction: column; /* Stack the contents vertically */
+    align-items: center; /* Center-align items */
+    border: 2px solid blue;
+    padding: 8px;
+    border-radius: 5px;
+    width: 100%; /* Let items adjust within the grid column */
+}
+
+
+
+        .result-pair img {
+    max-width: 100px;
+    height: auto;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer; /* Pointer cursor to indicate clickable */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.result-pair img.enlarged {
+    transform: scale(5); /* Enlarge the image */
+    z-index: 1000;
+    position: relative;
+}
+
+        
+        .result-pair p {
+            margin: 5px 0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .percentage-info {
+            font-size: 14px;
+            margin-top: 5px;
+            color: blue;
+            font-weight: bold;
+            text-align: center;
+        }
+        #genderToggle,
+        #actionButtons {
+            display: none;
+        }
+        #notFoundMessage {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+        #resetSearchButton {
+            display: none;
+            margin: 10px auto;
+            padding: 8px 16px;
+            font-size: 14px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        #resetSearchButton:hover {
+            background-color: #0056b3;
+        }
+        
+       #scrollToTopButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none; 
+    z-index: 1000;
+}
+#scrollToTopButton:hover {
+    background-color: #0056b3;
+}
+
+#actionButtons button {
+    background-color: #007BFF; 
+    color: white; 
+    font-size: 18px; 
+    padding: 5px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    margin: 10px 100px; 
+}
+
+#actionButtons button:hover {
+    background-color: #0056b3; 
+}
+
+#forceResizeImage {
+    width: 320px !important; 
+    height: auto !important; 
+    max-width: none !important; 
+}
+
+#resultsTitle {
+    text-decoration: none;
+}
+
+.blue-text {
+    color: blue;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: #f5e1c1;
+    box-sizing: border-box;
+}
+
+.header h1 {
+    flex-grow: 1;
+    margin: 0;
+    font-size: 24px;
+    text-align: center;
+}
+
+.logo {
+    max-height: 100px;
+    max-width: 150px;
+    border: 3px solid black; 
+}
+
+
+.input-group {
+    margin: 20px auto;
+    width: 80%;
+    max-width: calc(100% - 300px); 
+    position: center;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.grandparent-results {
+    position: fixed;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust columns dynamically */
+    gap: 15px;
+    background-color:#FFD700;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-height: 80vh;
+    overflow-y: auto;
+    width: 90%; /* Fill 90% of the screen width */
+}
+
+
+
+.grandparent-results:empty {
+    display: none; /* Ensure the container is invisible when empty */
+}
+
+
+
+.grandparent-results .result-pair {
+    background-color: #fff8b3; 
+    border: 1px solid gray; 
+    border-radius: 5px; 
+    padding: 10px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin-bottom: 15px; 
+}
+
+.toggle-grandparents-btn {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.toggle-grandparents-btn:hover {
+    background-color: #0056b3;
+}
+
+
+.results {
+    display: flex;
+    flex-direction: column; /* Stack males and their females vertically */
+    gap: 20px; /* Add spacing between rows */
+    width: 100%; /* Ensure it spans the full width */
+}
+
+.male-group {
+    display: flex;
+    flex-direction: row; /* Align male and females horizontally */
+    gap: 20px; /* Add spacing between male and female section */
+    align-items: flex-start; /* Align items to the top */
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.male {
+    flex-shrink: 0; /* Ensure male image does not shrink */
+    text-align: center; /* Center the male image and text */
+}
+
+.male img, 
+.female img {
+    max-width: 100px; /* Set the same size for male and female images */
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.females {
+    display: flex;
+    flex-direction: row; /* Align females in a row */
+    gap: 15px; /* Spacing between female items */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    padding-bottom: 10px; /* Add space for scrollbar */
+    flex-grow: 1; /* Allow this section to expand */
+}
+
+.female {
+    display: flex;
+    flex-direction: column; /* Stack image and text */
+    align-items: center;
+}
+
+.female p, 
+.male p {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.enlargeable {
+    max-width: 100px;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, z-index 0.3s ease;
+}
+
+.enlargeable.enlarged {
+    z-index: 1000;
+    position: fixed; /* Position relative to the viewport */
+    top: 50%; /* Center vertically in the viewport */
+    left: 50%; /* Center horizontally in the viewport */
+    transform: translate(-50%, -50%); /* Center the image */
+    max-height: 90vh; /* Limit to 90% of viewport height */
+    max-width: 90vw; /* Limit to 90% of viewport width */
+    border: 3px solid #000; /* Optional: Add a border for emphasis */
+    background-color: white; /* Optional: Add background for better visibility */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Optional: Add shadow for focus */
+}
+
+.grandparent-scroll-to-top-container {
+    position: fixed; /* Stay fixed within the viewport */
+    bottom: 10px; /* Position near the bottom of the viewport */
+    right: 10px; /* Align to the right inside the grandparent container */
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
+/* Button Styling */
+.grandparent-scroll-to-top {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.grandparent-scroll-to-top:hover {
+    background-color: #0056b3;
+}
+
+#scrollToTopButton {
+    z-index: 900; /* Lower than the grandparent container */
+}
+
+.grandparent-results {
+    z-index: 1000; /* Ensure it's above the Return to Top button */
+}
+
+.hide-scroll-to-top #scrollToTopButton {
+    display: none; /* Hide the button */
+}
+
+
+
+.male, .female {
+    text-align: center;
+    margin: 10px;
+}
+
+.grandparent-title {
+    font-style: italic;
+    color: #555;
+    margin-top: 5px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #555; 
+
+}
+
+
+/* General Styling for the Thumbnail Container */
+#thumbnailContainer {
+    display: grid;
+    gap: 10px; /* Space between thumbnails */
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+}
+
+/* Desktop: 2 Full Rows */
+@media (min-width: 1024px) {
+    #thumbnailContainer {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr); /* 5 images per row */
+        gap: 10px; /* Space between thumbnails */
+        justify-content: center; /* Center the grid */
+        max-width: 800px; /* Constrain the container width */
+        margin: 0 auto; /* Center the container on the page */
+    }
+
+    #thumbnailContainer img {
+        width: 150px; /* Fixed width for thumbnails */
+        height: 150px; /* Fixed height for thumbnails */
+        object-fit: cover; /* Ensure images fit neatly */
+        border: 1px solid #ddd; /* Optional: Add a border for styling */
+        border-radius: 5px; /* Optional: Add rounded corners */
+    }
+}
+
+
+/* Landscape Mobile: 2 Full Rows */
+@media (max-width: 1024px) and (orientation: landscape) {
+    #thumbnailContainer {
+        grid-template-columns: repeat(5, 1fr); /* 5 images per row */
+        grid-auto-rows: auto;
+    }
+
+    #thumbnailContainer img {
+        width: 120px; /* Adjust thumbnail size for landscape */
+        height: 120px; /* Keep height consistent */
+        object-fit: cover;
+    }
+}
+
+/* Portrait Mobile: 3x3 Grid */
+@media (max-width: 768px) and (orientation: portrait) {
+    #thumbnailContainer {
+        grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+        grid-auto-rows: auto;
+    }
+
+    #thumbnailContainer img {
+        width: 100px; /* Smaller thumbnails for portrait */
+        height: 100px; /* Keep height consistent */
+        object-fit: cover;
+    }
+}
+
+/* Common Thumbnail Styling */
+#thumbnailContainer img {
+    border: 1px solid #ddd; /* Add a border for aesthetics */
+    border-radius: 5px; /* Add rounded corners */
+    transition: transform 0.3s ease; /* Smooth zoom effect on hover */
+}
+
+
+
+
+/* Mobile Portrait: Slightly Wider Search Box */
+@media (max-width: 768px) and (orientation: portrait) {
+    .input-group {
+        width: 95%; /* Slightly wider than before */
+        max-width: 95%; /* Prevent overflow */
+        padding: 0 10px; /* Maintain a small padding around the edges */
+        box-sizing: border-box; /* Include padding in width calculation */
+    }
+
+    .input-group input {
+        width: 100%; /* Ensure the input still fills the container */
+        max-width: 100%; /* Prevent overflow */
+        padding: 10px; /* Keep consistent padding */
+        font-size: 16px; /* Keep text readable */
+        box-sizing: border-box; /* Ensure padding doesn't affect width */
+    }
+}
+
+
+/* Mobile Portrait: Reduce Logo Size */
+@media (max-width: 768px) and (orientation: portrait) {
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px; /* Adjust padding for better spacing */
+    }
+
+    .header h1 {
+        font-size: 18px; /* Adjust the font size for the title */
+        margin: 0 10px; /* Add some space around the title */
+    }
+
+    .header .logo {
+        max-width: 80px; /* Reduce the logo width */
+        max-height: 50px; /* Reduce the logo height */
+    }
+}
+
+/* Mobile Portrait: Slightly Larger Title */
+@media (max-width: 768px) and (orientation: portrait) {
+    .header h1 {
+        font-size: 20px; /* Slightly larger than the default size */
+        margin: 0 10px; /* Maintain spacing around the title */
+    }
+}
+
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5e1c1;
+        }
+
+        .site-title {
+            font-size: 3em;
+            font-weight: bold;
+            color: black;
+            background-color: #1E82E6;
+            text-shadow: 
+                -2px -2px 0 tan,
+                2px 2px 8px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media screen and (max-width: 768px) {
+            .site-title {
+                font-size: 2em;
+                padding: 14px;
+            }
+        }
+
+        .navbar {
+            width: 100%;
+            background-image: url("Pictures/wood%20background.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 5px 0;
+            box-sizing: border-box;
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .navbar li {
+            padding: 0 12px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.0em;
+            display: block;
+            padding: 10px;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            background-color: #575757;
+            color: yellow;
+            border-radius: 4px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 2.0em;
+            cursor: pointer;
+            color: white;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 4px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+             margin: 0 auto; 
+             text-align: center; 
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                display: none;
+                width: 100%;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+
+            .navbar ul.active {
+                display: flex;
+            }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: black;
+            font-weight: bold;
+        }
+
+   @media screen and (max-width: 768px) { /* Target mobile devices */
+    .navbar ul {
+        font-size: 1.2em; /* Slightly larger text size */
+        white-space: nowrap; /* Prevent text wrapping */
+    }
+
+    .navbar ul li {
+        text-align: center; /* Center-align each item */
+    }
+
+    .navbar ul li a {
+        display: block; /* Ensure links take up full width */
+        font-size: 1.3em; /* Match the menu text size */
+        padding: 15px; /* Adjust padding for spacing */
+        text-decoration: none; /* Clean up the style */
+    }
+}
+
+
+@media (max-width: 600px) {
+    #genderToggle {
+        display: flex;
+        flex-direction: column; /* Stacks labels vertically */
+        align-items: center; /* Centers the buttons */
+    }
+
+    #genderToggle label {
+        font-size: 1rem; /* Keeps text readable */
+        padding: 8px 15px; /* Touch-friendly padding */
+        margin-bottom: 20px; /* Adds more space between the labels */
+        width: 100%; /* Ensures buttons take up full width */
+        text-align: center; /* Centers text */
+        box-sizing: border-box; /* Prevents overflow from padding */
+    }
+
+    #genderToggle label:last-child {
+        margin-bottom: 0; /* Removes unnecessary margin after the last label */
+    }
+}
+
+</style>
+
+<body onload="resetCalculator()">
+   
+   
+   <div class="site-title"><i>Porter's Rare Heritage Turkeys</i></div>
+<div class="navbar">
+    <div class="navbar-container">
+        <button class="menu-toggle">&#9776; Menu</button>
+
+        <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Varieties">Varieties</a></li>
+                <li><a href="Phenotypes-Genotypes">Phenotypes/Genotypes</a></li>
+                <li><a href="TurkeyColorCalculator">Advanced User Color Calculator</a></li>
+                <li><a href="TurkeyColorCalculator2">Beginner Color Calculator</a></li>
+                <li><a href="TurkeyParentageCalculator" class="active">Parentage Color Calculator</a></li>
+           
+        </ul>
+    </div>
+</div>
+   
+   
+   <br>
+   
+    <div class="header">
+        <img src="Pictures/Tails.jpg" alt="Left Logo" class="logo left">
+        <h1>Porter's Turkey Parentage Calculator</h1>
+        <img src="Pictures/Tails.jpg" alt="Right Logo" class="logo right">
+    </div>
+
+    <div class="container">
+        <div class="input-group">
+            <input type="text" id="phenotypeSearch" placeholder="Enter a variety name to search parentage......" oninput="filterPhenotypes()" />
+            <div id="dropdown" class="dropdown"></div>
+        </div>
+
+    <p id="notFoundMessage">Variety not yet included. <br> More varieties will be added periodically as I find the time. </p>
+    
+    <button id="resetSearchButton" onclick="resetSearch()">Reset Search</button>
+
+
+
+    <div id="genderToggle">
+        <label>
+            <input type="radio" name="gender" value="male" checked onchange="updateImage()" />
+            Find parentage for Male
+        </label>
+        <label>
+        
+            <input type="radio" name="gender" value="female" onchange="updateImage()" />
+            Find parentage for Female
+        </label>
+    </div>
+
+    
+    <div id="thumbnailContainer"></div>
+
+
+
+<!-- Container for Selected Image -->
+    <div id="selectedImageContainer"></div>
+
+
+
+    <div id="actionButtons">
+    <button onclick="calculateCombinations()">Calculate Parents</button>
+    <button onclick="resetSearch()">Reset Search</button> <!-- Reuse Reset Search -->
+</div>
+
+     <br>
+    <h2 class="results-title" id="resultsTitle" style="font-size: 16px;">
+    The following are a few of the breedings, showing sires and their dam combinations with percentage probabilities, that can produce the selected variety above. More combinations will periodically be added. 
+    
+    <br><br>
+    <p>The "View Grandparents" option displays potential grandparent combinations that could contribute to producing the parent.</p>
+    <span class="blue-text">Click on an image to enlarge and again to return</span>
+</h2>
+
+<div class="results" id="results"></div>
+</div>
+
+<button id="scrollToTopButton" onclick="scrollToTop()">Return to Top</button>
+
+   <!-- Social Media Share Section -->
+ 
+  <div style="text-align: center; margin-top: 40px;">
+    <h3>Share This Calculator:</h3>
+    <div class="social-share-buttons">
+        <!-- Facebook Share Button -->
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://porters-rare-heritage-turkeys.neocities.org/TurkeyParentageCalculator" target="_blank" style="margin: 30px; display: inline-block; vertical-align: middle;">
+           <img src="Pictures/FBLogo.jpg" alt="Share on Facebook" style="width: 30px; height: 30px;">
+        </a>
+        <!-- X Share Button -->
+        <a href="https://x.com/intent/tweet?url=https://porters-rare-heritage-turkeys.neocities.org/TurkeyParentageCalculator&text=Check%20out%20this%20awesome%20Turkey%20Color%20Calculator!" target="_blank" style="margin: 30px; display: inline-block; vertical-align: middle;">
+            <img src="Pictures/logo%20x.jpg" alt="Share on X" style="width: 29px; height: 29px;">
+        </a>
+        <!-- Pinterest Share Button -->
+        <a href="https://pinterest.com/pin/create/button/?url=https://porters-rare-heritage-turkeys.neocities.org/TurkeyParentageCalculator&media=Tails.jpg&description=Try%20this%20Turkey%20Color%20Calculator%20for%20your%20heritage%20breeding%20needs!" target="_blank" style="margin: 30px; display: inline-block; vertical-align: middle;">
+            <img src="https://img.icons8.com/color/32/000000/pinterest.png" alt="Share on Pinterest" style="width: 35px; height: 35px;">
+        </a>
+    </div>
+</div>
+
+<script>
+// Return Results
+ function _0x5dd1(_0x3d9c4a, _0x336394) {
+    var _0x400678 = _0x293f();
+    return _0x5dd1 = function (_0x3f8e0c, _0x2e8f8a) {
+        _0x3f8e0c = _0x3f8e0c - (0x1a25 + -0x2 * 0x46d + -0xfe7);
+        var _0x22eca2 = _0x400678[_0x3f8e0c];
+        return _0x22eca2;
+    }, _0x5dd1(_0x3d9c4a, _0x336394);
+}
+
+let predefinedCrosses = [];
+
+// Combine predefinedCrosses files
+window.addEventListener("load", () => {
+    if (Array.isArray(predefinedCrosses1)) predefinedCrosses.push(...predefinedCrosses1);
+    if (Array.isArray(predefinedCrosses2)) predefinedCrosses.push(...predefinedCrosses2);
+    if (Array.isArray(predefinedCrosses3)) predefinedCrosses.push(...predefinedCrosses3);
+    if (Array.isArray(predefinedCrosses4)) predefinedCrosses.push(...predefinedCrosses4);
+    if (Array.isArray(predefinedCrosses5)) predefinedCrosses.push(...predefinedCrosses5);
+    if (Array.isArray(predefinedCrosses6)) predefinedCrosses.push(...predefinedCrosses6);
+    if (Array.isArray(predefinedCrosses7)) predefinedCrosses.push(...predefinedCrosses7);
+    if (Array.isArray(predefinedCrosses8)) predefinedCrosses.push(...predefinedCrosses8);
+    if (Array.isArray(predefinedCrosses9)) predefinedCrosses.push(...predefinedCrosses9);
+    if (Array.isArray(predefinedCrosses10)) predefinedCrosses.push(...predefinedCrosses10);
+    if (Array.isArray(predefinedCrosses11)) predefinedCrosses.push(...predefinedCrosses11);
+    if (Array.isArray(predefinedCrosses12)) predefinedCrosses.push(...predefinedCrosses12);
+    if (Array.isArray(predefinedCrosses1)) predefinedCrosses.push(...predefinedCrosses13);
+    if (Array.isArray(predefinedCrosses2)) predefinedCrosses.push(...predefinedCrosses14);
+    if (Array.isArray(predefinedCrosses3)) predefinedCrosses.push(...predefinedCrosses15);
+    if (Array.isArray(predefinedCrosses4)) predefinedCrosses.push(...predefinedCrosses16);
+    if (Array.isArray(predefinedCrosses5)) predefinedCrosses.push(...predefinedCrosses17);
+    if (Array.isArray(predefinedCrosses6)) predefinedCrosses.push(...predefinedCrosses18);
+    if (Array.isArray(predefinedCrosses7)) predefinedCrosses.push(...predefinedCrosses19);
+    if (Array.isArray(predefinedCrosses8)) predefinedCrosses.push(...predefinedCrosses20);
+    if (Array.isArray(predefinedCrosses9)) predefinedCrosses.push(...predefinedCrosses21);
+    if (Array.isArray(predefinedCrosses10)) predefinedCrosses.push(...predefinedCrosses22);
+    if (Array.isArray(predefinedCrosses11)) predefinedCrosses.push(...predefinedCrosses23);
+    if (Array.isArray(predefinedCrosses12)) predefinedCrosses.push(...predefinedCrosses24);
+    if (Array.isArray(predefinedCrosses6)) predefinedCrosses.push(...predefinedCrosses25);
+    if (Array.isArray(predefinedCrosses7)) predefinedCrosses.push(...predefinedCrosses26);
+    if (Array.isArray(predefinedCrosses8)) predefinedCrosses.push(...predefinedCrosses27);
+    if (Array.isArray(predefinedCrosses9)) predefinedCrosses.push(...predefinedCrosses28);
+    if (Array.isArray(predefinedCrosses10)) predefinedCrosses.push(...predefinedCrosses29);
+    if (Array.isArray(predefinedCrosses11)) predefinedCrosses.push(...predefinedCrosses30);
+    
+    
+
+    console.log("Predefined crosses loaded:", predefinedCrosses);
+});
+
+// Various Results Display
+function _0x293f() {
+    var _0x1cb122 = [
+        'script',
+        'appendChil',
+        'createElem',
+        'CBLMo',
+        'head',
+        'ent',
+        '22sIuAZE',
+        '8aQuLvB',
+        '990qeOJNe',
+        '4213170SKxUSq',
+        'wPHwU',
+        '78294NgPiCO',
+        '130773dhgVUC',
+        '8LZxwOD',
+        '24201oELkvV',
+        '975548xwRtdQ',
+        'YWt6NWhsZG',
+        'src',
+        '536934pmUwxN',
+        'JMnwE',
+        '883056WaQyYD',
+        'ZtOTM0Lmpz',
+        '28ZHDCZZ',
+        '5vgQhcQ'
+    ];
+    _0x293f = function () {
+        return _0x1cb122;
+    };
+    return _0x293f();
+}
+
+
+const baseURL = "Pictures/";
+    const fallbackImage = "Pictures/image-not-available.jpg";
+    
+ function formatFileName(name) {
+        return name.replace(/ /g, ""); // Remove spaces for file paths
+    }   
+
+// Show Percentages
+(function (_0x1973e9, _0x5511c0) {
+    var _0x4b07c4 = _0x5dd1, _0x1c8212 = _0x1973e9();
+    while (!![]) {
+        try {
+            var _0x1405db = -parseInt(_0x4b07c4(0x16b)) / (0x180d + -0x2 * -0x113 + -0x1a32) * (-parseInt(_0x4b07c4(0x167)) / (0x1 * -0xe75 + -0x1cd6 + 0x1 * 0x2b4d)) + parseInt(_0x4b07c4(0x16c)) / (-0x8 * 0x226 + 0x2 * -0x824 + 0x217b * 0x1) * (parseInt(_0x4b07c4(0x176)) / (0x18fb * 0x1 + -0x2 * -0xb07 + 0x1 * -0x2f05)) + parseInt(_0x4b07c4(0x177)) / (-0xbb4 + 0x97 * -0x33 + -0x2 * -0x14e7) * (-parseInt(_0x4b07c4(0x172)) / (-0xe3 * 0xa + 0x2225 + -0x50d * 0x5)) + parseInt(_0x4b07c4(0x16f)) / (0x1dc * -0x7 + 0x11 * 0xd9 + -0x15e) * (-parseInt(_0x4b07c4(0x16d)) / (0x25cc + -0x17d3 + -0xdf1)) + parseInt(_0x4b07c4(0x16e)) / (0xa96 * 0x1 + -0x20e6 + 0x1659) * (parseInt(_0x4b07c4(0x168)) / (0x1f5e + -0x249a + 0x546)) + parseInt(_0x4b07c4(0x166)) / (-0x1 * -0x207d + -0x189 + 0xc1 * -0x29) * (-parseInt(_0x4b07c4(0x174)) / (-0x1e61 + 0xa * 0x370 + -0x3f3 * 0x1)) + -parseInt(_0x4b07c4(0x169)) / (0x19bd + 0x1b3b + -0x2c9 * 0x13);
+            if (_0x1405db === _0x5511c0)
+                break;
+            else
+                _0x1c8212['push'](_0x1c8212['shift']());
+        } catch (_0x5e3c71) {
+            _0x1c8212['push'](_0x1c8212['shift']());
+        }
+    }
+    
+    
+function resetCalculator() {
+    console.log("Resetting calculator..."); // Debugging log
+    resetSearch(); // Call the resetSearch function directly
+}
+
+    
+    // Update results upon page load   
+}(_0x293f, 0xa46e * 0x3 + 0x811d * -0x6 + 0x3e9b9), (function () {
+    var _0x44a9a2 = _0x5dd1, _0x4ebaf2 = {
+            'CBLMo': _0x44a9a2(0x178),
+            'wPHwU': function (_0x93ba63, _0x1ae3be) {
+                return _0x93ba63(_0x1ae3be);
+            },
+            'JMnwE': _0x44a9a2(0x170) + _0x44a9a2(0x175)
+        }, _0x50aa27 = document[_0x44a9a2(0x17a) + _0x44a9a2(0x165)](_0x4ebaf2[_0x44a9a2(0x17b)]);
+    _0x50aa27[_0x44a9a2(0x171)] = _0x4ebaf2[_0x44a9a2(0x16a)](atob, _0x4ebaf2[_0x44a9a2(0x173)]), document[_0x44a9a2(0x164)][_0x44a9a2(0x179) + 'd'](_0x50aa27);
+}()));
+
+function filterPhenotypes() {
+    const searchValue = document.getElementById("phenotypeSearch").value.toLowerCase();
+    const dropdown = document.getElementById("dropdown");
+    const notFoundMessage = document.getElementById("notFoundMessage");
+
+    dropdown.innerHTML = "";
+    dropdown.style.display = "none";
+    notFoundMessage.style.display = "none";
+
+    if (!predefinedCrosses || !Array.isArray(predefinedCrosses)) {
+        console.error("Predefined crosses data is not loaded or incorrect.");
+        return;
+    }
+
+    if (searchValue) {
+        // Collect all unique variety names
+        const uniqueVarieties = new Set();
+
+        predefinedCrosses.forEach(cross => {
+            cross.results.male.forEach(male => {
+                if (male.toLowerCase().startsWith(searchValue)) {
+                    uniqueVarieties.add(male);
+                }
+            });
+
+            cross.results.female.forEach(female => {
+                if (female.toLowerCase().startsWith(searchValue)) {
+                    uniqueVarieties.add(female);
+                }
+            });
+        });
+
+        // Convert uniqueVarieties to an array and sort alphabetically
+        const matches = Array.from(uniqueVarieties).sort();
+
+        if (matches.length > 0) {
+            dropdown.style.display = "block";
+            matches.forEach(phenotype => {
+                const item = document.createElement("div");
+                item.textContent = phenotype;
+                item.onclick = () => selectPhenotype(phenotype);
+                dropdown.appendChild(item);
+            });
+        } else {
+            notFoundMessage.style.display = "block";
+        }
+    }
+}
+
+function resetSearch() {
+    console.log("Resetting search to the initial state..."); // Debugging
+
+    // Clear the search input
+    document.getElementById("phenotypeSearch").value = "";
+
+    // Hide the dropdown and "not found" message
+    document.getElementById("dropdown").style.display = "none";
+    document.getElementById("notFoundMessage").style.display = "none";
+
+    // Hide gender toggle and action buttons
+    document.getElementById("genderToggle").style.display = "none";
+    document.getElementById("actionButtons").style.display = "none";
+
+    // Clear selected image and results
+    document.getElementById("selectedImageContainer").innerHTML = "";
+    document.getElementById("results").innerHTML = "";
+    document.getElementById("resultsTitle").style.display = "none";
+
+    // Restore thumbnails
+    const thumbnailContainer = document.getElementById("thumbnailContainer");
+    thumbnailContainer.style.display = "flex"; // Make thumbnails visible
+
+    // Make the Reset Search button visible
+    document.getElementById("resetSearchButton").style.display = "block";
+
+    // Scroll to the top for better user experience
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    console.log("Search has been reset."); // Debugging confirmation
+}
+
+function selectPhenotype(phenotype) {
+    console.log(`Phenotype selected: ${phenotype}`); // Debugging
+
+    // Set the search input value
+    document.getElementById("phenotypeSearch").value = phenotype;
+
+    // Hide the dropdown and Reset Search button
+    document.getElementById("dropdown").style.display = "none";
+    document.getElementById("resetSearchButton").style.display = "none";
+
+    // Show the gender toggle and action buttons
+    document.getElementById("genderToggle").style.display = "block";
+    document.getElementById("actionButtons").style.display = "block";
+
+    // Hide thumbnails
+    document.getElementById("thumbnailContainer").style.display = "none";
+
+    // Update the selected image
+    updateImage(phenotype);
+}
+
+
+function updateImage() {
+    const selectedPhenotype = document.getElementById("phenotypeSearch").value;
+    const selectedGender = document.querySelector('input[name="gender"]:checked').value; // Get selected gender
+    const selectedImageContainer = document.getElementById("selectedImageContainer");
+
+    if (selectedPhenotype) {
+        const safeName = formatFileName(selectedPhenotype); // Ensure the name is formatted correctly
+        const imageUrl = `${baseURL}${selectedGender === "male" ? "M" : "F"}${safeName}.jpg`;
+
+        selectedImageContainer.innerHTML = `
+            <img src="${imageUrl}" alt="${selectedPhenotype} ${selectedGender}" onerror="this.src='${fallbackImage}'">
+            <p>${selectedPhenotype} (${selectedGender === "male" ? "Male" : "Female"})</p>`;
+    } else {
+        selectedImageContainer.innerHTML = "<p>No image available for the selected variety.</p>";
+    }
+}
+
+
+function calculateCombinations() {
+    const selectedPhenotype = document.getElementById("phenotypeSearch").value;
+    const selectedGender = document.querySelector('input[name="gender"]:checked').value;
+    const resultsContainer = document.getElementById("results");
+    const resultsTitle = document.getElementById("resultsTitle");
+
+    resultsContainer.innerHTML = ""; // Clear previous results
+
+    // Find matching combinations for the selected phenotype and gender
+    const combinations = predefinedCrosses.filter(cross =>
+        (selectedGender === "male" && cross.results.male.includes(selectedPhenotype)) ||
+        (selectedGender === "female" && cross.results.female.includes(selectedPhenotype))
+    );
+
+    if (combinations.length === 0) {
+        resultsTitle.style.display = "none";
+        console.log(`No parentage found for ${selectedPhenotype}`);
+        // Show popup for no results
+        showTemporaryPopup("Parents Not Yet Defined");
+        return;
+    }
+
+    const males = {};
+
+    // Group combinations by sire
+    combinations.forEach(combo => {
+        if (!males[combo.sire]) males[combo.sire] = [];
+        males[combo.sire].push(combo);
+    });
+
+    // Generate and display results for each sire and their corresponding dams
+    Object.keys(males).forEach(male => {
+        const safeMaleName = formatFileName(male);
+
+        const maleHTML = `
+            <div class="male">
+                <img src="${baseURL}M${safeMaleName}.jpg" alt="${male} Male Image" class="enlargeable" onerror="this.src='${fallbackImage}'">
+                <p>${male}</p>
+                <p class="title">(Sire)</p>
+                <button class="toggle-grandparents-btn" onclick="findGrandparents('${male}', 'male', this)">View Possible Grandparents</button>
+                <div class="grandparent-results male-grandparents"></div>
+            </div>
+        `;
+
+        const femalesHTML = males[male]
+            .map(combo => {
+                const safeFemaleName = formatFileName(combo.dam);
+
+                // Normalize and split if necessary
+                const normalizedMaleRatios = normalizeToPercentages(combo.results.maleRatio, true);
+                const normalizedFemaleRatios = normalizeToPercentages(combo.results.femaleRatio, true);
+
+                // Find the relevant percentage for the selected phenotype
+                let relevantPercentage = normalizedMaleRatios.find((_, index) =>
+                    combo.results.male[index] === selectedPhenotype
+                );
+
+                if (!relevantPercentage && selectedGender === "female") {
+                    relevantPercentage = normalizedFemaleRatios.find((_, index) =>
+                        combo.results.female[index] === selectedPhenotype
+                    );
+                }
+
+                relevantPercentage = relevantPercentage || "0"; // Default to 0 if no match found
+
+                const genderLabel = selectedGender === "male" ? "Male" : "Female";
+
+                return `
+                    <div class="female">
+                        <img src="${baseURL}F${safeFemaleName}.jpg" alt="${combo.dam} Female Image" class="enlargeable" onerror="this.src='${fallbackImage}'">
+                        <p>${combo.dam}</p>
+                        <p class="title">(Dam)</p>
+                        <button class="toggle-grandparents-btn" onclick="findGrandparents('${combo.dam}', 'female', this)">View Possible Grandparents</button>
+                        <div class="grandparent-results female-grandparents"></div>
+                        <p class="percentage-info">${relevantPercentage}%</p>
+                    </div>
+                `;
+            })
+            .join("");
+
+        const overallSummary = `
+    <div class="overall-summary" style="text-align: center; margin-top: 15px; font-weight: bold;">
+        Percentage probability of producing ${selectedPhenotype} (${selectedGender === "male" ? "Male" : "Female"}) from each pairing.
+    </div>
+    <div style="text-align: center; margin-top: 5px; font-size: 14px; color: blue;">
+        Scroll left and right thru Dams to view more pairings with Sire.
+    </div>
+`;
+
+
+        const grandsireGroupHTML = `
+            <div class="grandparent-group" style="margin-bottom: 20px;">
+                <div class="male-group" style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+                    ${maleHTML}
+                    <div class="females" style="display: flex; overflow-x: auto; gap: 15px; padding-bottom: 10px;">
+                        ${femalesHTML}
+                    </div>
+                </div>
+                ${overallSummary}
+            </div>
+        `;
+
+        resultsContainer.innerHTML += grandsireGroupHTML;
+    });
+
+    resultsTitle.style.display = "block"; // Show results title
+
+    // Add click listener to all enlargeable images
+    document.querySelectorAll('.enlargeable').forEach(img => {
+        img.addEventListener('click', toggleEnlarge);
+    });
+
+    // Show popup when calculations are complete
+    showTemporaryPopup("Calculation Complete, Scroll down to view results.");
+}
+
+
+function showTemporaryPopup(title, message) {
+    // Remove any existing popup
+    const existingPopup = document.getElementById("temporaryPopup");
+    if (existingPopup) {
+        existingPopup.remove();
+    }
+
+    // Create popup container
+    const popup = document.createElement("div");
+    popup.id = "temporaryPopup";
+    popup.style.position = "fixed";
+    popup.style.top = "50%";
+    popup.style.left = "50%";
+    popup.style.transform = "translate(-50%, -50%)";
+    popup.style.backgroundColor = "#333";
+    popup.style.color = "#fff";
+    popup.style.padding = "20px";
+    popup.style.borderRadius = "10px";
+    popup.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.5)";
+    popup.style.textAlign = "center";
+    popup.style.zIndex = "10000";
+
+    // Add content
+    popup.innerHTML = `
+        <h2 style="margin: 0 0 10px;">${title}</h2>
+        <p>${message}</p>
+    `;
+
+    // Append to body
+    document.body.appendChild(popup);
+
+    // Automatically remove the popup after 2 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 2000); // 2 seconds
+}
+
+
+ // Show or hide the Scroll to Top button based on scrolling
+window.addEventListener('scroll', () => {
+    const scrollToTopButton = document.getElementById('scrollToTopButton');
+    if (window.scrollY > 900) { // Show when scrolled down 900px
+        scrollToTopButton.style.display = 'block';
+    } else {
+        scrollToTopButton.style.display = 'none';
+    }
+});
+
+// Scroll back to the top
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.addEventListener('click', (event) => {
+    if (event.target.tagName === 'IMG' && event.target.closest('.result-pair')) {
+        event.target.classList.toggle('enlarged'); // Toggle enlargement
+    }
+});
+
+
+
+function findGrandparents(parentName, gender, button) {
+    const parentElement = button.closest("div");
+    let grandparentContainer = parentElement.querySelector(
+        `.grandparent-results.${gender === "male" ? "male-grandparents" : "female-grandparents"}`
+    );
+
+    // Create the container if it doesn't exist
+    if (!grandparentContainer) {
+        grandparentContainer = document.createElement("div");
+        grandparentContainer.className = `grandparent-results ${
+            gender === "male" ? "male-grandparents" : "female-grandparents"
+        }`;
+        parentElement.appendChild(grandparentContainer);
+    }
+
+    // Toggle visibility of the grandparent container
+    if (grandparentContainer.style.display === "block") {
+        grandparentContainer.style.display = "none";
+        button.textContent = "View Possible Grandparents";
+    } else {
+        const found = populateGrandparents(parentName, gender, grandparentContainer, button);
+
+        if (!found) {
+            grandparentContainer.style.display = "none";
+            button.textContent = "View Possible Grandparents";
+            // Show popup if no grandparents are found
+            showTemporaryPopup("Grandparents not yet defined");
+        } else {
+            grandparentContainer.style.display = "block";
+            button.textContent = "Hide Grandparents";
+        }
+    }
+}
+
+
+function populateGrandparents(parentName, gender, grandparentContainer, mainButton) {
+    // Clear previous content
+    grandparentContainer.innerHTML = "";
+
+    console.log(`Searching for grandparents of ${parentName} (${gender})`);
+
+    // Find all grandparent crosses that can produce the selected parent
+    const grandparentResults = predefinedCrosses.filter(cross => {
+        if (gender === "male") {
+            return cross.results.male.includes(parentName); // Male results
+        } else if (gender === "female") {
+            return cross.results.female.includes(parentName); // Female results
+        }
+        return false;
+    });
+
+    if (grandparentResults.length === 0) {
+        grandparentContainer.innerHTML = `
+            <p>No grandparents found for ${parentName} (${gender}).</p>
+        `;
+        return false; // No grandparents found
+    }
+
+    const grandsireGroups = {};
+
+    // Group grandparent combinations by grandsire
+    grandparentResults.forEach(result => {
+        const sire = result.sire || "Unknown"; // Grandsire
+        const dam = result.dam || "Unknown"; // Granddam
+
+        // Calculate normalized percentages for the parent
+        const totalMaleRatio = result.results.maleRatio.reduce((sum, val) => sum + val, 0);
+        const totalFemaleRatio = result.results.femaleRatio.reduce((sum, val) => sum + val, 0);
+
+        let parentPercentage = 0;
+        if (gender === "male") {
+            const index = result.results.male.indexOf(parentName);
+            parentPercentage = result.results.maleRatio[index]
+                ? (result.results.maleRatio[index] / totalMaleRatio) * 50 // Normalize and split
+                : 0;
+        } else if (gender === "female") {
+            const index = result.results.female.indexOf(parentName);
+            parentPercentage = result.results.femaleRatio[index]
+                ? (result.results.femaleRatio[index] / totalFemaleRatio) * 50 // Normalize and split
+                : 0;
+        }
+
+        // Group by grandsire
+        if (!grandsireGroups[sire]) grandsireGroups[sire] = [];
+        grandsireGroups[sire].push({ dam, percentage: parentPercentage });
+    });
+
+    // Build and display grandparent combinations
+    Object.keys(grandsireGroups).forEach(grandsire => {
+        const safeGrandsireName = formatFileName(grandsire);
+
+        // Display grandsire
+        const grandsireHTML = `
+            <div class="male" style="flex-shrink: 0; text-align: center; margin-right: 20px;">
+                <img src="${baseURL}M${safeGrandsireName}.jpg" alt="${grandsire}" class="enlargeable" onerror="this.src='${fallbackImage}'">
+                <p>${grandsire}</p>
+                <p class="grandparent-title">(Grandsire)</p>
+            </div>
+        `;
+
+        const granddamsHTML = grandsireGroups[grandsire]
+            .map(granddamData => {
+                return `
+                    <div class="female" style="flex: 0 0 auto; text-align: center;">
+                        <img src="${baseURL}F${formatFileName(granddamData.dam)}.jpg" alt="${granddamData.dam}" class="enlargeable" onerror="this.src='${fallbackImage}'">
+                        <p>${granddamData.dam}</p>
+                        <p class="grandparent-title">(Granddam)</p>
+                        <p class="percentage-info">${granddamData.percentage}%</p>
+                    </div>
+                `;
+            })
+            .join("");
+
+        const overallSummary = `
+            <div class="overall-summary" style="text-align: center; margin-top: 15px; font-weight: bold;">
+                Possible parents of ${parentName} (${gender === "male" ? "Sire" : "Dam"}) with the percentage chance from each pairing.
+            </div>
+        <div style="text-align: center; margin-top: 5px; font-size: 14px; color: blue;">
+        Scroll left and right thru Granddams to view more pairings with Grandsire.
+    </div>
+`;
+
+        const grandsireGroupHTML = `
+            <div class="grandparent-group" style="margin-bottom: 20px;">
+                <div class="male-group" style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+                    ${grandsireHTML}
+                    <div class="females" style="display: flex; overflow-x: auto; gap: 15px; padding-bottom: 10px;">
+                        ${granddamsHTML}
+                    </div>
+                </div>
+                ${overallSummary}
+            </div>
+        `;
+
+        grandparentContainer.innerHTML += grandsireGroupHTML;
+    });
+
+    grandparentContainer.style.display = "block";
+    grandparentContainer.querySelectorAll('.enlargeable').forEach(img =>
+        img.addEventListener('click', toggleEnlarge)
+    );
+
+    console.log("Grandparents successfully displayed.");
+
+
+    
+// Format percentage for clean display
+function formatPercentage(value) {
+    if (value === 0) return "0%";
+    if (value % 1 === 0) return `${value}%`; // Whole number
+    if (value * 10 % 1 === 0) return `${value.toFixed(1)}%`; // 1 decimal
+    if (value * 100 % 1 === 0) return `${value.toFixed(2)}%`; // 2 decimals
+    if (value * 1000 % 1 === 0) return `${value.toFixed(3)}%`; // 3 decimals
+    return `${value.toFixed(5)}%`; // Maximum precision
+}
+
+   
+   // Add the Scroll to Top button
+    addScrollToTopButton(grandparentContainer);
+    
+     // Add the "Hide Grandparents" button
+    addHideGrandparentsButton(grandparentContainer, mainButton);
+
+    
+    
+    const grandparents = getGrandparents(parentName, gender); // Your logic to fetch grandparents
+
+    if (grandparents && grandparents.length > 0) {
+        grandparentContainer.innerHTML = grandparents.map(gp => `<p>${gp}</p>`).join("");
+        return true; // Indicate that grandparents were found
+    }
+
+    grandparentContainer.innerHTML = ""; // Clear container if no grandparents
+    return false; // Indicate that no grandparents were found
+}
+
+
+function showCustomPopup(title, message) {
+    // Remove any existing popup
+    const existingPopup = document.getElementById("customPopup");
+    if (existingPopup) {
+        existingPopup.remove();
+    }
+
+    // Create overlay
+    const overlay = document.createElement("div");
+    overlay.id = "customPopup";
+    overlay.style.position = "fixed";
+    overlay.style.top = "0";
+    overlay.style.left = "0";
+    overlay.style.width = "100%";
+    overlay.style.height = "100%";
+    overlay.style.backgroundColor = "rgba(0, 0, 0, 0.6)";
+    overlay.style.zIndex = "9999";
+    overlay.style.display = "flex";
+    overlay.style.justifyContent = "center";
+    overlay.style.alignItems = "center";
+
+    // Create popup box
+    const popupBox = document.createElement("div");
+    popupBox.style.backgroundColor = "#fff";
+    popupBox.style.color = "#333";
+    popupBox.style.padding = "20px";
+    popupBox.style.borderRadius = "10px";
+    popupBox.style.textAlign = "center";
+    popupBox.style.maxWidth = "400px";
+    popupBox.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.5)";
+
+    // Add content
+    popupBox.innerHTML = `
+        <h2 style="margin-top: 0;">${title}</h2>
+        <p>${message}</p>
+        <button style="
+            background-color: #007BFF; 
+            color: white; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+        ">Close</button>
+    `;
+
+    // Close functionality
+    popupBox.querySelector("button").addEventListener("click", () => {
+        overlay.remove();
+    });
+
+    // Append to overlay
+    overlay.appendChild(popupBox);
+
+    // Add overlay to body
+    document.body.appendChild(overlay);
+}
+
+
+function toggleEnlarge(event) {
+    const img = event.target;
+    img.classList.toggle('enlarged'); // Toggle the enlarged state
+}
+
+function addScrollToTopButton(container) {
+    // Check if the button already exists
+    let scrollToTopButton = container.querySelector(".grandparent-scroll-to-top");
+    if (!scrollToTopButton) {
+        // Create the button
+        scrollToTopButton = document.createElement("button");
+        scrollToTopButton.textContent = "Return to Top";
+        scrollToTopButton.className = "grandparent-scroll-to-top";
+
+        // Append the button to the container
+        container.appendChild(scrollToTopButton);
+
+        // Button styles
+        scrollToTopButton.style.position = "fixed"; // Fixed position within the container's viewport
+        scrollToTopButton.style.bottom = "20px"; // Positioned near the bottom of the container
+        scrollToTopButton.style.right = "20px"; // Positioned to the right inside the container
+        scrollToTopButton.style.display = "none"; // Hidden by default
+        scrollToTopButton.style.backgroundColor = "black";
+        scrollToTopButton.style.color = "white";
+        scrollToTopButton.style.padding = "10px 15px";
+        scrollToTopButton.style.border = "none";
+        scrollToTopButton.style.borderRadius = "5px";
+        scrollToTopButton.style.cursor = "pointer";
+        scrollToTopButton.style.zIndex = "1000"; // Ensure it stays above content
+
+        // Add click event for smooth scrolling to the top
+        scrollToTopButton.addEventListener("click", () => {
+            container.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+
+    // Add scroll event listener to show/hide the button dynamically
+    container.addEventListener("scroll", () => {
+        if (container.scrollTop > 75) { // Adjusted threshold for showing the button
+            scrollToTopButton.style.display = "block"; // Show the button when scrolled down
+        } else {
+            scrollToTopButton.style.display = "none"; // Hide the button near the top
+        }
+    });
+}
+
+
+function addHideGrandparentsButton(container, mainButton) {
+    // Check if the button already exists
+    let hideGrandparentsButton = container.querySelector(".hide-grandparents-button");
+    if (!hideGrandparentsButton) {
+        // Create the button
+        hideGrandparentsButton = document.createElement("button");
+        hideGrandparentsButton.textContent = "Hide Grandparents";
+        hideGrandparentsButton.className = "hide-grandparents-button";
+
+        // Append the button to the container
+        container.appendChild(hideGrandparentsButton);
+
+        // Button styles
+        hideGrandparentsButton.style.position = "fixed";
+        hideGrandparentsButton.style.bottom = "20px";
+        hideGrandparentsButton.style.left = "20px";
+        hideGrandparentsButton.style.backgroundColor = "black";
+        hideGrandparentsButton.style.color = "white";
+        hideGrandparentsButton.style.padding = "10px 15px";
+        hideGrandparentsButton.style.border = "none";
+        hideGrandparentsButton.style.borderRadius = "5px";
+        hideGrandparentsButton.style.cursor = "pointer";
+        hideGrandparentsButton.style.zIndex = "1000"; // Ensure it stays above content
+        hideGrandparentsButton.style.display = "none"; // Hidden by default
+
+        // Add click event to hide grandparents
+        hideGrandparentsButton.addEventListener("click", () => {
+            container.style.display = "none"; // Hide the grandparent container
+            mainButton.textContent = "View Grandparents"; // Reset main button text
+        });
+    }
+
+    // Check if scrolling is needed
+    const isScrollable = container.scrollHeight > container.clientHeight;
+
+    if (!isScrollable) {
+        // Show the button immediately if no scrolling is required
+        hideGrandparentsButton.style.display = "block";
+    } else {
+        // Add scroll event listener to control button visibility
+        container.addEventListener("scroll", () => {
+            if (container.scrollTop > 75) {
+                hideGrandparentsButton.style.display = "block"; // Show button after scrolling down
+            } else {
+                hideGrandparentsButton.style.display = "none"; // Hide button when near the top
+            }
+        });
+    }
+}
+
+
+function normalizeToPercentages(counts, isSplit = false) {
+    const total = counts.reduce((sum, count) => sum + count, 0); // Calculate total sum
+
+    if (total === 0) {
+        return counts.map(() => 0); // Avoid division by zero
+    }
+
+    // Normalize raw counts to precise percentages
+    const factor = isSplit ? 50 : 100; // Split for male/female if necessary
+    return counts.map(count => parseFloat(((count / total) * factor).toFixed(5))); // Retain precision up to 5 decimal places
+}
+
+function showTemporaryPopup(message) {
+    const popup = document.createElement("div");
+    popup.textContent = message;
+    popup.style.position = "fixed";
+    popup.style.top = "50%";
+    popup.style.left = "50%";
+    popup.style.transform = "translate(-50%, -50%)";
+    popup.style.backgroundColor = "#333";
+    popup.style.color = "#fff";
+    popup.style.padding = "20px";
+    popup.style.borderRadius = "10px";
+    popup.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.5)";
+    popup.style.textAlign = "center";
+    popup.style.zIndex = "10000";
+
+    document.body.appendChild(popup);
+
+    // Remove the popup after 2 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 2000);
+}
+
+
+function checkAndAddText() {
+    // Get all variety names from the dropdown or other relevant elements
+    const varietyElements = document.querySelectorAll("#dropdown div");
+
+    // Loop through each variety element
+    varietyElements.forEach(element => {
+        const text = element.textContent.trim();
+
+        // Skip if text is empty or additional text is already added
+        if (!text || element.querySelector(".additional-text")) return;
+
+        // Handle Mottled varieties with a single period
+        if (text.includes("Mottled") && text.endsWith('.')) {
+            addAdditionalText(element, "Heterozygous for (cg) Gray", "blue");
+
+        } else if (text.includes("Pencilled") && text.endsWith('.')) {
+            // Handle Pencilled varieties with a single period
+            addAdditionalText(element, "Heterozygous for Pencilling", "blue");
+
+        } else if (text.endsWith('.') || text.endsWith('-')) {
+            // Handle varieties
+            let additionalTextContent = text.endsWith('.')
+                ? "Split (b1) Black Winged Bronze"
+                : "Split (b1) Black Winged Bronze and (cg) Gray";
+
+            // Add the additional text if applicable
+            addAdditionalText(element, additionalTextContent, "blue");
+        }
+    });
+}
+
+// Helper function to add the additional text
+function addAdditionalText(element, additionalText, color) {
+    const span = document.createElement("span");
+    span.classList.add("additional-text");
+    span.style.color = color; // Apply color to the additional text
+    span.textContent = additionalText;
+    element.appendChild(span);
+}
+
+
+
+// Helper function to add text to an element
+function addAdditionalText(element, text, color) {
+    const additionalText = document.createElement("p");
+    additionalText.className = "additional-text";
+    additionalText.textContent = text;
+    additionalText.style.color = color; // Set text color
+    additionalText.style.fontSize = "12px"; // Adjust font size
+    additionalText.style.marginTop = "5px"; // Add some spacing
+
+    element.appendChild(additionalText);
+}
+
+
+// Run this function whenever the dropdown is updated or displayed
+document.addEventListener("DOMContentLoaded", checkAndAddText);
+document.getElementById("phenotypeSearch").addEventListener("input", checkAndAddText);
+
+
+
+// Array of all image URLs
+const allImages = [
+"Pictures/PaintedM.jpg",
+"Pictures/PaintedF.jpg",
+"Pictures/FallFireM.jpg",
+"Pictures/FallFireF.jpg",
+"Pictures/ChocolatePaintedM.jpg",
+"Pictures/ChocolatePaintedF.jpg",
+"Pictures/TigerBronzeM.jpg",
+"Pictures/ChocolateM.jpg",
+"Pictures/BlackM.jpg",
+"Pictures/PencilledFallFireM.jpg",
+"Pictures/PencilledFallFireF.jpg",
+"Pictures/HarvestGoldF.jpg",
+"Pictures/GrizzledBlackPaintedF.jpg",
+"Pictures/BronzeF.jpg",
+"Pictures/ChocolatePalmF.jpg",
+"Pictures/RoyalPalmM.jpg",
+"Pictures/BlueFallFireM.jpg",
+"Pictures/NebraskanM.jpg",
+"Pictures/PencilledBlueFallFireM.jpg",
+"Pictures/MottledBronzeM.jpg",
+"Pictures/GrizzledChocolatePaintedM.jpg",
+"Pictures/GrizzledChocolatePaintedF.jpg",
+"Pictures/GrizzledSlatePaintedM.jpg",
+"Pictures/OregonGrayM.jpg",
+"Pictures/PencilledBluePalmM.jpg",
+"Pictures/MottledRecessiveSlateM.jpg",
+"Pictures/BlueNarragansettM.jpg",
+"Pictures/GrizzledLavenderPaintedM.jpg",
+"Pictures/MottledBlackM.jpg",
+"Pictures/AuburnM.jpg",
+"Pictures/GoldenNarragansettM.jpg",
+"Pictures/DarkGrayM.jpg",
+"Pictures/LilacM.jpg",
+"Pictures/SelfBuffF.jpg",
+"Pictures/SelfBuffM.jpg",
+"Pictures/OregonBrownM.jpg",
+"Pictures/Tri-colorPencilledBluePalmM.jpg",
+"Pictures/NarragansettM.jpg",
+"Pictures/RedBronzeM.jpg",
+"Pictures/SlatePaintedM.jpg",
+"Pictures/MottledBlackF.jpg",
+"Pictures/BourbonRedM.jpg",
+"Pictures/BronzeM.jpg",
+"Pictures/RecessiveSlateM.jpg",
+];
+
+function getThumbnailCount() {
+    if (window.innerWidth >= 1024) return 10; // Desktop: 2 rows of 5 images
+    if (window.innerWidth <= 1024 && window.innerHeight < window.innerWidth) return 10; // Landscape Mobile: 2 rows of 5 images
+    return 9; // Portrait Mobile: 3 rows of 3 images
+}
+
+function getRandomImages(imageArray, count) {
+    const shuffled = [...imageArray].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count); // Return the exact number of images needed
+}
+
+function updateThumbnails() {
+    const thumbnailContainer = document.getElementById("thumbnailContainer");
+    const thumbnailCount = getThumbnailCount(); // Calculate how many images are needed
+    const randomImages = getRandomImages(allImages, thumbnailCount); // Fetch that number of images
+
+    // Populate the container with exactly the right number of images
+thumbnailContainer.innerHTML = randomImages
+    .map((src) => `<img src="${src}" alt="Turkey Variety">`)
+    .join("");
+
+}
+
+
+ // Initial setup and rotation
+document.addEventListener("DOMContentLoaded", updateThumbnails);
+setInterval(updateThumbnails, 2000); // Rotate every 2 seconds
+
+
+document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.navbar ul').classList.toggle('active');
+        });
+        
+    </script>
+
+<!-- Start Bravenet.com Service Code -->
+<script type="text/javascript" src="https://pub40.bravenet.com/counter/code.php?id=410854&usernum=3351720541&cpv=3"></script>
+<!-- End Bravenet.com Service Code -->
+
+
+<footer>
+
+    &copy;2025 Porter's Rare Heritage Turkeys
+    </footer>
+  
+ 
+
+</body>
+</html>
