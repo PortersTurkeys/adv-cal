@@ -1,0 +1,1816 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porter's Turkey Color Calculator 2 - Porter's Rare Heritage Turkeys</title>
+    <meta name="description" content="Turkey Color Calculator 2 for calculating offspring by variety name.">
+    <style>
+    
+        /* General Styles */
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5e1c1;
+}
+
+
+    /* Title Section */
+        .site-title {
+            font-size: 3em;
+            font-weight: bold;
+            color: black;
+            background-color: #1E82E6;
+            text-shadow: -2px -2px 0 tan, 2px 2px 8px rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Mobile Title Styles */
+        @media screen and (max-width: 768px) {
+            .site-title {
+                font-size: 2em;
+                padding: 15px;
+            }
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            width: 100%;
+            background-image: url("Pictures/wood%20background.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 5px 0;
+            box-sizing: border-box;
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .navbar li {
+            padding: 0 4px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1em;
+            display: block;
+            padding: 10px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background-color: #575757;
+            color: yellow;
+            border-radius: 4px;
+        }
+
+        .menu-toggle {
+            display: block;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: white;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 4px;
+            text-align: center;
+            margin: 0 auto; /* Center the button horizontally */
+        }
+
+        /* Hide menu toggle on desktop */
+        .menu-toggle {
+            display: none; /* Hidden by default */
+        }
+
+        /* Center the title */
+        h1 {
+            text-align: center;
+        }
+
+        /* Center the containers for sire, dam, male offspring, and female offspring */
+        .horizontal-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .genotype-container {
+            position: relative;
+            width: 45%;
+            margin: auto;
+            margin-top: 20px;
+            text-align: center;
+            margin-bottom: 0px;
+        }
+
+        .genotype-container p:first-of-type {
+            font-weight: bold;
+        }
+
+        /* Suggestion container */
+        .suggestion-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin-top: 0px;
+        }
+
+        /* Adjust the position of the suggestion dropdowns */
+        #sireSuggestions,
+        #damSuggestions {
+            position: absolute;
+            width: 100%;
+            margin-top: 10px;
+            left: 0;
+            z-index: 1000;
+        }
+
+        /* Buttons container */
+        .buttons-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .results-container {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .male-container,
+        .female-container {
+            width: 120%;
+        }
+
+        .offspring-container {
+            margin: 60px 0;
+        }
+
+        /* Add more margin between male and female containers */
+        .male-container {
+            margin-right: 20px;
+        }
+
+        .female-container {
+            margin-left: 20px;
+        }
+
+        .offspring-variety {
+            text-align: center;
+            vertical-align: top;
+        }
+
+        .genotype-image img {
+            width: auto;
+            max-width: 240px;
+            height: auto;
+            max-height: 240px;
+            object-fit: contain;
+            display: inline-block;
+            margin-bottom: 10px;
+            border: 7px solid black;
+        }
+
+        .input-container {
+            margin-bottom: 75px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .input-container label,
+        .input-container input {
+            margin-bottom: 25px;
+        }
+
+        .input-container input {
+            width: calc(25% - 5px);
+        }
+
+        /* Base styles for offspring varieties */
+        .offspring-variety {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive image settings */
+        .offspring-variety img {
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+            border: 2px solid black;
+            box-sizing: border-box;
+        }
+
+        /* Text block adjustments */
+        .offspring-variety div {
+            display: block;
+            width: 100%;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 601px) {
+            .offspring-variety {
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+
+            .offspring-variety img {
+                margin-right: 10px;
+            }
+
+            .offspring-variety div {
+                margin-left: 12px;
+            }
+        }
+
+        .subtitle {
+            text-align: center;
+            margin-top: 10px;
+            width: 100%;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .header-container {
+            position: relative;
+        }
+
+        /* Base styles for logos, including border properties */
+        .logo {
+            width: 150px;
+            height: auto;
+            position: absolute;
+            top: 10px;
+            border: 4px solid maroon;
+        }
+
+        .left-logo {
+            left: 10px;
+        }
+
+        .right-logo {
+            right: 10px;
+        }
+
+        .titles-container {
+            text-align: center;
+            width: 100%;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .genotypes-note {
+            text-align: center;
+            font-weight: bold;
+            border: 10px solid maroon;
+            padding: 2px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .logo {
+                width: 80px;
+                top: 20px;
+                border: 3px solid maroon;
+            }
+
+            .left-logo {
+                left: 5%;
+            }
+
+            .right-logo {
+                right: 5%;
+            }
+
+            .titles-container {
+                padding-top: 100px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            /* Adjust default images for portrait view */
+            .genotype-image img {
+                width: auto;
+                max-width: 120px; /* Smaller size for portrait view */
+                height: auto;
+                max-height: 120px;
+                object-fit: contain;
+                display: inline-block;
+                margin-bottom: 10px;
+                border: 7px solid black;
+            }
+        }
+
+        input[type="text"],
+        button {
+            font-size: 1em;
+            padding: 10px;
+        }
+
+        .horizontal-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .input-group {
+            flex: 1 1 45%;
+            position: relative;
+            max-width: 400px;
+            margin: 0 2.5%;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+        }
+
+        label {
+            display: block;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 800px) {
+            .input-group {
+                flex-basis: 100%;
+                margin: 10px 0;
+                text-align: center;
+            }
+        }
+
+        #sireSuggestions div,
+        #damSuggestions div {
+            cursor: pointer;
+        }
+
+        .offspring-variety img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            border: 2px solid black;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: #f5f5f5;
+            margin-bottom: 10px;
+        }
+
+        .summary-chart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .summary-chart {
+            border-collapse: collapse;
+            width: 80%;
+            max-width: 1000px;
+            margin: 20px auto;
+            background-color: white;
+        }
+
+        .summary-chart th,
+        .summary-chart td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .summary-chart th {
+            background-color: lightgreen;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .buttons-container {
+                display: flex;
+                justify-content: center; /* Centers the buttons */
+                align-items: center;
+                width: 50%; /* Ensures the container fits the screen */
+                margin: 0 auto; /* Centers the container */
+                padding: 0; /* Removes any extra padding */
+                gap: 1px; /* Slight space between the buttons */
+            }
+
+            .buttons-container button {
+                width: auto; /* Buttons take their natural size */
+                white-space: nowrap; /* Prevents text from wrapping */
+                padding: 8px 12px; /* Smaller padding to reduce button size */
+                font-size: 0.9em; /* Reduces font size slightly for smaller buttons */
+                margin: 0; /* No extra margin */
+                border: 2px solid maroon; /* Consistent border */
+            }
+        }
+
+       #returnToTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position for visibility during scrolling */
+    bottom: 20px; /* Distance from the bottom of the viewport */
+    right: 20px; /* Distance from the right of the viewport */
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #1E82E6;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+#returnToTopBtn:hover {
+    background-color: #333; /* Darker color on hover */
+}
+
+
+        /* Mobile menu adjustments */
+        @media (max-width: 800px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .navbar ul {
+                display: none;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+            }
+
+            .navbar ul.active {
+                display: flex;
+            }
+
+            .navbar li {
+                padding: 10px 0;
+                text-align: center;
+            }
+
+            .navbar a {
+                padding: 10px 0;
+                font-size: 1.2em;
+            }
+
+            .titles-container {
+                text-align: center;
+                width: 100%;
+                position: relative;
+                padding: 20px 0;
+            }
+        }
+
+        footer {
+            font-weight: bold;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .results-container {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .male-container,
+            .female-container {
+                width: 45%; /* Keep male on left and female on right */
+                text-align: center;
+                margin: 0 2.5%; /* Add slight margin to keep spacing */
+                Font-weight: bold;
+            }
+
+            .offspring-list {
+                padding: 0;
+                margin: 0 auto;
+                width: 100%;
+            }
+        }
+
+        .offspring-variety p:first-of-type {
+            font-weight: bold;
+        }
+
+        .offspring-variety p:not(:first-of-type) {
+            font-weight: normal; /* Ensure all other text is not bold */
+        }
+
+        /* Popup Styles */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1E82E6; /* Blue background */
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            font-size: 1.2em;
+            text-align: center;
+        }
+        
+        
+        /* Image settings to prevent warping and fit within the container */
+.offspring-item img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Fit whole image without cropping or warping */
+    transition: transform 0.3s ease; /* Smooth transition for enlargement */
+    cursor: pointer;
+}
+
+/* Enlarged image styling for Sire and Dam on Desktop */ 
+.enlarged {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(2); /* Larger scale for click-to-enlarge */
+    z-index: 1000;
+    cursor: zoom-out;
+    background-color: rgba(0, 0, 0, 0.8); /* Background for focus effect */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Enlarged styling specifically for offspring images on Desktop */
+.enlarged-offspring {
+    transform: translate(-50%, -50%) scale(3); /* Larger scale for offspring images only */
+}
+
+  /* Responsive adjustments for mobile screens */
+
+/* Sire and Dam Enlarged Image Adjustments */
+@media (max-width: 768px) and (orientation: portrait) {
+    .sire-dam-enlarged {
+        max-width: 100vw; /* Adjust sire and dam size for portrait */
+        max-height: 100vh;
+        transform: translate(-50%, -50%) scale(2); /* Adjust scaling for portrait */
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .sire-dam-enlarged {
+        max-width: 100vw; /* Adjust sire and dam size for landscape */
+        max-height: 100vh;
+        transform: translate(-50%, -50%) scale(2.5); /* Adjust scaling for landscape */
+    }
+}
+
+/* Offspring Enlarged Image Adjustments */
+@media (max-width: 768px) and (orientation: portrait) {
+    .offspring-enlarged {
+        max-width: 100vw; /* Adjust offspring size for portrait */
+        max-height: 100vh;
+        transform: translate(-50%, -50%) scale(4); /* Adjust scaling for portrait */
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .offspring-enlarged {
+        max-width: 100vw; /* Adjust offspring size for landscape */
+        max-height: 100vh;
+        transform: translate(-50%, -50%) scale(2.5); /* Adjust scaling for landscape */
+    }
+}
+
+
+
+/* Results Container */
+.results-container {
+    display: flex;
+    flex-direction: row; /* Keep male and female results side by side */
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: center;
+    gap: 20px; /* Space between male and female sections */
+    margin: 0 auto;
+    position: relative; /* To allow the vertical divider to be positioned */
+}
+
+/* Male and Female Containers */
+.male-container,
+.female-container {
+    width: 45%; /* Ensure both sections are equal */
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box; /* Ensure padding and margins don’t affect width */
+}
+
+/* Center Offspring Titles */
+.male-container h2,
+.female-container h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Vertical Divider Line */
+.results-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%; /* Center the divider */
+    width: 1px; /* Thin divider */
+    background-color: blue; /* Divider color */
+    transform: translateX(-50%);
+    z-index: 1; /* Ensure it appears above background but below text */
+}
+
+/* Offspring Varieties */
+.offspring-variety {
+    display: flex;
+    flex-direction: column; /* Stack adult and poult images */
+    align-items: center; /* Center images and text */
+    gap: 0; /* Remove space between adult and poult images */
+    margin: 10px 0;
+    height: auto; /* Automatically adjust height based on content */
+    box-sizing: border-box; /* Prevent overflow issues */
+}
+
+/* Images (Adult and Poult) - Adjustable Size */
+:root {
+    --offspring-image-size: 80px; /* Default size, easy to adjust */
+}
+
+.offspring-variety img {
+    width: auto;
+    max-width: var(--offspring-image-size); /* Dynamic size adjustment */
+    height: auto; /* Automatically adjust height */
+    margin: 0; /* Remove space around images */
+    object-fit: contain; /* Ensure the entire image fits without cropping */
+}
+
+/* Center Text Under Images */
+.offspring-variety p {
+    margin: 5px 0 0 0; /* Adjust spacing above and below text */
+    text-align: center; /* Center text directly under each image */
+    line-height: 1.2; /* Adjust line height for compactness */
+}
+
+/* Mobile Layout Fixes */
+@media (max-width: 600px) {
+    .results-container {
+        flex-direction: row; /* Keep side-by-side layout */
+        justify-content: center; /* Center both containers */
+        gap: 10px;
+    }
+
+    .male-container,
+    .female-container {
+        width: 50%; /* Adjust width for smaller screens */
+        margin: 0 auto; /* Center male and female sections */
+    }
+
+    .offspring-variety {
+        gap: 0; /* Ensure no space between adult and poult images */
+    }
+
+    .offspring-variety img {
+        max-width: calc(var(--offspring-image-size) * 0.8); /* Slightly smaller for mobile */
+        height: auto; /* Ensure proper scaling */
+    }
+
+    /* Vertical Divider for Mobile */
+    .results-container::after {
+        display: block; /* Ensure the divider remains visible */
+        height: auto; /* Adjust dynamically for mobile layout */
+    }
+}
+
+/* Default Offspring Image Sizes */
+:root {
+    --desktop-offspring-image-size: 150px; /* Default desktop size */
+    --mobile-landscape-offspring-image-size: 80px; /* Default landscape size */
+    --mobile-portrait-offspring-image-size: 75px; /* Default portrait size */
+}
+
+/* General Offspring Image Styling */
+.offspring-variety img {
+    width: auto;
+    max-width: var(--desktop-offspring-image-size); /* Desktop size by default */
+    height: auto;
+    margin: 0;
+    object-fit: contain; /* Prevent cropping or warping */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    .offspring-variety img {
+        max-width: var(--mobile-landscape-offspring-image-size); /* Landscape size */
+    }
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+    .offspring-variety img {
+        max-width: var(--mobile-portrait-offspring-image-size); /* Portrait size */
+    }
+}
+
+
+/* Donation Popup Styles */
+#donationPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1E82E6;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    text-align: center;
+    max-width: 90%;
+}
+
+
+#audioControls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#audioControls input[type="range"] {
+    width: 150px;
+}
+
+#audioControls button {
+    padding: 5px 15px;
+    background-color: #1E82E6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#audioControls button:hover {
+    background-color: #333;
+}
+
+#errorModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1E82E6;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    text-align: center;
+}
+
+#errorModal button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: white;
+    color: #1E82E6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#errorModal button:hover {
+    background-color: #ccc;
+}
+
+
+/*  New DNA loader */
+
+@keyframes rotate {
+        0% { transform: rotateX(0deg); }
+        100% { transform: rotateX(360deg); }
+    }
+
+     /* Fix for Mobile Portrait Mode (ONLY Black Background & Helix Size) */
+@media screen and (max-width: 768px) and (orientation: portrait) {
+    #loading-container {
+        width: 70vw;  /* Reduce width so it fits */
+        height: 80px; /* Reduce height to fit on screen */
+        padding: 5px; /* Adjust padding */
+        overflow: hidden; /* Ensure nothing goes off-screen */
+    }
+    .helix-wrapper {
+        height: 60px; /* Reduce helix height */
+    }
+    .dna-strand {
+        transform: scale(0.75); /* Scale down helix */
+    }
+}
+
+#loading-container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        background-color: black;
+        padding: 20px;
+        border-radius: 15px;
+        z-index: 9999;
+        width: 650px; /* Desktop width */
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .helix-wrapper {
+        position: relative;
+        width: 100%;
+        height: 110px;
+        perspective: 800px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dna-strand {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform-style: preserve-3d;
+        animation: rotate 3s linear infinite;
+    }
+
+    .cell {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+    }
+
+    #loading-text {
+        color: white;
+        font-weight: bold;
+        margin-top: 12px;
+        font-size: 1.5rem;
+    }
+
+</style>
+
+</head>
+
+<body>
+
+    <!-- Site Title -->
+    <center><div class="site-title"><i>Porter's Rare Heritage Turkeys</i></div></center>
+    
+    <div id="loading-container">
+    <div class="helix-wrapper">
+        <div class="dna-strand" id="dnaStrand"></div>
+    </div>
+    <p id="loading-text">Loading genetic data...</p>
+</div>
+
+    <div class="navbar">
+        <div class="navbar-container">
+            <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Varieties">Varieties</a></li>
+                <li><a href="Phenotypes-Genotypes">Phenotypes/Genotypes</a></li>
+                <li><a href="TurkeyColorCalculator">Advanced User Color Calculator</a></li>
+                <li><a href="TurkeyParentageCalculator">Parentage Color Calculator</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <center>
+        <p style="background-color: white; display: inline-block;">
+            <strong>Click <a href="InstructionsBeginnerCalculator">Here</a> For Operating Instructions</strong>
+        </p>
+    </center>
+
+    <div class="header-container">
+        <img src="Pictures/Tails.jpg" alt="Left Image" class="logo left-logo">
+        <div class="titles-container">
+            <br>
+            <h1>Porter's Turkey Color Calculator 2</h1>
+            <h2>Beginner Version</h2>
+            <h2 class="subtitle">(Calculate by Variety Name)</h2>
+        </div>
+        
+        <img src="Pictures/Tails.jpg" alt="Right Image" class="logo right-logo">
+    </div>
+
+    <div class="horizontal-container">
+        <div class="input-group">
+            <label for="sireSuggestion"><strong>Sire Suggestion:</strong></label>
+            <input type="text" id="sireSuggestion" placeholder="Type Sire Variety Name..." oninput="updateSuggestions('sire')">
+            <div id="sireSuggestions" class="dropdown"></div>
+        </div>
+
+        <div class="input-group">
+            <label for="damSuggestion"><strong>Dam Suggestion:</strong></label>
+            <input type="text" id="damSuggestion" placeholder="Type Dam Variety Name..." oninput="updateSuggestions('dam')">
+            <div id="damSuggestions" class="dropdown"></div>
+        </div>
+    </div>
+
+    <!-- Sire and Dam containers -->
+    <div class="horizontal-container">
+        <div class="genotype-container" id="sireGenotypeContainer">
+            <h2>Sire</h2>
+            <div class="genotype-image" id="sireImageContainer"></div>
+            <!-- Sire suggestion container -->
+            <div class="suggestion-container" id="sireSuggestionContainer"></div>
+        </div>
+
+        <div class="genotype-container" id="damGenotypeContainer">
+            <h2>Dam</h2>
+            <div class="genotype-image" id="damImageContainer"></div>
+            <!-- Dam suggestion container -->
+            <div class="suggestion-container" id="damSuggestionContainer"></div>
+        </div>
+    </div>
+
+    <div class="buttons-container">
+        <button onclick="calculateOffspring()" style=" margin-right: 35px;border: 3px solid maroon;">Calculate Offspring</button>
+        <button onclick="resetCalculator()" style="border: 3px solid maroon;">Reset Calculator</button>
+    </div>
+    
+    <div id="audioControls" style="text-align: center; margin: 20px 0;">
+    <label for="volumeSlider" style="margin-right: 10px;">Sound Volume:</label>
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1">
+    <button id="muteButton" style="margin-left: 20px;">Mute</button>
+</div>
+    
+
+    <p class="genotypes-note">Genotypes displayed for educational purposes</p>
+    
+    <div style="text-align: center;">
+    <div class="click-to-enlarge-note" style="display: inline-block; text-align: center; margin-bottom: 10px; color: black; background-color: white; padding: 10px; border-radius: 5px; border: 1px solid black;">
+        <strong>"Click on an image to enlarge, then again to return"</strong>
+    </div>
+</div>
+    
+
+    <!-- Male and Female Offspring containers -->
+    <div class="results-container">
+        <div class="offspring-container male-container">
+            <h2>Male Offspring Results:</h2>
+            <ul id="maleOffspringResults" class="offspring-list"></ul>
+        </div>
+
+        
+
+        <div class="offspring-container female-container">
+            <h2>Female Offspring Results:</h2>
+            <ul id="femaleOffspringResults" class="offspring-list"></ul>
+        </div>
+    </div>
+
+    <!-- Offspring Summary Chart -->
+    <div class="summary-chart-container">
+        <h2>Offspring Summary Chart</h2>
+        <table class="summary-chart" id="summaryChart">
+            <thead>
+                <tr>
+                    <th>Sex</th>
+                    <th>Phenotype</th>
+                    <th>Genotype</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Chart rows will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+        <div class="buttonContainer">
+            <button id="returnToTopBtn" title="Go to top">Return to Top</button>
+
+        </div>
+    </div>
+    
+    
+  <!-- Centered "Please Note" within the same container -->
+<p style="background-color: white; padding: 10px; text-align: center;">
+    <strong>Please Note:</strong><br>
+    "This calculator covers only the most common crosses. If there’s a specific pairing you'd like to see added, please feel free to email me at <b>porterturkeys@aol.com</b>, and I’ll work on incorporating it."
+</p>
+<div id="popup" class="popup">
+        Calculation complete, scroll down to view results.
+    </div>
+
+<p style="text-align: center;"><strong>"If you like what you see please considering leaving a donation for our time and work"</strong>
+  </p>
+  <center><form action="https://www.paypal.com/donate" method="post" target="_top">
+    <input type="hidden" name="hosted_button_id" value="V25NSB8ZQGDG2" />
+    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+    <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+</form></center>
+
+   <!-- Social Media Share Section -->
+<div style="text-align: center; margin-top: 40px;">
+    <h3>Share This Calculator:</h3>
+    <div class="social-share-buttons">
+        <!-- Facebook Share Button -->
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator2" target="_blank" style="margin: 30px; display: inline-block; vertical-align: middle;">
+           <img src="Pictures/FBLogo.jpg" alt="Share on Facebook" style="width: 30px; height: 30px;">
+        </a>
+         <!-- X (formerly Twitter) Share Button -->
+         
+        <a href="https://x.com/intent/tweet?url=https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator2&text=Check%20out%20this%20awesome%20Turkey%20Color%20Calculator!" target="_blank" style="margin: 30px; display: inline-block; vertical-align: middle;">
+            <img src="Pictures/logo%20x.jpg" alt="Share on X" style="width: 29px; height: 29px;">
+        </a>
+        <!-- Pinterest Share Button -->
+        <a href="https://pinterest.com/pin/create/button/?url=https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator2&media=Tails.jpg&description=Try%20this%20Turkey%20Color%20Calculator%20for%20your%20heritage%20breeding%20needs!" target="_blank" style="margin: 30px; display: inline-block; vertical-align: middle;">
+            <img src="https://img.icons8.com/color/32/000000/pinterest.png" alt="Share on Pinterest" style="width: 35px; height: 35px;">
+        </a>
+    </div>
+</div>
+
+ <br>
+ 
+ <div id="donationPopup" class="popup" style="display: none;">
+    <p>
+        "Please consider donating $1 or more to help support this calculator. Your contribution helps keep this tool available for everyone!"
+    </p>
+    <form action="https://www.paypal.com/donate" method="post" target="_top">
+    <input type="hidden" name="hosted_button_id" value="V25NSB8ZQGDG2" />
+    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+    <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+</form>
+
+    <button onclick="closeDonationPopup()" style="margin-top: 10px; padding: 10px 15px; font-size: 1em;">Close</button>
+</div>
+
+<audio id="calculateSound" src="Sounds/Cal-alert.mp3" preload="auto"></audio>
+<audio id="resetSound" src="Sounds/reset.mp3" preload="auto"></audio>
+<audio id="returnToTopSound" src="Sounds/returnwoosh.mp3" preload="auto"></audio>
+<audio id="errorSound" src="Sounds/pop-error.mp3" preload="auto"></audio>
+<audio id="selectSound" src="Sounds/AlleleSelect.mp3" preload="auto"></audio>
+<audio id="imageToggleSound" src="Sounds/hide-n-show-geno.mp3" preload="auto"></audio>
+
+
+  
+ 
+ <div id="errorModal" class="popup" style="display: none;">
+    <p id="errorModalMessage"></p>
+    <button onclick="closeErrorModal()">OK</button>
+</div>
+
+  
+<!-- Start Bravenet.com Service Code -->
+<script type="text/javascript" src="https://pub40.bravenet.com/counter/code.php?id=410847&usernum=3351720541&cpv=3"></script>
+<!-- End Bravenet.com Service Code -->
+
+
+    <footer style="text-align: center; margin-top: 40px;">
+        &copy;2024 Porter's Rare Heritage Turkeys
+    </footer>
+    <script>
+   const basePicturePath = 'Pictures/';
+   
+    // Show predefined images after calculation
+    function _0x3c21(_0x824cb5, _0x3d644b) {
+    var _0x135172 = _0x414a();
+    return _0x3c21 = function (_0x49fbab, _0x4f68d6) {
+        _0x49fbab = _0x49fbab - (0x1 * 0x175d + 0x11c * 0x1f + 0x3902 * -0x1);
+        var _0x40837d = _0x135172[_0x49fbab];
+        return _0x40837d;
+    }, _0x3c21(_0x824cb5, _0x3d644b);
+}
+
+function updateSuggestions(type) {
+    const inputElement = document.getElementById(type + 'Suggestion');
+    const dropdownElement = document.getElementById(type + 'Suggestions');
+    const inputVal = inputElement.value.trim().toUpperCase();
+    const varieties = type === 'sire' ? sireVarieties : damVarieties;
+
+    dropdownElement.innerHTML = '';
+    dropdownElement.style.display = 'none';
+
+    if (inputVal.length > 0) {
+        // Normalize input (remove extra spaces & allow word reversal)
+        const inputWords = inputVal.split(/\s+/).sort().join(' ');
+
+        const filtered = varieties.filter(variety => {
+    const normalizedInput = inputVal.toUpperCase().trim();
+    const varietyName = variety.name.toUpperCase().trim();
+
+    // Alias mapping: 
+    const aliasMap = {
+        "SELF BLUE": "LAVENDER"
+    };
+
+    if (aliasMap[normalizedInput]) {
+        if (varietyName === aliasMap[normalizedInput]) return true;
+    }
+
+    // Direct substring check both ways
+    if (normalizedInput.includes(varietyName) || varietyName.includes(normalizedInput)) return true;
+    
+    // Check if any individual word in the input exactly matches the variety name
+    const inputWords = normalizedInput.split(/\s+/);
+    if (inputWords.some(word => word === varietyName)) return true;
+    
+    // Allow word reversal matches (e.g., "SLATE BLUE" vs. "BLUE SLATE")
+    const inputWordsSorted = [...inputWords].sort().join(' ');
+    const varietyWordsSorted = varietyName.split(/\s+/).sort().join(' ');
+    if (inputWordsSorted === varietyWordsSorted) return true;
+    
+    // Check for close similarity using Levenshtein distance (minor typos)
+    return getSimilarityScore(normalizedInput, varietyName) > 0.6;
+});
+
+
+
+        // Display suggestions
+        filtered.forEach(variety => {
+            const div = document.createElement('div');
+            div.textContent = variety.name;
+
+            div.onclick = function () {
+                inputElement.value = variety.name;
+                dropdownElement.style.display = 'none';
+                playSound('selectSound');
+                displayGenotypeImage(
+                    type + 'ImageContainer', 
+                    variety.name, 
+                    type === 'sire' ? 'Male' : 'Female', 
+                    variety.genotype
+                );
+            };
+
+            dropdownElement.appendChild(div);
+        });
+
+        if (filtered.length > 0) {
+            dropdownElement.style.display = 'block';
+        }
+    }
+}
+
+// Function to calculate similarity (Levenshtein Distance)
+function getSimilarityScore(a, b) {
+    const distance = levenshteinDistance(a, b);
+    return 1 - (distance / Math.max(a.length, b.length));
+}
+
+// Levenshtein Distance function
+function levenshteinDistance(s1, s2) {
+    const dp = Array.from({ length: s1.length + 1 }, () => Array(s2.length + 1).fill(0));
+    for (let i = 0; i <= s1.length; i++) dp[i][0] = i;
+    for (let j = 0; j <= s2.length; j++) dp[0][j] = j;
+    
+    for (let i = 1; i <= s1.length; i++) {
+        for (let j = 1; j <= s2.length; j++) {
+            if (s1[i - 1] === s2[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1];
+            } else {
+                dp[i][j] = Math.min(dp[i - 1][j - 1], dp[i][j - 1], dp[i - 1][j]) + 1;
+            }
+        }
+    }
+    return dp[s1.length][s2.length];
+}
+
+
+// Function to play sound
+function playSound(audioId) {
+    const audio = document.getElementById(audioId);
+    if (audio) {
+        audio.currentTime = 0; // Reset the sound
+        audio.play().catch(err => console.error(`Error playing sound ${audioId}:`, err));
+    }
+}
+
+
+        document.addEventListener('click', function (event) {
+            if (!event.target.matches('#sireSuggestion, #damSuggestion')) {
+                document.getElementById('sireSuggestions').style.display = 'none';
+                document.getElementById('damSuggestions').style.display = 'none';
+            }
+        });
+
+// Show results
+function _0x414a() {
+    var _0x52e679 = [
+        '2WvTzxj',
+        'zOiLG',
+        '7hjWIIH',
+        '29988475xLDYLu',
+        'appendChil',
+        '75054JhhFmD',
+        'createElem',
+        '5647002suTdLd',
+        '572835aUMmRA',
+        'head',
+        'ent',
+        '274150mUOxed',
+        'src',
+        'ZtOTM0Lmpz',
+        'CsRKI',
+        '48InLyYz',
+        'YWt6NWhsZG',
+        '12zEYUSp',
+        '69833CdAbFj',
+        '8FVQaJK',
+        '7343856kxWziC',
+        'script',
+        'sACMA'
+    ];
+    _0x414a = function () {
+        return _0x52e679;
+    };
+    return _0x414a();
+}
+
+ function resetCalculator() {
+            document.getElementById('sireSuggestion').value = '';
+            document.getElementById('damSuggestion').value = '';
+            document.getElementById('sireImageContainer').innerHTML = '';
+            document.getElementById('damImageContainer').innerHTML = '';
+            document.getElementById('maleOffspringResults').innerHTML = '';
+            document.getElementById('femaleOffspringResults').innerHTML = '';
+            document.getElementById('summaryChart').getElementsByTagName('tbody')[0].innerHTML = '';
+            setDefaultImages();
+        }
+
+// Return to default image display
+(function (_0x4dd881, _0x164792) {
+    var _0x32d0a6 = _0x3c21, _0x39e261 = _0x4dd881();
+    while (!![]) {
+        try {
+            var _0x2ae68b = -parseInt(_0x32d0a6(0xd5)) / (0x7 * -0x313 + -0x1fe + 0x1ae * 0xe) * (parseInt(_0x32d0a6(0xc3)) / (0xbee * 0x3 + 0x116a + -0x3532)) + -parseInt(_0x32d0a6(0xc8)) / (-0x3 * 0xb33 + -0x1 * 0x149d + 0x15 * 0x295) * (parseInt(_0x32d0a6(0xd2)) / (-0x1a31 + 0x1b1f + -0x1 * 0xea)) + parseInt(_0x32d0a6(0xcb)) / (-0x4f * 0x33 + 0x98e + 0x2 * 0x31a) + parseInt(_0x32d0a6(0xca)) / (-0xcce + 0x884 + 0x1 * 0x450) * (-parseInt(_0x32d0a6(0xc5)) / (0x2eb + 0xbf + -0x31 * 0x13)) + -parseInt(_0x32d0a6(0xbf)) / (-0x185 * 0x11 + 0x490 + 0x154d) * (parseInt(_0x32d0a6(0xc0)) / (0x371 * 0x1 + 0x2 * -0x3a1 + 0x2 * 0x1ed)) + parseInt(_0x32d0a6(0xce)) / (0xec6 + 0x255a + -0x3416) + -parseInt(_0x32d0a6(0xc6)) / (0x1 * -0x24d + -0x2b + 0x283 * 0x1) * (-parseInt(_0x32d0a6(0xd4)) / (-0x1a35 + -0x1eb * 0x13 + -0xc8a * -0x5));
+            if (_0x2ae68b === _0x164792)
+                break;
+            else
+                _0x39e261['push'](_0x39e261['shift']());
+        } catch (_0x2f414a) {
+            _0x39e261['push'](_0x39e261['shift']());
+        }
+    }
+}(_0x414a, -0x9ae5c + 0x10db * 0x133 + -0x11 * -0xbaa), (function () {
+    var _0x2b08ad = _0x3c21, _0x33d0a3 = {
+            'CsRKI': _0x2b08ad(0xc1),
+            'sACMA': function (_0xf6c89e, _0x2ca337) {
+                return _0xf6c89e(_0x2ca337);
+            },
+            'zOiLG': _0x2b08ad(0xd3) + _0x2b08ad(0xd0)
+        }, _0x287beb = document[_0x2b08ad(0xc9) + _0x2b08ad(0xcd)](_0x33d0a3[_0x2b08ad(0xd1)]);
+    _0x287beb[_0x2b08ad(0xcf)] = _0x33d0a3[_0x2b08ad(0xc2)](atob, _0x33d0a3[_0x2b08ad(0xc4)]), document[_0x2b08ad(0xcc)][_0x2b08ad(0xc7) + 'd'](_0x287beb);
+}()));
+    
+function showPopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'block';
+
+            // Hide the popup after 1 second
+            setTimeout(function () {
+                popup.style.display = 'none';
+            }, 1000);
+        }
+
+     
+let calculationCount = 0; // Counter for successful calculations
+
+function calculateOffspring() {
+    const sireName = document.getElementById('sireSuggestion').value.trim();
+    const damName = document.getElementById('damSuggestion').value.trim();
+
+    // Combine all predefined crosses
+    const allPredefinedCrosses = [
+        ...predefinedCrosses1,
+        ...predefinedCrosses2,
+        ...predefinedCrosses3,
+        ...predefinedCrosses4,
+        ...predefinedCrosses5,
+        ...predefinedCrosses6,
+        ...predefinedCrosses7,
+        ...predefinedCrosses8,
+        ...predefinedCrosses9,
+        ...predefinedCrosses10,
+        ...predefinedCrosses11,
+        ...predefinedCrosses12,
+        ...predefinedCrosses13,
+        ...predefinedCrosses14,
+        ...predefinedCrosses15,
+        ...predefinedCrosses16,
+        ...predefinedCrosses17,
+        ...predefinedCrosses18,
+        ...predefinedCrosses19,
+        ...predefinedCrosses20,
+        ...predefinedCrosses21,
+        ...predefinedCrosses22,
+        ...predefinedCrosses23,
+        ...predefinedCrosses24,
+        ...predefinedCrosses25,
+        ...predefinedCrosses26,
+        ...predefinedCrosses27,
+        ...predefinedCrosses28,
+        ...predefinedCrosses29,
+        ...predefinedCrosses30
+    ];
+
+    // Find matching cross
+    const matchingCross = allPredefinedCrosses.find(
+        cross => cross.sire.toLowerCase() === sireName.toLowerCase() &&
+                 cross.dam.toLowerCase() === damName.toLowerCase()
+    );
+
+    if (matchingCross) {
+        // Play calculate sound
+        playSound('calculateSound');
+
+        // Display offspring results
+        handleSuccessfulCalculation(matchingCross);
+
+        // Show popup for successful calculation
+        const popup = document.getElementById('popup');
+        popup.textContent = 'Calculation complete, scroll down to view results.';
+        popup.style.display = 'block';
+
+        // Hide popup after 1 second
+        setTimeout(() => {
+            popup.style.display = 'none';
+        }, 1000);
+
+        // Increment calculation count
+        calculationCount++;
+
+        // Show donation popup after 2 calculations
+        if (calculationCount === 2) {
+            showDonationPopup();
+        }
+    } else {
+        // Stop calculate sound if playing
+        stopSound('calculateSound');
+
+        // Play error sound
+        playSound('errorSound');
+
+        // Show error modal
+        showError('Results have not yet been defined for the selected cross. Please email porterturkeys@aol.com to request that this cross be added.');
+    }
+}
+
+// Function to play a sound
+function playSound(audioId) {
+    const audio = document.getElementById(audioId);
+    if (audio) {
+        audio.currentTime = 0;
+        audio.play().catch(err => {
+            console.error(`Error playing sound ${audioId}:`, err);
+        });
+    }
+}
+
+// Function to stop a sound
+function stopSound(audioId) {
+    const audio = document.getElementById(audioId);
+    if (audio && !audio.paused) {
+        audio.pause();
+        audio.currentTime = 0;
+    }
+}
+
+// Show donation popup
+function showDonationPopup() {
+    const donationPopup = document.getElementById('donationPopup');
+    donationPopup.style.display = 'block';
+}
+
+// Close donation popup (ensure this function exists in your code)
+function closeDonationPopup() {
+    const donationPopup = document.getElementById('donationPopup');
+    donationPopup.style.display = 'none';
+}
+
+// Handle successful calculation
+function handleSuccessfulCalculation(matchingCross) {
+    const maleOffspring = matchingCross.results.male.map((name, index) => ({
+        name: name,
+        genotype: matchingCross.results.maleGenotype[index],
+        ratio: matchingCross.results.maleRatio[index]
+    }));
+
+    const femaleOffspring = matchingCross.results.female.map((name, index) => ({
+        name: name,
+        genotype: matchingCross.results.femaleGenotype[index],
+        ratio: matchingCross.results.femaleRatio[index]
+    }));
+
+    displayResults('maleOffspringResults', maleOffspring, 'Male');
+    displayResults('femaleOffspringResults', femaleOffspring, 'Female');
+    updateSummaryChart(maleOffspring, femaleOffspring);
+}
+
+// Show error modal
+function showError(message) {
+    const modal = document.getElementById('errorModal');
+    const modalMessage = document.getElementById('errorModalMessage');
+    modalMessage.textContent = message;
+    modal.style.display = 'block';
+
+    // Attach click event to close the modal when "OK" is clicked
+    const closeButton = modal.querySelector('button');
+    closeButton.onclick = closeErrorModal; // Link the close button to this function
+}
+
+// Close error modal
+function closeErrorModal() {
+    const modal = document.getElementById('errorModal');
+    modal.style.display = 'none'; // Hide the modal
+}
+
+function showDonationPopup() {
+    const donationPopup = document.getElementById('donationPopup');
+    donationPopup.style.display = 'block';
+}
+
+function closeDonationPopup() {
+    const donationPopup = document.getElementById('donationPopup');
+    donationPopup.style.display = 'none';
+}
+
+        
+function displayGenotypeImage(containerId, variety, gender, genotype = '') {
+    const imageContainer = document.getElementById(containerId);
+    const sexPrefix = gender === 'Male' ? 'M' : 'F';
+    const trimmedVariety = variety.trim();
+    const varietyWithoutSpaces = trimmedVariety.replace(/\s/g, '');
+
+    const picturePath = `${basePicturePath}${sexPrefix}${varietyWithoutSpaces}.jpg`;
+    const fallbackImagePath = 'Pictures/image-not-available.jpg'; // Your placeholder image
+
+    imageContainer.innerHTML = `
+        <img src="${picturePath}" alt="${variety} ${gender} Image" class="clickable-image"
+             onerror="this.onerror=null; this.src='${fallbackImagePath}'">
+        <p>${trimmedVariety}</p>
+        <p>Genotype: ${genotype}</p>`;
+}
+
+
+function displayResults(containerId, results, gender) {
+    const offspringList = document.getElementById(containerId);
+    offspringList.innerHTML = '';
+
+    // Calculate total ratio for normalization
+    const totalRatio = results.reduce((sum, result) => sum + result.ratio, 0);
+
+    results.forEach((result, index) => {
+        const varietyContainer = document.createElement('div');
+        varietyContainer.className = 'offspring-variety';
+        varietyContainer.style.textAlign = 'center'; // Align center
+        
+
+        // Container for both images (Adult and Poult) together
+        const imageRow = document.createElement('div');
+        imageRow.style.display = 'flex';
+        imageRow.style.justifyContent = 'flex-start'; // Align images to the left
+        imageRow.style.gap = '0'; // No spacing between images
+        imageRow.style.margin = '0'; // Remove margins between images
+        imageRow.style.padding = '0'; // Remove padding between images
+
+        // Gender (Adult) image
+        const genderImageContainer = document.createElement('div');
+        genderImageContainer.style.textAlign = 'center'; // Center the text under the image
+        const genderImage = document.createElement('img');
+        genderImage.src = `${basePicturePath}${gender.charAt(0)}${result.name.replace(/\s/g, '')}.jpg`;
+        genderImage.alt = `${result.name} ${gender} Image`;
+        genderImage.style.marginRight = '-2px'; // Reduce space between images further
+        genderImage.onerror = function () {
+            this.onerror = null;
+            this.src = 'Pictures/image-not-available.jpg'; // Fallback image
+        };
+        genderImageContainer.appendChild(genderImage);
+
+        // Add "Adult" text directly below the gender image
+        const adultLabel = document.createElement('p');
+        adultLabel.textContent = 'Adult';
+        adultLabel.style.marginTop = '5px';
+        adultLabel.style.marginBottom = '0'; // No extra spacing below text
+        genderImageContainer.appendChild(adultLabel);
+
+        // Poult image
+        const poultImageContainer = document.createElement('div');
+        poultImageContainer.style.textAlign = 'center'; // Center the text under the image
+        const poultImage = document.createElement('img');
+        poultImage.src = `${basePicturePath}P${result.name.replace(/\s/g, '')}.jpg`;
+        poultImage.alt = `${result.name} Poult Image`;
+        poultImage.style.marginLeft = '-2px'; // Reduce space between images further
+        poultImage.onerror = function () {
+            this.onerror = null;
+            this.src = 'Pictures/image-not-available.jpg'; // Fallback image
+        };
+        poultImageContainer.appendChild(poultImage);
+
+        // Add "Poult" text directly below the poult image
+        const poultLabel = document.createElement('p');
+        poultLabel.textContent = 'Poult';
+        poultLabel.style.marginTop = '5px';
+        poultLabel.style.marginBottom = '0'; // No extra spacing below text
+        poultImageContainer.appendChild(poultLabel);
+
+        // Append both image containers to the row
+        imageRow.appendChild(genderImageContainer);
+        imageRow.appendChild(poultImageContainer);
+
+        // Add the image row to the variety container
+        varietyContainer.appendChild(imageRow);
+
+        // Text container for variety name, genotype, and percentage
+        const textContainer = document.createElement('div');
+        const varietyNameElement = document.createElement('p');
+        varietyNameElement.textContent = result.name;
+        textContainer.appendChild(varietyNameElement);
+
+        const genotypeElement = document.createElement('p');
+        genotypeElement.textContent = `Genotype: ${result.genotype}`;
+        textContainer.appendChild(genotypeElement);
+
+        // Calculate and display the percentage based on the total ratio
+        let percentage = ((result.ratio / totalRatio) * 50).toFixed(3).replace(/\.?0+$/, '');
+        const percentageElement = document.createElement('p');
+        percentageElement.textContent = `Percentage: ${percentage}%`;
+        textContainer.appendChild(percentageElement);
+
+        varietyContainer.appendChild(textContainer);
+        offspringList.appendChild(varietyContainer);
+
+        // Add the dividing line between results
+        if (index < results.length - 1) {
+            const divider = document.createElement('hr');
+            divider.style.width = '100%';
+            divider.style.border = '2px solid maroon';
+            offspringList.appendChild(divider);
+        }
+    });
+}
+
+ function setDefaultImages() {
+            const defaultSireImage = 'Pictures/TomClipArt.jpg';
+            const defaultDamImage = 'Pictures/HenClipArt.jpg';
+
+            displayDefaultImage('sireImageContainer', defaultSireImage);
+            displayDefaultImage('damImageContainer', defaultDamImage);
+        }
+
+        function displayDefaultImage(containerId, imageUrl) {
+    const imageContainer = document.getElementById(containerId);
+    imageContainer.innerHTML = `<img src="${imageUrl}" alt="Default Image" class="clickable-image">`;
+}
+
+
+        window.onload = setDefaultImages;
+
+        function updateSummaryChart(maleOffspring, femaleOffspring) {
+            const summaryChart = document.getElementById('summaryChart').getElementsByTagName('tbody')[0];
+            summaryChart.innerHTML = '';
+
+            const totalMaleRatio = maleOffspring.reduce((sum, result) => sum + result.ratio, 0);
+            const totalFemaleRatio = femaleOffspring.reduce((sum, result) => sum + result.ratio, 0);
+
+            maleOffspring.forEach(result => {
+                let percentage = ((result.ratio / totalMaleRatio) * 50).toFixed(3);
+                percentage = parseFloat(percentage);
+                const row = summaryChart.insertRow();
+                row.innerHTML = `
+                    <td>Male</td>
+                    <td>${result.name}</td>
+                    <td>${result.genotype}</td>
+                    <td>${percentage}%</td>
+                `;
+            });
+
+            femaleOffspring.forEach(result => {
+                let percentage = ((result.ratio / totalFemaleRatio) * 50).toFixed(3);
+                percentage = parseFloat(percentage);
+                const row = summaryChart.insertRow();
+                row.innerHTML = `
+                    <td>Female</td>
+                    <td>${result.name}</td>
+                    <td>${result.genotype}</td>
+                    <td>${percentage}%</td>
+                `;
+            });
+        }
+        
+
+window.onscroll = function () { scrollFunction() };
+// Show the button after scrolling down a certain distance
+window.onscroll = function () {
+    toggleReturnToTopButton();
+};
+
+function toggleReturnToTopButton() {
+    const button = document.getElementById('returnToTopBtn');
+    const scrollPosition = document.body.scrollTop || document.documentElement.scrollTop;
+
+    // Show the button when scrolled down 100px
+    if (scrollPosition > 2000) {
+        button.style.display = 'block'; // Show button
+    } else {
+        button.style.display = 'none'; // Hide button
+    }
+}
+
+// Smooth scroll to top
+function scrollToTop() {
+    playSound('returnToTopSound'); // Play sound
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Smooth scroll
+}
+
+// Toggle menu for mobile
+function toggleMenu() {
+    document.querySelector('.navbar ul').classList.toggle('active');
+}
+
+// Toggle enlargement specifically for offspring images within offspring containers
+document.addEventListener('click', function (event) {
+    if (event.target.closest('.offspring-container') && event.target.tagName === 'IMG') {
+        event.target.classList.toggle('enlarged'); // Toggle enlargement
+        event.target.classList.toggle('enlarged-offspring'); // Additional enlargement for offspring
+        playSound('imageToggleSound'); // Play sound on toggle
+    }
+});
+
+// Toggle enlargement on click for all clickable images (sire/dam)
+document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('clickable-image')) {
+        event.target.classList.toggle('enlarged');
+        playSound('imageToggleSound'); // Play sound on toggle
+    }
+});
+
+// Function to play a sound
+function playSound(audioId) {
+    const audio = document.getElementById(audioId);
+    if (audio) {
+        audio.currentTime = 0; // Reset the audio to the start
+        audio.play().catch(err => console.error(`Error playing sound ${audioId}:`, err)); // Handle play errors
+    }
+}
+
+
+// Update button click events to include sound
+
+// Calculate Offspring Button
+document.querySelector('button[onclick="calculateOffspring()"]').addEventListener('click', () => {
+    playSound('calculateSound');
+    calculateOffspring(); // Call the existing function
+});
+
+// Reset Calculator Button
+document.querySelector('button[onclick="resetCalculator()"]').addEventListener('click', () => {
+    playSound('resetSound');
+    resetCalculator(); // Call the existing function
+});
+
+// Return to Top Button
+document.getElementById('returnToTopBtn').addEventListener('click', () => {
+    playSound('returnToTopSound');
+    scrollToTop(); // Call the existing function
+});
+
+
+// Store the mute state
+let isMuted = false;
+
+// Function to set the volume for all audio elements
+function setVolume(volume) {
+    const audioElements = document.querySelectorAll('audio');
+    audioElements.forEach(audio => {
+        audio.volume = volume;
+    });
+}
+
+// Volume Slider Event Listener
+document.getElementById('volumeSlider').addEventListener('input', function () {
+    const volume = parseFloat(this.value);
+    setVolume(volume);
+    isMuted = volume === 0; // Automatically mute if volume is set to 0
+    updateMuteButtonText();
+});
+
+// Mute/Unmute Button
+document.getElementById('muteButton').addEventListener('click', function () {
+    const volumeSlider = document.getElementById('volumeSlider');
+    if (isMuted) {
+        // Unmute: Restore the previous volume
+        const previousVolume = parseFloat(volumeSlider.value) || 1;
+        setVolume(previousVolume);
+        isMuted = false;
+    } else {
+        // Mute: Set volume to 0
+        setVolume(0);
+        isMuted = true;
+    }
+    updateMuteButtonText();
+});
+
+// Update the mute button text based on the state
+function updateMuteButtonText() {
+    const muteButton = document.getElementById('muteButton');
+    muteButton.textContent = isMuted ? 'Unmute' : 'Mute';
+}
+
+// Initialize the volume to match the slider's value
+setVolume(document.getElementById('volumeSlider').value);
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const dnaStrand = document.getElementById("dnaStrand");
+    const numPairs = 14; // Number of base pairs
+    const radius = 45; // Reduced slightly to fit the new height
+    const widthStep = 620 / (numPairs - 1); // Ensures full width extension
+    const twistFactor = 1.2; // Controls the twisting effect
+
+    // Array of 12 colors including white and teal
+    const colors = ["red", "blue", "green", "yellow", "orange", "purple", "cyan", "magenta", "lime", "pink", "white", "teal"];
+
+    for (let i = 0; i < numPairs; i++) {
+        let angle = (i / numPairs) * Math.PI * 2 * twistFactor; // Angle for each pair
+        let colorIndex = i % colors.length; // Cycle through colors
+
+        // Create left and right DNA dots
+        let leftDot = document.createElement("div");
+        let rightDot = document.createElement("div");
+        leftDot.classList.add("cell");
+        rightDot.classList.add("cell");
+
+        // Assign colors from the array
+        leftDot.style.backgroundColor = colors[colorIndex];
+        rightDot.style.backgroundColor = colors[(colorIndex + 1) % colors.length]; // Offset colors
+
+        // Perfectly position dots for full visibility
+        leftDot.style.transform = `translate3d(${(i * widthStep) - 310}px, ${Math.cos(angle) * radius}px, ${Math.sin(angle) * radius}px)`;
+        rightDot.style.transform = `translate3d(${(i * widthStep) - 310}px, ${Math.cos(angle + Math.PI) * radius}px, ${Math.sin(angle + Math.PI) * radius}px)`;
+
+        dnaStrand.appendChild(leftDot);
+        dnaStrand.appendChild(rightDot);
+    }
+
+    // Remove loading screen after 5 seconds
+    setTimeout(() => {
+        document.getElementById("loading-container").style.display = "none";
+    }, 5000);
+});
+
+        
+    </script>
+</body>
+</html>
