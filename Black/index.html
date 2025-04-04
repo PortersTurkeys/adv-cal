@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black - Porter's Rare Heritage Turkeys</title>
+    <meta name="description" content="Black turkey variety page.">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5e1c1;
+        }
+
+        /* Title Section */
+      .site-title {
+    font-size: 3em;
+    font-weight: bold;
+    color: black; /* Black text color for the title */
+    background-color: #1E82E6; /* Blue background */
+    text-shadow: 
+        -2px -2px 0 tan, /* White shadow on the top-left */
+        2px 2px 8px rgba(0, 0, 0, 0.7); /* Black shadow with a blur */
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    width: 100%; /* Extend the background to the full width of the page */
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .site-title {
+        font-size: 2em; /* Smaller font size for mobile */
+        padding: 15px; /* Adjust padding to fit better on small screens */
+    }
+}
+
+        /* Navbar Styles */
+        .navbar {
+            width: 100%;
+            background-image: url("https://porters-rare-heritage-turkeys.neocities.org/Pictures/wood%20background.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 5px 0;
+            box-sizing: border-box;
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .navbar li {
+            padding: 0 14px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1em;
+            display: block;
+            padding: 10px;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background-color: #575757;
+            color: yellow;
+            border-radius: 4px;
+        }
+
+        /* Menu Toggle Button (Hidden on Desktop) */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: white;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 4px;
+        }
+
+        /* Header Styles */
+        .header {
+            margin: 20px 0;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        /* Content Styles */
+        .content {
+            padding: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content p {
+            margin: 1em 0;
+            color: rgb(0, 0, 0);
+            font-size: 1.1em;
+            text-align: left;
+        }
+
+        .content img {
+            display: block;
+            margin: 20px auto;
+            width: 100%;
+            height: auto;
+            max-width: 482px;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: black;
+            background-color: transparent;
+            font-weight: bold;
+        }
+
+        /* Mobile-specific styles */
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                display: none;
+                width: 100%;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+
+            .navbar ul.active {
+                display: flex;
+            }
+
+            .navbar li {
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .navbar a {
+                padding: 10px 0;
+                width: 100%;
+            }
+
+            .content p {
+                font-size: 1em;
+                margin: 0.5em 0;
+            }
+
+            .content img {
+                margin-bottom: 5px;
+                max-width: 100%;
+                height: auto;
+            }
+
+            .content {
+                padding: 15px;
+            }
+        }
+
+        /* Adjust image size for mobile landscape */
+        @media screen and (max-width: 1024px) and (orientation: landscape) {
+            .content img {
+                max-width: 80%;
+                margin: 15px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Website Title -->
+    <div class="site-title"><i>Porter's Rare Heritage Turkeys</i></div>
+
+    <div class="navbar">
+        <div class="navbar-container">
+            <button class="menu-toggle">☰ Menu</button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="https://porters-rare-heritage-turkeys.neocities.org/Varieties" class="active">Varieties</a></li>
+                <li><a href="https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator">Advanced Color Calculator</a></li>
+                <li><a href="https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator2">Beginner Color Calculator</a></li>
+                <li><a href="https://porters-rare-heritage-turkeys.neocities.org/TurkeyPoultsforSale">Turkey Poults for Sale</a></li>
+                <li><a href="https://porters-rare-heritage-turkeys.neocities.org/TurkeyFeathersforSale">Feathers for Sale</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="header">
+        <h1>Black</h1>
+    </div>
+
+    <div class="content">
+        <!-- Image -->
+        <p style="text-align: center;">
+            <img src="https://porters-rare-heritage-turkeys.neocities.org/Pictures/MBlack.jpg" width="482" height="521" alt="Black Turkey">
+        </p>
+
+        <!-- Description -->
+        <p>The Black is a very old variety, possibly the first variety to be developed. Probably some of the original turkeys taken to Europe were black. The Black turkey was very popular all across Europe, but especially in Spain. The Black Turkey was admitted to the APA Standard in 1874. Standard weights are 33 lbs. for old toms and 18 lbs. for old hens.</p>
+
+        <p>The genotype for black is simply BB.</p>
+
+        <p>This mutant gene (B) causes black throughout all the feathers. It is located at the bronze locus and is a dominant allele to both (b) bronze and (b') black winged bronze.</p>
+
+        <!-- Additional Images -->
+        <p style="text-align: center;">
+            <img src="https://porters-rare-heritage-turkeys.neocities.org/Pictures/FBlack.jpg" width="438" height="307" alt="Black Turkey Detail">
+        </p>
+
+        <p style="text-align: center;">
+            <img src="https://porters-rare-heritage-turkeys.neocities.org/Pictures/PBlack.jpg" width="396" height="294" alt="Black Turkey Poults">
+        </p>
+    </div>
+
+    <footer>
+        &copy;2024 Porter's Rare Heritage Turkeys
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.navbar ul').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
