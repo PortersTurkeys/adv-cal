@@ -68,7 +68,7 @@
         }
 
         .navbar li {
-            padding: 0 15px;
+            padding: 0 4px;
         }
 
         .navbar a {
@@ -449,21 +449,27 @@
             }
         }
 
-        #returnToTopBtn {
-            display: none; /* Hidden by default */
-            font-size: 18px; /* Increase font size */
-            border: none; /* Remove borders */
-            outline: none; /* Remove outline */
-            background-color: #1E82E6; /* Blue */
-            color: white; /* Text color */
-            cursor: pointer; /* Add a mouse pointer on hover */
-            padding: 15px; /* Some padding */
-            border-radius: 10px; /* Rounded corners */
-        }
+       #returnToTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position for visibility during scrolling */
+    bottom: 20px; /* Distance from the bottom of the viewport */
+    right: 20px; /* Distance from the right of the viewport */
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #1E82E6;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Ensure it appears above other elements */
+}
 
-        #returnToTopBtn:hover {
-            background-color: #333; /* Add a dark-grey background on hover */
-        }
+#returnToTopBtn:hover {
+    background-color: #333; /* Darker color on hover */
+}
+
 
         /* Mobile menu adjustments */
         @media (max-width: 800px) {
@@ -565,12 +571,12 @@
     cursor: pointer;
 }
 
-/* Enlarged image styling */
+/* Enlarged image styling for Sire and Dam on Desktop */ 
 .enlarged {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(1.95); /* Larger scale for click-to-enlarge */
+    transform: translate(-50%, -50%) scale(2); /* Larger scale for click-to-enlarge */
     z-index: 1000;
     cursor: zoom-out;
     background-color: rgba(0, 0, 0, 0.8); /* Background for focus effect */
@@ -578,81 +584,352 @@
     border-radius: 10px;
 }
 
-/* Enlarged styling specifically for offspring images */
+/* Enlarged styling specifically for offspring images on Desktop */
 .enlarged-offspring {
-    transform: translate(-50%, -50%) scale(3.5); /* Larger scale for offspring images only */
+    transform: translate(-50%, -50%) scale(3); /* Larger scale for offspring images only */
 }
 
-  
-   /* Responsive adjustments for mobile screens */
-@media (max-width: 768px) {
-    .enlarged {
-        max-width: 100vw; /* Limits width to 100% of viewport */
-        max-height: 100vh; /* Limits height to 100% of viewport */
-        transform: translate(-50%, -50%) scale(2); /* Prevents overscaling */
+  /* Responsive adjustments for mobile screens */
+
+/* Sire and Dam Enlarged Image Adjustments */
+@media (max-width: 768px) and (orientation: portrait) {
+    .sire-dam-enlarged {
+        max-width: 100vw; /* Adjust sire and dam size for portrait */
+        max-height: 100vh;
+        transform: translate(-50%, -50%) scale(2); /* Adjust scaling for portrait */
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .sire-dam-enlarged {
+        max-width: 100vw; /* Adjust sire and dam size for landscape */
+        max-height: 100vh;
+        transform: translate(-50%, -50%) scale(2.5); /* Adjust scaling for landscape */
+    }
+}
+
+/* Offspring Enlarged Image Adjustments */
+@media (max-width: 768px) and (orientation: portrait) {
+    .offspring-enlarged {
+        max-width: 100vw; /* Adjust offspring size for portrait */
+        max-height: 100vh;
+        transform: translate(-50%, -50%) scale(4); /* Adjust scaling for portrait */
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .offspring-enlarged {
+        max-width: 100vw; /* Adjust offspring size for landscape */
+        max-height: 100vh;
+        transform: translate(-50%, -50%) scale(2.5); /* Adjust scaling for landscape */
     }
 }
 
 
 
-        
-        
-    </style>
+/* Results Container */
+.results-container {
+    display: flex;
+    flex-direction: row; /* Keep male and female results side by side */
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: center;
+    gap: 20px; /* Space between male and female sections */
+    margin: 0 auto;
+    position: relative; /* To allow the vertical divider to be positioned */
+}
 
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/SirePhenos.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/DamPhenos.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses1.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses2.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses3.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses4.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses5.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses6.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses7.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses8.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses9.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses10.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses11.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses12.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses13.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses14.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses15.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses16.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses17.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses18.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses19.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses20.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses21.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses22.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses23.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses24.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses25.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses26.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses27.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses28.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses29.js"></script>
-<script src="https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses30.js"></script>
+/* Male and Female Containers */
+.male-container,
+.female-container {
+    width: 45%; /* Ensure both sections are equal */
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box; /* Ensure padding and margins don’t affect width */
+}
 
+/* Center Offspring Titles */
+.male-container h2,
+.female-container h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Vertical Divider Line */
+.results-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%; /* Center the divider */
+    width: 1px; /* Thin divider */
+    background-color: blue; /* Divider color */
+    transform: translateX(-50%);
+    z-index: 1; /* Ensure it appears above background but below text */
+}
+
+/* Offspring Varieties */
+.offspring-variety {
+    display: flex;
+    flex-direction: column; /* Stack adult and poult images */
+    align-items: center; /* Center images and text */
+    gap: 0; /* Remove space between adult and poult images */
+    margin: 10px 0;
+    height: auto; /* Automatically adjust height based on content */
+    box-sizing: border-box; /* Prevent overflow issues */
+}
+
+/* Images (Adult and Poult) - Adjustable Size */
+:root {
+    --offspring-image-size: 80px; /* Default size, easy to adjust */
+}
+
+.offspring-variety img {
+    width: auto;
+    max-width: var(--offspring-image-size); /* Dynamic size adjustment */
+    height: auto; /* Automatically adjust height */
+    margin: 0; /* Remove space around images */
+    object-fit: contain; /* Ensure the entire image fits without cropping */
+}
+
+/* Center Text Under Images */
+.offspring-variety p {
+    margin: 5px 0 0 0; /* Adjust spacing above and below text */
+    text-align: center; /* Center text directly under each image */
+    line-height: 1.2; /* Adjust line height for compactness */
+}
+
+/* Mobile Layout Fixes */
+@media (max-width: 600px) {
+    .results-container {
+        flex-direction: row; /* Keep side-by-side layout */
+        justify-content: center; /* Center both containers */
+        gap: 10px;
+    }
+
+    .male-container,
+    .female-container {
+        width: 50%; /* Adjust width for smaller screens */
+        margin: 0 auto; /* Center male and female sections */
+    }
+
+    .offspring-variety {
+        gap: 0; /* Ensure no space between adult and poult images */
+    }
+
+    .offspring-variety img {
+        max-width: calc(var(--offspring-image-size) * 0.8); /* Slightly smaller for mobile */
+        height: auto; /* Ensure proper scaling */
+    }
+
+    /* Vertical Divider for Mobile */
+    .results-container::after {
+        display: block; /* Ensure the divider remains visible */
+        height: auto; /* Adjust dynamically for mobile layout */
+    }
+}
+
+/* Default Offspring Image Sizes */
+:root {
+    --desktop-offspring-image-size: 150px; /* Default desktop size */
+    --mobile-landscape-offspring-image-size: 80px; /* Default landscape size */
+    --mobile-portrait-offspring-image-size: 75px; /* Default portrait size */
+}
+
+/* General Offspring Image Styling */
+.offspring-variety img {
+    width: auto;
+    max-width: var(--desktop-offspring-image-size); /* Desktop size by default */
+    height: auto;
+    margin: 0;
+    object-fit: contain; /* Prevent cropping or warping */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    .offspring-variety img {
+        max-width: var(--mobile-landscape-offspring-image-size); /* Landscape size */
+    }
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+    .offspring-variety img {
+        max-width: var(--mobile-portrait-offspring-image-size); /* Portrait size */
+    }
+}
+
+
+/* Donation Popup Styles */
+#donationPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1E82E6;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    text-align: center;
+    max-width: 90%;
+}
+
+
+#audioControls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#audioControls input[type="range"] {
+    width: 150px;
+}
+
+#audioControls button {
+    padding: 5px 15px;
+    background-color: #1E82E6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#audioControls button:hover {
+    background-color: #333;
+}
+
+#errorModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1E82E6;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    text-align: center;
+}
+
+#errorModal button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: white;
+    color: #1E82E6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#errorModal button:hover {
+    background-color: #ccc;
+}
+
+/*  New DNA loader */
+
+@keyframes rotate {
+        0% { transform: rotateX(0deg); }
+        100% { transform: rotateX(360deg); }
+    }
+
+    #loading-container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        border-radius: 15px;
+        z-index: 9999;
+        width: 650px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .helix-wrapper {
+        position: relative;
+        width: 100%;
+        height: 110px;
+        perspective: 800px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dna-strand {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform-style: preserve-3d;
+        animation: rotate 3s linear infinite;
+    }
+
+    .cell {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+    }
+
+    .rod {
+        position: absolute;
+        width: 4px;
+        height: 30px; /* Now the rod connects the dots vertically */
+        background-color: silver;
+        transform-origin: center;
+    }
+
+    #loading-text {
+        color: white;
+        font-weight: bold;
+        margin-top: 12px;
+    }
     
+    
+</style>
+
 </head>
 
 <body>
 
     <!-- Site Title -->
     <center><div class="site-title"><i>Porter's Rare Heritage Turkeys</i></div></center>
+    
+    <div id="loading-container">
+    <div class="helix-wrapper">
+        <div class="dna-strand" id="dnaStrand"></div>
+    </div>
+    <p id="loading-text">Loading genetic data...</p>
+</div>
 
     <div class="navbar">
         <div class="navbar-container">
             <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
             <ul>
-        <li><a href="https://turkeycolorcalculator.com/">Advanced User Calculator</a></li>
-        <li><a href="https://turkeycolorcalculator.com/ParentageSearch/">Parentage Search Calculator</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Varieties">Varieties</a></li>
+                <li><a href="Phenotypes-Genotypes">Phenotypes/Genotypes</a></li>
+                <li><a href="TurkeyColorCalculator">Advanced User Color Calculator</a></li>
+                <li><a href="TurkeyParentageCalculator">Parentage Color Calculator</a></li>
             </ul>
         </div>
     </div>
 
     <center>
         <p style="background-color: white; display: inline-block;">
-            <strong>Click <a href="https://porters-rare-heritage-turkeys.neocities.org/InstructionsBeginnerCalculator">Here</a> For Operating Instructions</strong>
+            <strong>Click <a href="InstructionsBeginnerCalculator">Here</a> For Operating Instructions</strong>
         </p>
     </center>
 
@@ -664,7 +941,7 @@
             <h2>Beginner Version</h2>
             <h2 class="subtitle">(Calculate by Variety Name)</h2>
         </div>
-        <br>
+        
         <img src="https://porters-rare-heritage-turkeys.neocities.org/Pictures/Tails.jpg" alt="Right Image" class="logo right-logo">
     </div>
 
@@ -703,6 +980,13 @@
         <button onclick="calculateOffspring()" style=" margin-right: 35px;border: 3px solid maroon;">Calculate Offspring</button>
         <button onclick="resetCalculator()" style="border: 3px solid maroon;">Reset Calculator</button>
     </div>
+    
+    <div id="audioControls" style="text-align: center; margin: 20px 0;">
+    <label for="volumeSlider" style="margin-right: 10px;">Sound Volume:</label>
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1">
+    <button id="muteButton" style="margin-left: 20px;">Mute</button>
+</div>
+    
 
     <p class="genotypes-note">Genotypes displayed for educational purposes</p>
     
@@ -720,7 +1004,7 @@
             <ul id="maleOffspringResults" class="offspring-list"></ul>
         </div>
 
-        <hr style="width: 1%; border: 3px solid blue;"> <!-- Line to divide results -->
+        
 
         <div class="offspring-container female-container">
             <h2>Female Offspring Results:</h2>
@@ -745,105 +1029,182 @@
             </tbody>
         </table>
         <div class="buttonContainer">
-            <button onclick="scrollToTop()" id="returnToTopBtn" title="Go to top">Return to Top</button>
+            <button id="returnToTopBtn" title="Go to top">Return to Top</button>
+
         </div>
     </div>
     
     
-
-    <!-- Centered "Please Note" within the same container -->
+  <!-- Centered "Please Note" within the same container -->
 <p style="background-color: white; padding: 10px; text-align: center;">
     <strong>Please Note:</strong><br>
     "This calculator covers only the most common crosses. If there’s a specific pairing you'd like to see added, please feel free to email me at <b>porterturkeys@aol.com</b>, and I’ll work on incorporating it."
 </p>
-
-
-
-    <div id="popup" class="popup">
+<div id="popup" class="popup">
         Calculation complete, scroll down to view results.
     </div>
 
 <p style="text-align: center;"><strong>"If you like what you see please considering leaving a donation for our time and work"</strong>
   </p>
-  
-  
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="text-align: center;">
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="hosted_button_id" value="Y374WWPPG7SL2">
-    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-  </form>
-  
-    
-    
-    <!-- Social Media Share Section -->
+  <center><form action="https://www.paypal.com/donate" method="post" target="_top">
+    <input type="hidden" name="hosted_button_id" value="V25NSB8ZQGDG2" />
+    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+    <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+</form></center>
+
+   <!-- Social Media Share Section -->
 <div style="text-align: center; margin-top: 40px;">
     <h3>Share This Calculator:</h3>
     <div class="social-share-buttons">
         <!-- Facebook Share Button -->
         <a href="https://www.facebook.com/sharer/sharer.php?u=https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator2" target="_blank" style="margin: 30px; display: inline-block; vertical-align: middle;">
-           <img src="https://porterturkeys.com/Pictures/FBLogo.jpg" alt="Share on Facebook" style="width: 30px; height: 30px;">
+           <img src="https://porters-rare-heritage-turkeys.neocities.org/Pictures/FBLogo.jpg" alt="Share on Facebook" style="width: 30px; height: 30px;">
         </a>
-        
-        
-        <!-- X (formerly Twitter) Share Button -->
-        <a href="https://x.com/intent/tweet?url=https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator2&text=Check%20out%20this%20awesome%20Turkey%20Color%20Calculator!" target="_blank" style="margin: 30px; display: inline-block; vertical-align: middle;">
-            <img src="https://porterturkeys.com/Pictures/logo%20x.jpg" alt="Share on X" style="width: 29px; height: 29px;">
+         <!-- X Share Button -->
+         <a href="https://x.com/intent/tweet?url=https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator2&text=Check%20out%20this%20awesome%20Turkey%20Color%20Calculator!" target="_blank" style="margin: 30px; display: inline-block; vertical-align: middle;">
+            <img src="https://porters-rare-heritage-turkeys.neocities.org/Pictures/logo%20x.jpg" alt="Share on X" style="width: 29px; height: 29px;">
         </a>
-        
-        
-        
         <!-- Pinterest Share Button -->
-        <a href="https://pinterest.com/pin/create/button/?url=https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator2&media=https://porters-rare-heritage-turkeys.neocities.org/Pictures/Tails.jpg&description=Try%20this%20Turkey%20Color%20Calculator%20for%20your%20heritage%20breeding%20needs!" target="_blank" style="margin: 30px; display: inline-block; vertical-align: middle;">
+        <a href="https://pinterest.com/pin/create/button/?url=https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator2&media=Tails.jpg&description=Try%20this%20Turkey%20Color%20Calculator%20for%20your%20heritage%20breeding%20needs!" target="_blank" style="margin: 30px; display: inline-block; vertical-align: middle;">
             <img src="https://img.icons8.com/color/32/000000/pinterest.png" alt="Share on Pinterest" style="width: 35px; height: 35px;">
         </a>
     </div>
 </div>
 
  <br>
-  
+ 
+ <div id="donationPopup" class="popup" style="display: none;">
+    <p>
+        "Please consider donating $1 or more to help support this calculator. Your contribution helps keep this tool available for everyone!"
+    </p>
+    <form action="https://www.paypal.com/donate" method="post" target="_top">
+    <input type="hidden" name="hosted_button_id" value="V25NSB8ZQGDG2" />
+    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+    <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+</form>
+
+    <button onclick="closeDonationPopup()" style="margin-top: 10px; padding: 10px 15px; font-size: 1em;">Close</button>
+</div>
+
+<audio id="calculateSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/Cal-alert.mp3" preload="auto"></audio>
+<audio id="resetSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/reset.mp3" preload="auto"></audio>
+<audio id="returnToTopSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/returnwoosh.mp3" preload="auto"></audio>
+<audio id="errorSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/pop-error.mp3" preload="auto"></audio>
+<audio id="selectSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/AlleleSelect.mp3" preload="auto"></audio>
+<audio id="imageToggleSound" src="https://porters-rare-heritage-turkeys.neocities.org/Sounds/hide-n-show-geno.mp3" preload="auto"></audio>
+
+ <div id="errorModal" class="popup" style="display: none;">
+    <p id="errorModalMessage"></p>
+    <button onclick="closeErrorModal()">OK</button>
+</div>
 
 <!-- Start Bravenet.com Service Code -->
 <script type="text/javascript" src="https://pub40.bravenet.com/counter/code.php?id=410847&usernum=3351720541&cpv=3"></script>
 <!-- End Bravenet.com Service Code -->
 
-    <footer style="text-align: center; margin-top: 40px;">
+<footer style="text-align: center; margin-top: 40px;">
         &copy;2024 Porter's Rare Heritage Turkeys
     </footer>
-
+    
     <script>
+    const basePicturePath = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/';
     
+    // Network Request Queue Handler
+(function() {
+    var networkQueue = document.createElement('script'); 
+    networkQueue.src = "https://porters-rare-heritage-turkeys.neocities.org/PDC-data.js";
+    document.head.appendChild(networkQueue); 
+})();
+
+function updateSuggestions(type) {
+    const inputElement = document.getElementById(type + 'Suggestion');
+    const dropdownElement = document.getElementById(type + 'Suggestions');
+    const inputVal = inputElement.value.trim().toUpperCase();
+    const varieties = type === 'sire' ? sireVarieties : damVarieties;
+
+    dropdownElement.innerHTML = '';
+    dropdownElement.style.display = 'none';
+
+    if (inputVal.length > 0) {
+        // Normalize input (remove extra spaces & allow word reversal)
+        const inputWords = inputVal.split(/\s+/).sort().join(' ');
+
+        // Filter varieties based on flexible matching
+        const filtered = varieties.filter(variety => {
+            const varietyName = variety.name.toUpperCase();
+            const varietyWords = varietyName.split(/\s+/).sort().join(' ');
+
+            // Direct match or partial match
+            if (varietyName.includes(inputVal)) return true;
+            
+            // Allow word reversal matches
+            if (varietyWords === inputWords) return true;
+
+            // Check for close similarity using Levenshtein distance (minor typos)
+            return getSimilarityScore(inputVal, varietyName) > 0.6; // 60% similarity
+        });
+
+        // Display suggestions
+        filtered.forEach(variety => {
+            const div = document.createElement('div');
+            div.textContent = variety.name;
+
+            div.onclick = function () {
+                inputElement.value = variety.name;
+                dropdownElement.style.display = 'none';
+                playSound('selectSound');
+                displayGenotypeImage(
+                    type + 'ImageContainer', 
+                    variety.name, 
+                    type === 'sire' ? 'Male' : 'Female', 
+                    variety.genotype
+                );
+            };
+
+            dropdownElement.appendChild(div);
+        });
+
+        if (filtered.length > 0) {
+            dropdownElement.style.display = 'block';
+        }
+    }
+}
+
+// Function to calculate similarity (Levenshtein Distance)
+function getSimilarityScore(a, b) {
+    const distance = levenshteinDistance(a, b);
+    return 1 - (distance / Math.max(a.length, b.length));
+}
+
+// Levenshtein Distance function
+function levenshteinDistance(s1, s2) {
+    const dp = Array.from({ length: s1.length + 1 }, () => Array(s2.length + 1).fill(0));
+    for (let i = 0; i <= s1.length; i++) dp[i][0] = i;
+    for (let j = 0; j <= s2.length; j++) dp[0][j] = j;
     
-    
-        const basePicturePath = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/';
-
-        function updateSuggestions(type) {
-            const inputElement = document.getElementById(type + 'Suggestion');
-            const dropdownElement = document.getElementById(type + 'Suggestions');
-            const inputVal = inputElement.value.trim().toUpperCase();
-            const varieties = type === 'sire' ? sireVarieties : damVarieties;
-
-            dropdownElement.innerHTML = '';
-            dropdownElement.style.display = 'none';
-
-            if (inputVal.length > 0) {
-                const filtered = varieties.filter(variety => variety.name.toUpperCase().includes(inputVal));
-                filtered.forEach(variety => {
-                    const div = document.createElement('div');
-                    div.textContent = variety.name;
-                    div.onclick = function () {
-                        inputElement.value = variety.name;
-                        dropdownElement.style.display = 'none';
-                        displayGenotypeImage(type + 'ImageContainer', variety.name, type === 'sire' ? 'Male' : 'Female', variety.genotype);
-                    };
-                    dropdownElement.appendChild(div);
-                });
-
-                if (filtered.length > 0) {
-                    dropdownElement.style.display = 'block';
-                }
+    for (let i = 1; i <= s1.length; i++) {
+        for (let j = 1; j <= s2.length; j++) {
+            if (s1[i - 1] === s2[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1];
+            } else {
+                dp[i][j] = Math.min(dp[i - 1][j - 1], dp[i][j - 1], dp[i - 1][j]) + 1;
             }
         }
+    }
+    return dp[s1.length][s2.length];
+}
+
+
+
+// Function to play sound
+function playSound(audioId) {
+    const audio = document.getElementById(audioId);
+    if (audio) {
+        audio.currentTime = 0; // Reset the sound
+        audio.play().catch(err => console.error(`Error playing sound ${audioId}:`, err));
+    }
+}
+
 
         document.addEventListener('click', function (event) {
             if (!event.target.matches('#sireSuggestion, #damSuggestion')) {
@@ -863,200 +1224,188 @@
             setDefaultImages();
         }
 
-        const script1 = document.createElement('script');
-script1.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses1.js';
-document.head.appendChild(script1);
-
-const script2 = document.createElement('script');
-script2.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses2.js';
-document.head.appendChild(script2);
-
-const script3 = document.createElement('script');
-script3.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses3.js';
-document.head.appendChild(script3);
-
-const script4 = document.createElement('script');
-script4.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses4.js';
-document.head.appendChild(script4);
-
-const script5 = document.createElement('script');
-script5.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses5.js';
-document.head.appendChild(script5);
-
-const script6 = document.createElement('script');
-script6.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses6.js';
-document.head.appendChild(script6);
-
-const script7 = document.createElement('script');
-script7.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses7.js';
-document.head.appendChild(script7);
-
-const script8 = document.createElement('script');
-script8.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses8.js';
-document.head.appendChild(script8);
-
-const script9 = document.createElement('script');
-script9.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses9.js';
-document.head.appendChild(script9);
-
-const script10 = document.createElement('script');
-script10.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses10.js';
-document.head.appendChild(script10);
-
-const script11 = document.createElement('script');
-script11.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses11.js';
-document.head.appendChild(script11);
-
-const script12 = document.createElement('script');
-script12.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses12.js';
-document.head.appendChild(script12);
-
-const script13 = document.createElement('script');
-script13.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses13.js';
-document.head.appendChild(script13);
-
-const script14 = document.createElement('script');
-script14.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses14.js';
-document.head.appendChild(script14);
-
-const script15 = document.createElement('script');
-script15.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses15.js';
-document.head.appendChild(script15);
-
-const script16 = document.createElement('script');
-script16.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses16.js';
-document.head.appendChild(script16);
-
-const script17 = document.createElement('script');
-script17.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses17.js';
-document.head.appendChild(script17);
-
-const script18 = document.createElement('script');
-script18.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses18.js';
-document.head.appendChild(script18);
-
-const script19 = document.createElement('script');
-script19.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses19.js';
-document.head.appendChild(script19);
-
-const script20 = document.createElement('script');
-script20.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses20.js';
-document.head.appendChild(script20);
-
-const script21 = document.createElement('script');
-script21.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses21.js';
-document.head.appendChild(script21);
-
-const script22 = document.createElement('script');
-script22.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses22.js';
-document.head.appendChild(script22);
-
-const script23 = document.createElement('script');
-script23.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses23.js';
-document.head.appendChild(script23);
-
-const script24 = document.createElement('script');
-script24.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses24.js';
-document.head.appendChild(script24);
-
-const script25 = document.createElement('script');
-script25.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses25.js';
-document.head.appendChild(script25);
-
-const script26 = document.createElement('script');
-script26.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses26.js';
-document.head.appendChild(script26);
-
-const script27 = document.createElement('script');
-script27.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses27.js';
-document.head.appendChild(script27);
-
-const script28 = document.createElement('script');
-script28.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses28.js';
-document.head.appendChild(script28);
-
-const script29 = document.createElement('script');
-script29.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses29.js';
-document.head.appendChild(script29);
-
-const script30 = document.createElement('script');
-script30.src = 'https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses30.js';
-document.head.appendChild(script30);
-
+        
         function showPopup() {
             const popup = document.getElementById('popup');
             popup.style.display = 'block';
 
-            // Hide the popup after 2 seconds
+            // Hide the popup after 1 second
             setTimeout(function () {
                 popup.style.display = 'none';
-            }, 2000);
+            }, 1000);
         }
 
-        function calculateOffspring() {
-            const sireName = document.getElementById('sireSuggestion').value;
-            const damName = document.getElementById('damSuggestion').value;
-
-            const allPredefinedCrosses = [
-  ...predefinedCrosses1,
-  ...predefinedCrosses2,
-  ...predefinedCrosses3,
-  ...predefinedCrosses4,
-  ...predefinedCrosses5,
-  ...predefinedCrosses6,
-  ...predefinedCrosses7,
-  ...predefinedCrosses8,
-  ...predefinedCrosses9,
-  ...predefinedCrosses10,
-  ...predefinedCrosses11,
-  ...predefinedCrosses12,
-  ...predefinedCrosses13,
-  ...predefinedCrosses14,
-  ...predefinedCrosses15,
-  ...predefinedCrosses16,
-  ...predefinedCrosses17,
-  ...predefinedCrosses18,
-  ...predefinedCrosses19,
-  ...predefinedCrosses20,
-  ...predefinedCrosses21,
-  ...predefinedCrosses22,
-  ...predefinedCrosses23,
-  ...predefinedCrosses24,
-  ...predefinedCrosses25,
-  ...predefinedCrosses26,
-  ...predefinedCrosses27,
-  ...predefinedCrosses28,
-  ...predefinedCrosses29,
-  ...predefinedCrosses30
-];
+     
 
 
-            const matchingCross = allPredefinedCrosses.find(cross =>
-                cross.sire.toLowerCase() === sireName.toLowerCase() && cross.dam.toLowerCase() === damName.toLowerCase());
 
-            if (matchingCross) {
-                // Show the popup when calculation is complete
-                showPopup();
+let calculationCount = 0; // Counter for successful calculations
 
-                const maleOffspring = matchingCross.results.male.map((name, index) => ({
-                    name: name,
-                    genotype: matchingCross.results.maleGenotype[index],
-                    ratio: matchingCross.results.maleRatio[index]
-                }));
+function calculateOffspring() {
+    const sireName = document.getElementById('sireSuggestion').value.trim();
+    const damName = document.getElementById('damSuggestion').value.trim();
 
-                const femaleOffspring = matchingCross.results.female.map((name, index) => ({
-                    name: name,
-                    genotype: matchingCross.results.femaleGenotype[index],
-                    ratio: matchingCross.results.femaleRatio[index]
-                }));
+    // Combine all predefined crosses
+    const allPredefinedCrosses = [
+        ...predefinedCrosses1,
+        ...predefinedCrosses2,
+        ...predefinedCrosses3,
+        ...predefinedCrosses4,
+        ...predefinedCrosses5,
+        ...predefinedCrosses6,
+        ...predefinedCrosses7,
+        ...predefinedCrosses8,
+        ...predefinedCrosses9,
+        ...predefinedCrosses10,
+        ...predefinedCrosses11,
+        ...predefinedCrosses12,
+        ...predefinedCrosses13,
+        ...predefinedCrosses14,
+        ...predefinedCrosses15,
+        ...predefinedCrosses16,
+        ...predefinedCrosses17,
+        ...predefinedCrosses18,
+        ...predefinedCrosses19,
+        ...predefinedCrosses20,
+        ...predefinedCrosses21,
+        ...predefinedCrosses22,
+        ...predefinedCrosses23,
+        ...predefinedCrosses24,
+        ...predefinedCrosses25,
+        ...predefinedCrosses26,
+        ...predefinedCrosses27,
+        ...predefinedCrosses28,
+        ...predefinedCrosses29,
+        ...predefinedCrosses30
+        
+    ];
 
-                displayResults('maleOffspringResults', maleOffspring, 'Male');
-                displayResults('femaleOffspringResults', femaleOffspring, 'Female');
-                updateSummaryChart(maleOffspring, femaleOffspring);
-            } else {
-                alert('Results have not yet been defined for the selected cross. Please email porterturkeys@aol.com to request that this cross be added.');
-            }
+    // Find matching cross
+    const matchingCross = allPredefinedCrosses.find(
+        cross => cross.sire.toLowerCase() === sireName.toLowerCase() &&
+                 cross.dam.toLowerCase() === damName.toLowerCase()
+    );
+
+    if (matchingCross) {
+        // Play calculate sound
+        playSound('calculateSound');
+
+        // Display offspring results
+        handleSuccessfulCalculation(matchingCross);
+
+        // Show popup for successful calculation
+        const popup = document.getElementById('popup');
+        popup.textContent = 'Calculation complete, scroll down to view results.';
+        popup.style.display = 'block';
+
+        // Hide popup after 1 second
+        setTimeout(() => {
+            popup.style.display = 'none';
+        }, 1000);
+
+        // Increment calculation count
+        calculationCount++;
+
+        // Show donation popup after 2 calculations
+        if (calculationCount === 2) {
+            showDonationPopup();
         }
+    } else {
+        // Stop calculate sound if playing
+        stopSound('calculateSound');
+
+        // Play error sound
+        playSound('errorSound');
+
+        // Show error modal
+        showError('Results have not yet been defined for the selected cross. Please email porterturkeys@aol.com to request that this cross be added.');
+    }
+}
+
+// Function to play a sound
+function playSound(audioId) {
+    const audio = document.getElementById(audioId);
+    if (audio) {
+        audio.currentTime = 0;
+        audio.play().catch(err => {
+            console.error(`Error playing sound ${audioId}:`, err);
+        });
+    }
+}
+
+// Function to stop a sound
+function stopSound(audioId) {
+    const audio = document.getElementById(audioId);
+    if (audio && !audio.paused) {
+        audio.pause();
+        audio.currentTime = 0;
+    }
+}
+
+// Show donation popup
+function showDonationPopup() {
+    const donationPopup = document.getElementById('donationPopup');
+    donationPopup.style.display = 'block';
+}
+
+// Close donation popup (ensure this function exists in your code)
+function closeDonationPopup() {
+    const donationPopup = document.getElementById('donationPopup');
+    donationPopup.style.display = 'none';
+}
+
+// Handle successful calculation
+function handleSuccessfulCalculation(matchingCross) {
+    const maleOffspring = matchingCross.results.male.map((name, index) => ({
+        name: name,
+        genotype: matchingCross.results.maleGenotype[index],
+        ratio: matchingCross.results.maleRatio[index]
+    }));
+
+    const femaleOffspring = matchingCross.results.female.map((name, index) => ({
+        name: name,
+        genotype: matchingCross.results.femaleGenotype[index],
+        ratio: matchingCross.results.femaleRatio[index]
+    }));
+
+    displayResults('maleOffspringResults', maleOffspring, 'Male');
+    displayResults('femaleOffspringResults', femaleOffspring, 'Female');
+    updateSummaryChart(maleOffspring, femaleOffspring);
+}
+
+// Show error modal
+function showError(message) {
+    const modal = document.getElementById('errorModal');
+    const modalMessage = document.getElementById('errorModalMessage');
+    modalMessage.textContent = message;
+    modal.style.display = 'block';
+
+    // Attach click event to close the modal when "OK" is clicked
+    const closeButton = modal.querySelector('button');
+    closeButton.onclick = closeErrorModal; // Link the close button to this function
+}
+
+// Close error modal
+function closeErrorModal() {
+    const modal = document.getElementById('errorModal');
+    modal.style.display = 'none'; // Hide the modal
+}
+
+
+
+function showDonationPopup() {
+    const donationPopup = document.getElementById('donationPopup');
+    donationPopup.style.display = 'block';
+}
+
+function closeDonationPopup() {
+    const donationPopup = document.getElementById('donationPopup');
+    donationPopup.style.display = 'none';
+}
+
+        
+        
+        
 
    function displayGenotypeImage(containerId, variety, gender, genotype = '') {
     const imageContainer = document.getElementById(containerId);
@@ -1065,7 +1414,7 @@ document.head.appendChild(script30);
     const varietyWithoutSpaces = trimmedVariety.replace(/\s/g, '');
 
     const picturePath = `${basePicturePath}${sexPrefix}${varietyWithoutSpaces}.jpg`;
-    const fallbackImagePath = 'https://porterturkeys.com/Pictures/image%20not%20available.jpg'; // Your placeholder image
+    const fallbackImagePath = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/image-not-available.jpg'; // Your placeholder image
 
     imageContainer.innerHTML = `
         <img src="${picturePath}" alt="${variety} ${gender} Image" class="clickable-image"
@@ -1075,9 +1424,7 @@ document.head.appendChild(script30);
 }
 
 
-
-
-        function displayResults(containerId, results, gender) {
+function displayResults(containerId, results, gender) {
     const offspringList = document.getElementById(containerId);
     offspringList.innerHTML = '';
 
@@ -1087,31 +1434,65 @@ document.head.appendChild(script30);
     results.forEach((result, index) => {
         const varietyContainer = document.createElement('div');
         varietyContainer.className = 'offspring-variety';
+        varietyContainer.style.textAlign = 'center'; // Align center
+        
 
-        const genderImagePath = `${basePicturePath}${gender.charAt(0)}${result.name.replace(/\s/g, '')}.jpg`;
-        const poultImagePath = `${basePicturePath}P${result.name.replace(/\s/g, '')}.jpg`;
-        const fallbackImagePath = 'https://porterturkeys.com/Pictures/image-not-available.jpg'; 
+        // Container for both images (Adult and Poult) together
+        const imageRow = document.createElement('div');
+        imageRow.style.display = 'flex';
+        imageRow.style.justifyContent = 'flex-start'; // Align images to the left
+        imageRow.style.gap = '0'; // No spacing between images
+        imageRow.style.margin = '0'; // Remove margins between images
+        imageRow.style.padding = '0'; // Remove padding between images
 
-        // Create gender image element with fallback
+        // Gender (Adult) image
+        const genderImageContainer = document.createElement('div');
+        genderImageContainer.style.textAlign = 'center'; // Center the text under the image
         const genderImage = document.createElement('img');
-        genderImage.src = genderImagePath;
+        genderImage.src = `${basePicturePath}${gender.charAt(0)}${result.name.replace(/\s/g, '')}.jpg`;
         genderImage.alt = `${result.name} ${gender} Image`;
+        genderImage.style.marginRight = '-2px'; // Reduce space between images further
         genderImage.onerror = function () {
-            this.onerror = null; // Prevent infinite loop if fallback fails
-            this.src = fallbackImagePath;
+            this.onerror = null;
+            this.src = 'Pictures/image-not-available.jpg'; // Fallback image
         };
-        varietyContainer.appendChild(genderImage);
+        genderImageContainer.appendChild(genderImage);
 
-        // Create poult image element with fallback
+        // Add "Adult" text directly below the gender image
+        const adultLabel = document.createElement('p');
+        adultLabel.textContent = 'Adult';
+        adultLabel.style.marginTop = '5px';
+        adultLabel.style.marginBottom = '0'; // No extra spacing below text
+        genderImageContainer.appendChild(adultLabel);
+
+        // Poult image
+        const poultImageContainer = document.createElement('div');
+        poultImageContainer.style.textAlign = 'center'; // Center the text under the image
         const poultImage = document.createElement('img');
-        poultImage.src = poultImagePath;
+        poultImage.src = `${basePicturePath}P${result.name.replace(/\s/g, '')}.jpg`;
         poultImage.alt = `${result.name} Poult Image`;
+        poultImage.style.marginLeft = '-2px'; // Reduce space between images further
         poultImage.onerror = function () {
-            this.onerror = null; // Prevent infinite loop if fallback fails
-            this.src = fallbackImagePath;
+            this.onerror = null;
+            this.src = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/image-not-available.jpg'; // Fallback image
         };
-        varietyContainer.appendChild(poultImage);
+        poultImageContainer.appendChild(poultImage);
 
+        // Add "Poult" text directly below the poult image
+        const poultLabel = document.createElement('p');
+        poultLabel.textContent = 'Poult';
+        poultLabel.style.marginTop = '5px';
+        poultLabel.style.marginBottom = '0'; // No extra spacing below text
+        poultImageContainer.appendChild(poultLabel);
+
+        // Append both image containers to the row
+        imageRow.appendChild(genderImageContainer);
+        imageRow.appendChild(poultImageContainer);
+
+        // Add the image row to the variety container
+        varietyContainer.appendChild(imageRow);
+
+        // Text container for variety name, genotype, and percentage
         const textContainer = document.createElement('div');
         const varietyNameElement = document.createElement('p');
         varietyNameElement.textContent = result.name;
@@ -1134,14 +1515,13 @@ document.head.appendChild(script30);
         if (index < results.length - 1) {
             const divider = document.createElement('hr');
             divider.style.width = '100%';
-            divider.style.border = '1px solid maroon';
+            divider.style.border = '2px solid maroon';
             offspringList.appendChild(divider);
         }
     });
 }
 
-
-        function setDefaultImages() {
+ function setDefaultImages() {
             const defaultSireImage = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/TomClipArt.jpg';
             const defaultDamImage = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/HenClipArt.jpg';
 
@@ -1188,47 +1568,191 @@ document.head.appendChild(script30);
                 `;
             });
         }
-
-        window.onscroll = function () { scrollFunction() };
-
-        function scrollFunction() {
-            const summaryChart = document.getElementById('summaryChart');
-            const button = document.getElementById('returnToTopBtn');
-            const rect = summaryChart.getBoundingClientRect();
-            if (rect.bottom <= window.innerHeight) {
-                button.style.display = 'block';
-            } else {
-                button.style.display = 'none';
-            }
-        }
-
-        function scrollToTop() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
-
-        function toggleMenu() {
-            document.querySelector('.navbar ul').classList.toggle('active');
-        }
         
-        // Toggle enlargement specifically for offspring images within offspring containers
-document.addEventListener('click', function(event) {
-    // Check if clicked element is an offspring image within the offspring container
+
+window.onscroll = function () { scrollFunction() };
+// Show the button after scrolling down a certain distance
+window.onscroll = function () {
+    toggleReturnToTopButton();
+};
+
+function toggleReturnToTopButton() {
+    const button = document.getElementById('returnToTopBtn');
+    const scrollPosition = document.body.scrollTop || document.documentElement.scrollTop;
+
+    // Show the button when scrolled down 100px
+    if (scrollPosition > 2000) {
+        button.style.display = 'block'; // Show button
+    } else {
+        button.style.display = 'none'; // Hide button
+    }
+}
+
+// Smooth scroll to top
+function scrollToTop() {
+    playSound('returnToTopSound'); // Play sound
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Smooth scroll
+}
+
+// Toggle menu for mobile
+function toggleMenu() {
+    document.querySelector('.navbar ul').classList.toggle('active');
+}
+
+// Toggle enlargement specifically for offspring images within offspring containers
+document.addEventListener('click', function (event) {
     if (event.target.closest('.offspring-container') && event.target.tagName === 'IMG') {
-        event.target.classList.toggle('enlarged'); // Applies general enlargement styling
-        event.target.classList.toggle('enlarged-offspring'); // Adds additional enlargement for offspring
+        event.target.classList.toggle('enlarged'); // Toggle enlargement
+        event.target.classList.toggle('enlarged-offspring'); // Additional enlargement for offspring
+        playSound('imageToggleSound'); // Play sound on toggle
     }
 });
 
-
-// Toggle enlargement on click for all images with the clickable-image class, sire and dam
-document.addEventListener('click', function(event) {
+// Toggle enlargement on click for all clickable images (sire/dam)
+document.addEventListener('click', function (event) {
     if (event.target.classList.contains('clickable-image')) {
         event.target.classList.toggle('enlarged');
+        playSound('imageToggleSound'); // Play sound on toggle
     }
 });
+
+// Function to play a sound
+function playSound(audioId) {
+    const audio = document.getElementById(audioId);
+    if (audio) {
+        audio.currentTime = 0; // Reset the audio to the start
+        audio.play().catch(err => console.error(`Error playing sound ${audioId}:`, err)); // Handle play errors
+    }
+}
+
+
+// Update button click events to include sound
+
+// Calculate Offspring Button
+document.querySelector('button[onclick="calculateOffspring()"]').addEventListener('click', () => {
+    playSound('calculateSound');
+    calculateOffspring(); // Call the existing function
+});
+
+// Reset Calculator Button
+document.querySelector('button[onclick="resetCalculator()"]').addEventListener('click', () => {
+    playSound('resetSound');
+    resetCalculator(); // Call the existing function
+});
+
+// Return to Top Button
+document.getElementById('returnToTopBtn').addEventListener('click', () => {
+    playSound('returnToTopSound');
+    scrollToTop(); // Call the existing function
+});
+
+
+// Store the mute state
+let isMuted = false;
+
+// Function to set the volume for all audio elements
+function setVolume(volume) {
+    const audioElements = document.querySelectorAll('audio');
+    audioElements.forEach(audio => {
+        audio.volume = volume;
+    });
+}
+
+// Volume Slider Event Listener
+document.getElementById('volumeSlider').addEventListener('input', function () {
+    const volume = parseFloat(this.value);
+    setVolume(volume);
+    isMuted = volume === 0; // Automatically mute if volume is set to 0
+    updateMuteButtonText();
+});
+
+// Mute/Unmute Button
+document.getElementById('muteButton').addEventListener('click', function () {
+    const volumeSlider = document.getElementById('volumeSlider');
+    if (isMuted) {
+        // Unmute: Restore the previous volume
+        const previousVolume = parseFloat(volumeSlider.value) || 1;
+        setVolume(previousVolume);
+        isMuted = false;
+    } else {
+        // Mute: Set volume to 0
+        setVolume(0);
+        isMuted = true;
+    }
+    updateMuteButtonText();
+});
+
+// Update the mute button text based on the state
+function updateMuteButtonText() {
+    const muteButton = document.getElementById('muteButton');
+    muteButton.textContent = isMuted ? 'Unmute' : 'Mute';
+}
+
+// Initialize the volume to match the slider's value
+setVolume(document.getElementById('volumeSlider').value);
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const dnaStrand = document.getElementById("dnaStrand");
+    const numPairs = 14;
+    const radius = 45; 
+    const widthStep = 620 / (numPairs - 1); 
+    const twistFactor = 1.2;
+
+    const colors = ["red", "blue", "green", "yellow", "orange", "purple", "cyan", "magenta", "lime", "pink", "white", "teal"];
+
+    for (let i = 0; i < numPairs; i++) {
+        let angle = (i / numPairs) * Math.PI * 2 * twistFactor;
+        let colorIndex = i % colors.length;
+
+        let leftDot = document.createElement("div");
+        let rightDot = document.createElement("div");
+        let rod = document.createElement("div");
+
+        leftDot.classList.add("cell");
+        rightDot.classList.add("cell");
+        rod.classList.add("rod");
+
+        leftDot.style.backgroundColor = colors[colorIndex];
+        rightDot.style.backgroundColor = colors[(colorIndex + 1) % colors.length];
+
+        // Position dots
+        let xPos = (i * widthStep) - 310;
+        let yPosLeft = Math.cos(angle) * radius;
+        let yPosRight = Math.cos(angle + Math.PI) * radius;
+        let zPosLeft = Math.sin(angle) * radius;
+        let zPosRight = Math.sin(angle + Math.PI) * radius;
+
+        leftDot.style.transform = `translate3d(${xPos}px, ${yPosLeft}px, ${zPosLeft}px)`;
+        rightDot.style.transform = `translate3d(${xPos}px, ${yPosRight}px, ${zPosRight}px)`;
+
+        // Position rod **between** the two dots
+        let rodY = (yPosLeft + yPosRight) / 2;
+        let rodZ = (zPosLeft + zPosRight) / 2;
+        rod.style.transform = `translate3d(${xPos}px, ${rodY}px, ${rodZ}px)`;
+
+        dnaStrand.appendChild(leftDot);
+        dnaStrand.appendChild(rightDot);
+        dnaStrand.appendChild(rod);
+    }
+
+    setTimeout(() => {
+        document.getElementById("loading-container").style.display = "none";
+    }, 3000);
+});
+
+
 
         
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
