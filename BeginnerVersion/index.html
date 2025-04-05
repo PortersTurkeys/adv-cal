@@ -950,7 +950,7 @@
             <h2 class="subtitle">(Calculate by Variety Name)</h2>
         </div>
         
-        <img src="Pictures/Tails.jpg" alt="Right Image" class="logo right-logo">
+        <img src="https://porterturkeys.com/Pictures/Tails.jpg" alt="Right Image" class="logo right-logo">
     </div>
 
     <div class="horizontal-container">
@@ -1099,7 +1099,6 @@
 <audio id="resetSound" src="https://porterturkeys.com/Sounds/reset.mp3" preload="auto"></audio>
 <audio id="returnToTopSound" src="https://porterturkeys.com/Sounds/returnwoosh.mp3" preload="auto"></audio>
 <audio id="errorSound" src="https://porterturkeys.com/Sounds/pop-error.mp3" preload="auto"></audio>
-<script src="https://turkeycolorcalculator.com/PredefinedCrosses.js"></script>   
 <audio id="selectSound" src="https://porterturkeys.com/Sounds/AlleleSelect.mp3" preload="auto"></audio>
 <audio id="imageToggleSound" src="https://porterturkeys.com/Sounds/hide-n-show-geno.mp3" preload="auto"></audio>
 
@@ -1110,7 +1109,7 @@
     <p id="errorModalMessage"></p>
     <button onclick="closeErrorModal()">OK</button>
 </div>
-
+<script src="https://turkeycolorcalculator.com/PredefinedCrosses.js"></script>   
   
 <!-- Start Bravenet.com Service Code -->
 <script type="text/javascript" src="https://pub40.bravenet.com/counter/code.php?id=410847&usernum=3351720541&cpv=3"></script>
@@ -1122,10 +1121,8 @@
     </footer>
     <script>
    const basePicturePath = 'https://porterturkeys.com/Pictures/';
-   
-    
-
-function updateSuggestions(type) {
+        
+   function updateSuggestions(type) {
     const inputElement = document.getElementById(type + 'Suggestion');
     const dropdownElement = document.getElementById(type + 'Suggestions');
     const inputVal = inputElement.value.trim().toUpperCase();
@@ -1138,7 +1135,7 @@ function updateSuggestions(type) {
         // Normalize input (remove extra spaces & allow word reversal)
         const inputWords = inputVal.split(/\s+/).sort().join(' ');
 
-        const filtered = varieties.filter(variety => {
+    const filtered = varieties.filter(variety => {
     const normalizedInput = inputVal.toUpperCase().trim();
     const varietyName = variety.name.toUpperCase().trim();
 
@@ -1167,9 +1164,7 @@ function updateSuggestions(type) {
     return getSimilarityScore(normalizedInput, varietyName) > 0.6;
 });
 
-
-
-        // Display suggestions
+// Display suggestions
         filtered.forEach(variety => {
             const div = document.createElement('div');
             div.textContent = variety.name;
@@ -1431,7 +1426,7 @@ function displayGenotypeImage(containerId, variety, gender, genotype = '') {
     const varietyWithoutSpaces = trimmedVariety.replace(/\s/g, '');
 
     const picturePath = `${basePicturePath}${sexPrefix}${varietyWithoutSpaces}.jpg`;
-    const fallbackImagePath = 'https://porterturkeys.com/Pictures/image-not-available.jpg'; // Your placeholder image
+    const fallbackImagePath = 'https://porterturkeys.com/Pictures/image-not-available.jpg'; // placeholder image
 
     imageContainer.innerHTML = `
         <img src="${picturePath}" alt="${variety} ${gender} Image" class="clickable-image"
