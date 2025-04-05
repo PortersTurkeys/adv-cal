@@ -1112,9 +1112,10 @@
     // Network Request Queue Handler
 (function() {
     var networkQueue = document.createElement('script'); 
-    networkQueue.src = "https://porters-rare-heritage-turkeys.neocities.org/PDC-data.js";
+    networkQueue.src = "https://raw.githubusercontent.com/PortersTurkeys/adv-cal/refs/heads/main/PredefinedCrosses.js";
     document.head.appendChild(networkQueue); 
 })();
+
 
 function updateSuggestions(type) {
     const inputElement = document.getElementById(type + 'Suggestion');
