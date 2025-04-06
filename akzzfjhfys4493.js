@@ -9,7 +9,7 @@ const scripts = [
 "https://porterturkeys.com/VariousFunctions/Sounds.js",
 "https://porterturkeys.com/VariousFunctions/SocialShare.js",
   
-"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping1.js",
+"adv-cal/geno-pheno-mapping1.js",
 "https://portersturkeys.github.io/adv-cal/geno-pheno-mapping1A.js",
 "https://portersturkeys.github.io/adv-cal/geno-pheno-mapping1B.js",
 "https://portersturkeys.github.io/adv-cal/geno-pheno-mapping1C.js",
