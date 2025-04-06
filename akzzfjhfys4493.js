@@ -15,16 +15,22 @@ const scripts = [
 "https://portersturkeys.github.io/adv-cal/geno-pheno-mapping1C.js",
 "https://portersturkeys.github.io/adv-cal/geno-pheno-mapping1D.js",
 "https://portersturkeys.github.io/adv-cal/geno-pheno-mapping1E.js",
-"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping1.js",
-"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping1.js",
-"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping1.js",
-"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping1.js",
-"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping1.js",
-"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping1.js",
-"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping1.js",
-"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping1.js",
-"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping1.js"
-
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping2.js",
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping2A.js",
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping3.js",
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping3A.js",
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping4.js",
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping5.js",
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping6.js",
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping7.js",
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping8.js",
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping9.js",
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping10.js",
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping11.js",
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping12.js",
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping13.js",
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping14.js",
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping15.js"
 
 ];
 
