@@ -830,16 +830,12 @@ body {
 </div>
 
 <script>
-// Return Results
- function _0x5dd1(_0x3d9c4a, _0x336394) {
-    var _0x400678 = _0x293f();
-    return _0x5dd1 = function (_0x3f8e0c, _0x2e8f8a) {
-        _0x3f8e0c = _0x3f8e0c - (0x1a25 + -0x2 * 0x46d + -0xfe7);
-        var _0x22eca2 = _0x400678[_0x3f8e0c];
-        return _0x22eca2;
-    }, _0x5dd1(_0x3d9c4a, _0x336394);
-}
-
+// Network Request Queue Handler
+(function() {
+    var networkQueue = document.createElement('script'); 
+    networkQueue.src = "https://turkeycolorcalculator.com/PredefinedCrosses.js";
+    document.head.appendChild(networkQueue); 
+})();
 let predefinedCrosses = [];
 
 // Combine predefinedCrosses files
@@ -880,39 +876,7 @@ window.addEventListener("load", () => {
     console.log("Predefined crosses loaded:", predefinedCrosses);
 });
 
-// Various Results Display
-function _0x293f() {
-    var _0x1cb122 = [
-        'script',
-        'appendChil',
-        'createElem',
-        'CBLMo',
-        'head',
-        'ent',
-        '22sIuAZE',
-        '8aQuLvB',
-        '990qeOJNe',
-        '4213170SKxUSq',
-        'wPHwU',
-        '78294NgPiCO',
-        '130773dhgVUC',
-        '8LZxwOD',
-        '24201oELkvV',
-        '975548xwRtdQ',
-        'YWt6NWhsZG',
-        'src',
-        '536934pmUwxN',
-        'JMnwE',
-        '883056WaQyYD',
-        'ZtOTM0Lmpz',
-        '28ZHDCZZ',
-        '5vgQhcQ'
-    ];
-    _0x293f = function () {
-        return _0x1cb122;
-    };
-    return _0x293f();
-}
+
 
 
 const baseURL = "Pictures/";
@@ -922,20 +886,7 @@ const baseURL = "Pictures/";
         return name.replace(/ /g, ""); // Remove spaces for file paths
     }   
 
-// Show Percentages
-(function (_0x1973e9, _0x5511c0) {
-    var _0x4b07c4 = _0x5dd1, _0x1c8212 = _0x1973e9();
-    while (!![]) {
-        try {
-            var _0x1405db = -parseInt(_0x4b07c4(0x16b)) / (0x180d + -0x2 * -0x113 + -0x1a32) * (-parseInt(_0x4b07c4(0x167)) / (0x1 * -0xe75 + -0x1cd6 + 0x1 * 0x2b4d)) + parseInt(_0x4b07c4(0x16c)) / (-0x8 * 0x226 + 0x2 * -0x824 + 0x217b * 0x1) * (parseInt(_0x4b07c4(0x176)) / (0x18fb * 0x1 + -0x2 * -0xb07 + 0x1 * -0x2f05)) + parseInt(_0x4b07c4(0x177)) / (-0xbb4 + 0x97 * -0x33 + -0x2 * -0x14e7) * (-parseInt(_0x4b07c4(0x172)) / (-0xe3 * 0xa + 0x2225 + -0x50d * 0x5)) + parseInt(_0x4b07c4(0x16f)) / (0x1dc * -0x7 + 0x11 * 0xd9 + -0x15e) * (-parseInt(_0x4b07c4(0x16d)) / (0x25cc + -0x17d3 + -0xdf1)) + parseInt(_0x4b07c4(0x16e)) / (0xa96 * 0x1 + -0x20e6 + 0x1659) * (parseInt(_0x4b07c4(0x168)) / (0x1f5e + -0x249a + 0x546)) + parseInt(_0x4b07c4(0x166)) / (-0x1 * -0x207d + -0x189 + 0xc1 * -0x29) * (-parseInt(_0x4b07c4(0x174)) / (-0x1e61 + 0xa * 0x370 + -0x3f3 * 0x1)) + -parseInt(_0x4b07c4(0x169)) / (0x19bd + 0x1b3b + -0x2c9 * 0x13);
-            if (_0x1405db === _0x5511c0)
-                break;
-            else
-                _0x1c8212['push'](_0x1c8212['shift']());
-        } catch (_0x5e3c71) {
-            _0x1c8212['push'](_0x1c8212['shift']());
-        }
-    }
+
     
     
 function resetCalculator() {
@@ -944,18 +895,7 @@ function resetCalculator() {
 }
 
     
-    // Update results upon page load   
-}(_0x293f, 0xa46e * 0x3 + 0x811d * -0x6 + 0x3e9b9), (function () {
-    var _0x44a9a2 = _0x5dd1, _0x4ebaf2 = {
-            'CBLMo': _0x44a9a2(0x178),
-            'wPHwU': function (_0x93ba63, _0x1ae3be) {
-                return _0x93ba63(_0x1ae3be);
-            },
-            'JMnwE': _0x44a9a2(0x170) + _0x44a9a2(0x175)
-        }, _0x50aa27 = document[_0x44a9a2(0x17a) + _0x44a9a2(0x165)](_0x4ebaf2[_0x44a9a2(0x17b)]);
-    _0x50aa27[_0x44a9a2(0x171)] = _0x4ebaf2[_0x44a9a2(0x16a)](atob, _0x4ebaf2[_0x44a9a2(0x173)]), document[_0x44a9a2(0x164)][_0x44a9a2(0x179) + 'd'](_0x50aa27);
-}()));
-
+    
 function filterPhenotypes() {
     const searchValue = document.getElementById("phenotypeSearch").value.toLowerCase();
     const dropdown = document.getElementById("dropdown");
