@@ -167,7 +167,7 @@ function calculateOffspring() {
 
 
                                             const basePicturePath =
-                                                'https://porters-rare-heritage-turkeys.neocities.org/Pictures/';
+                                                'https://raw.githubusercontent.com/PortersTurkeys/Pictures/refs/heads/main/';
 
                                             const maleGenotype = {
                                                 phenotype: phenotype || 'To be defined',
