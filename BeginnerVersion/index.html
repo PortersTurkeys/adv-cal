@@ -941,7 +941,7 @@
             <h2 class="subtitle">(Calculate by Variety Name)</h2>
         </div>
         
-        <img src="https://raw.githubusercontent.com/PortersTurkeys/Pictures/refs/heads/mainTails.jpg" alt="Right Image" class="logo right-logo">
+        <img src="https://raw.githubusercontent.com/PortersTurkeys/Pictures/refs/heads/main/Tails.jpg" alt="Right Image" class="logo right-logo">
     </div>
 
     <div class="horizontal-container">
@@ -1061,7 +1061,7 @@
         </a>
          <!-- X Share Button -->
          <a href="https://x.com/intent/tweet?url=https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator2&text=Check%20out%20this%20awesome%20Turkey%20Color%20Calculator!" target="_blank" style="margin: 30px; display: inline-block; vertical-align: middle;">
-            <img src="https://porters-rare-heritage-turkeys.neocities.org/Pictures/logo%20x.jpg" alt="Share on X" style="width: 29px; height: 29px;">
+            <img src="https://raw.githubusercontent.com/PortersTurkeys/Pictures/refs/heads/main/logo%20x.jpg" alt="Share on X" style="width: 29px; height: 29px;">
         </a>
         <!-- Pinterest Share Button -->
         <a href="https://pinterest.com/pin/create/button/?url=https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator2&media=Tails.jpg&description=Try%20this%20Turkey%20Color%20Calculator%20for%20your%20heritage%20breeding%20needs!" target="_blank" style="margin: 30px; display: inline-block; vertical-align: middle;">
@@ -1106,7 +1106,7 @@
     </footer>
     
     <script>
-    const basePicturePath = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/';
+    const basePicturePath = 'https://raw.githubusercontent.com/PortersTurkeys/Pictures/refs/heads/main/';
     
     // Network Request Queue Handler
 (function() {
@@ -1414,7 +1414,7 @@ function closeDonationPopup() {
     const varietyWithoutSpaces = trimmedVariety.replace(/\s/g, '');
 
     const picturePath = `${basePicturePath}${sexPrefix}${varietyWithoutSpaces}.jpg`;
-    const fallbackImagePath = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/image-not-available.jpg'; // Your placeholder image
+    const fallbackImagePath = 'https://raw.githubusercontent.com/PortersTurkeys/Pictures/refs/heads/main/image-not-available.jpg'; // Your placeholder image
 
     imageContainer.innerHTML = `
         <img src="${picturePath}" alt="${variety} ${gender} Image" class="clickable-image"
@@ -1454,7 +1454,7 @@ function displayResults(containerId, results, gender) {
         genderImage.style.marginRight = '-2px'; // Reduce space between images further
         genderImage.onerror = function () {
             this.onerror = null;
-            this.src = 'Pictures/image-not-available.jpg'; // Fallback image
+            this.src = 'https://raw.githubusercontent.com/PortersTurkeys/Pictures/refs/heads/main/image-not-available.jpg'; // Fallback image
         };
         genderImageContainer.appendChild(genderImage);
 
@@ -1474,7 +1474,7 @@ function displayResults(containerId, results, gender) {
         poultImage.style.marginLeft = '-2px'; // Reduce space between images further
         poultImage.onerror = function () {
             this.onerror = null;
-            this.src = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/image-not-available.jpg'; // Fallback image
+            this.src = 'https://raw.githubusercontent.com/PortersTurkeys/Pictures/refs/heads/main/image-not-available.jpg'; // Fallback image
         };
         poultImageContainer.appendChild(poultImage);
 
@@ -1522,8 +1522,8 @@ function displayResults(containerId, results, gender) {
 }
 
  function setDefaultImages() {
-            const defaultSireImage = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/TomClipArt.jpg';
-            const defaultDamImage = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/HenClipArt.jpg';
+            const defaultSireImage = 'https://raw.githubusercontent.com/PortersTurkeys/Pictures/refs/heads/main/TomClipArt.jpg';
+            const defaultDamImage = 'https://raw.githubusercontent.com/PortersTurkeys/Pictures/refs/heads/main/HenClipArt.jpg';
 
             displayDefaultImage('sireImageContainer', defaultSireImage);
             displayDefaultImage('damImageContainer', defaultDamImage);
