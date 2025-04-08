@@ -1438,14 +1438,14 @@ const phenotypeMapping7 = {
 "b1b1 Ccg Dd Nn pnpn Slsl": "Tiger Blue",
 "b1b1 Ccg Dd Ee Nn pnpn Slsl": "Tiger Blue",
 
-"b1b1 Ccg Dd Pnpn": "Tiger Blue",
-"b1b1 Ccg Dd Ee Pnpn": "Tiger Blue",
-"b1b1 Ccg Dd Ee Nn Pnpn": "Tiger Blue",
-"b1b1 Ccg Dd Nn Pnpn": "Tiger Blue",
-"b1b1 Ccg Dd Pnpn Slsl": "Tiger Blue",
-"b1b1 Ccg Dd Ee Pnpn Slsl": "Tiger Blue",
-"b1b1 Ccg Dd Nn Pnpn Slsl": "Tiger Blue",
-"b1b1 Ccg Dd Ee Nn Pnpn Slsl": "Tiger Blue",
+"b1b1 Ccg Dd Pnpn": "Tiger Blue.",
+"b1b1 Ccg Dd Ee Pnpn": "Tiger Blue.",
+"b1b1 Ccg Dd Ee Nn Pnpn": "Tiger Blue.",
+"b1b1 Ccg Dd Nn Pnpn": "Tiger Blue.",
+"b1b1 Ccg Dd Pnpn Slsl": "Tiger Blue.",
+"b1b1 Ccg Dd Ee Pnpn Slsl": "Tiger Blue.",
+"b1b1 Ccg Dd Nn Pnpn Slsl": "Tiger Blue.",
+"b1b1 Ccg Dd Ee Nn Pnpn Slsl": "Tiger Blue.",
 
 
 // Tiger Blue Narragansett
