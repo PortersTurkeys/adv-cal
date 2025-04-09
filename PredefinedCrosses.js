@@ -1,6 +1,6 @@
 const scriptUrls = [ 
-    "https://porters-rare-heritage-turkeys.neocities.org/PDC/SirePhenos.js",
-    "https://porters-rare-heritage-turkeys.neocities.org/PDC/DamPhenos.js",
+    "https://portersturkeys.github.io/adv-cal/BeginnerVersion/PDC/SirePhenos.js",
+    "https://portersturkeys.github.io/adv-cal/BeginnerVersion/PDC/DamPhenos.js",
     "https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses1.js",
     "https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses2.js",
     "https://porters-rare-heritage-turkeys.neocities.org/PDC/PredefinedCrosses3.js",
