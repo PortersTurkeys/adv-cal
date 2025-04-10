@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Turkey Color Calculator Operating Instructions - Porter's Rare Heritage Turkeys</title>
+    <meta name="description" content="Guide for using the turkey color calculator.">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5e1c1;
+        }
+
+        /* Title Section */
+      .site-title {
+    font-size: 3em;
+    font-weight: bold;
+    color: black; /* Black text color for the title */
+    background-color: #1E82E6; /* Blue background */
+    text-shadow: 
+        -2px -2px 0 tan, /* White shadow on the top-left */
+        2px 2px 8px rgba(0, 0, 0, 0.7); /* Black shadow with a blur */
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    width: 100%; /* Extend the background to the full width of the page */
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .site-title {
+        font-size: 2em; /* Smaller font size for mobile */
+        padding: 15px; /* Adjust padding to fit better on small screens */
+    }
+}
+
+        /* Navbar Styles */
+        .navbar {
+            width: 100%;
+            background-image: url("https://porters-rare-heritage-turkeys.neocities.org/Pictures/wood%20background.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 5px 0;
+            box-sizing: border-box;
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .navbar li {
+            padding: 0 15px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1em;
+            display: block;
+            padding: 10px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background-color: #575757;
+            color: yellow;
+            border-radius: 4px;
+        }
+
+        /* Menu Toggle Button (Hidden on Desktop) */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: white;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 4px;
+        }
+
+        /* Header Styles */
+        .header {
+            margin: 20px 0;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        /* Content Styles */
+        .content {
+            padding: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content p {
+            margin: 1em 0;
+            color: rgb(0, 0, 0);
+            font-size: 1.1em;
+            text-align: left;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: black;
+            background-color: transparent;
+            font-weight: bold;
+        }
+
+        /* Mobile-specific styles */
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                display: none;
+                width: 100%;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+
+            .navbar ul.active {
+                display: flex;
+            }
+
+            .navbar li {
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .navbar a {
+                padding: 10px 0;
+                width: 100%;
+            }
+
+            .content p {
+                font-size: 1em;
+                margin: 0.5em 0;
+            }
+
+            .content img {
+                margin-bottom: 5px;
+                max-width: 100%;
+                height: auto;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .site-title {
+                font-size: 1.5em;
+                padding: 15px;
+            }
+        }
+
+        /* Adjust image size for mobile landscape */
+        @media screen and (max-width: 1024px) and (orientation: landscape) {
+            .content img {
+                max-width: 80%;
+                margin: 15px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Website Title -->
+    <div class="site-title"><i>Porter's Rare Heritage Turkeys</i></div>
+
+    <div class="navbar">
+        <div class="navbar-container">
+            <button class="menu-toggle">☰ Menu</button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="https://porters-rare-heritage-turkeys.neocities.org/Varieties">Varieties</a></li>
+                <li><a href="https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator">Advanced User Color Calculator</a></li>
+                <li><a href="https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator2">Beginner Color Calculator</a></li>
+                <li><a href="https://porters-rare-heritage-turkeys.neocities.org/Phenotypes-Genotypes">Phenotypes/Genotypes</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Page Title -->
+    <div class="header">
+       <h1><strong><span style="color: blue; font-size: 1.25em;">Turkey Color Calculator</span><br>"Advanced User Version"<br><br>(Operating Instructions)</strong></h1>
+
+
+    </div>
+
+    <div class="content">
+        <p>This calculator interface includes sliders, dropdowns, and interactive buttons for selecting and viewing turkey genetic traits.</p>
+
+        <h3>Adjust Image Size:</h3>
+        <p>Use the "Adjust Image Size" slider to change the display size of the sire and dam images.</p>
+
+        <h3>Select Genotypes:</h3>
+        <p>Select genotypes for the "Sire" and "Dam" using dropdowns labeled for various genetic loci (e.g., b, C, d, E, N, Pn, R, Sl). These selections determine the traits to be used in the calculations. A basic understanding of turkey color genetics will help in making selections.</p>
+        
+        <h3>Phenotype/Genotype Guide:</h3>
+        <p>For assistance in determining genotypes, refer to the phenotype/genotype page.</p>    
+
+        
+        <h3>Calculate Offspring:</h3>
+        <p>Click "Calculate Offspring" to generate potential offspring outcomes based on selected sire and dam genotypes. Results include male and female offspring with their phenotypes, genotypes, ratios, and images.</p>
+        
+         <h3>Calculation Complete Popup:</h3>
+        <p>After clicking the "Calculate Offspring" button, a popup saying "Calculation complete, scroll down to view results" will briefly appear to guide you to the results section.</p>
+        
+        
+        <h3>Genotype Display Options:</h3>
+        <p>Toggle between "Long Genotype" and "Short Genotype" formats for easier viewing. An option is also available to "Hide Offspring Genotype" to simplify the results view.</p>
+        
+
+       
+       <h3>Offspring Ratios and Percentages:</h3>
+        <p>Each offspring result includes both a ratio and a percentage, showing the expected likelihood of each outcome based on Mendelian inheritance.</p>
+
+        
+
+        <h3>Offspring Summary Chart:</h3>
+        <p>The Offspring Summary Chart displays offspring results divided into "Male Offspring" and "Female Offspring" sections, showing images, variety names, and corresponding genotypes. Ratios and percentages accompany each offspring, giving insights into inheritance likelihoods.</p>
+        
+        <h3>Scroll-to-Top Button:</h3>
+        <p>Use the scroll-to-top button at the bottom of the page to quickly return to the top after viewing results.</p>
+
+       
+       <h3>Save and Manage Favorites:</h3>
+        <p>Use the "Name and Save Favorite" option to store specific varieties. Assign a custom name if you desire for easy identification and quick access to saved selections. Additionally, use the "Recall Favorite" to retrieve saved varieties or "Delete" options to remove them from saved entries as needed.</p>
+       
+       
+       <h3>Reset Calculator:</h3>
+        <p>Click "Reset Calculator" to clear selections, reset images, and remove previous offspring results. A popup will appear to indicate the calculator has been reset and is ready for another selection.</p>
+       
+
+        <h3>Explore Different Genotype Combinations:</h3>
+        <p>Experiment with various genotype selections for the sire and dam to view diverse breeding outcomes.</p>
+
+        
+
+        <p>Enjoy exploring turkey genetics with our advanced calculator!</p>
+
+        <p>Kevin<br>Porter's Rare Heritage Turkeys</p>
+        
+        <a href="https://porters-rare-heritage-turkeys.neocities.org/TurkeyColorCalculator"><strong><center>Return to the Advanced User Calculator</center></strong></a>
+        
+    </div>
+
+    <footer>
+        &copy;<strong>2024 Porter's Rare Heritage Turkeys</strong>
+    </footer>
+
+    <!-- JavaScript to toggle the menu on mobile -->
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.navbar ul').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
