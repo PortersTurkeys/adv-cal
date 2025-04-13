@@ -1,0 +1,19 @@
+const predefinedCrosses10 = [
+  
+  
+  
+  
+
+  
+  
+  
+  
+  ];
+
+
+
+
+
+
+
+
