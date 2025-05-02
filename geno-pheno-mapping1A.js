@@ -2534,7 +2534,7 @@ const phenotypeMapping1A = {
 
 
 // b1b1 BLACK WINGED BRONZE, done
-"b1b1": "Black Winged Bronze",
+"b'b'": "Black Winged Bronze",
 "b1b1 Ee": "Black Winged Bronze",
 "b1b1 Nn": "Black Winged Bronze",
 "b1b1 Slsl": "Black Winged Bronze",
