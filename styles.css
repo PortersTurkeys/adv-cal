@@ -427,7 +427,7 @@
         padding: 10px 20px;
     }
 
-  @media (max-width: 768px) {
+  @media (max-width: 800px) {
     .menu-toggle {
         display: block;
         font-size: 1.125em;
@@ -473,7 +473,7 @@
 }
 
 /* Mobile Portrait Mode Adjustments */
-@media only screen and (max-width: 768px) and (orientation: portrait) {
+@media only screen and (max-width: 800px) and (orientation: portrait) {
     .menu-toggle {
         display: block;
         cursor: pointer;
@@ -518,7 +518,7 @@
 
 
 /* Mobile Menu Styling for Landscape (orientation: landscape) */
-@media (orientation: landscape) and (max-width: 768px) {
+@media (orientation: landscape) and (max-width: 800px) {
     .menu-toggle {
         display: block;
         font-size: 1.4em;
@@ -558,7 +558,7 @@
 
 
 /* Mobile Portrait Mode Adjustments - One logo at the top */
-@media only screen and (max-width: 768px) and (orientation: portrait) {
+@media only screen and (max-width: 800px) and (orientation: portrait) {
     .header-container {
         display: flex;
         flex-direction: column;
@@ -631,7 +631,7 @@
 }
 
 /* Mobile Portrait Mode Adjustments */
-@media only screen and (max-width: 768px) and (orientation: portrait) {
+@media only screen and (max-width: 800px) and (orientation: portrait) {
     .menu-toggle {
         display: block;
         cursor: pointer;
@@ -676,7 +676,7 @@
 
 
 /* Hide menu toggle on desktop (min-width: 769px) */
-@media (min-width: 769px) {
+@media (min-width: 800px) {
     .menu-toggle {
         display: none;
     }
