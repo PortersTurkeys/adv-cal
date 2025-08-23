@@ -428,16 +428,17 @@
     }
 
   @media (max-width: 1024px) {
-    .menu-toggle {
-        display: block;
-        font-size: 1.125em;
-        cursor: pointer;
-        color: white;
-        padding: 12px 20px;
-        
-        border: none;
-        text-align: center;
-    }
+   .menu-toggle {
+    display: inline-block;  /* shrink to fit text */
+    padding: 8px 12px;      /* add space around text */
+    background-color: rgba(0,0,0,0.7); /* semi-transparent black */
+    border: none;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    border-radius: 4px;     /* optional, for rounded corners */
+}
+
 
     .menu-bar {
         display: none;
