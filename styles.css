@@ -427,19 +427,11 @@
         padding: 10px 20px;
     }
 
-  @media (max-width: 1024px) {
-   .menu-toggle {
-    display: inline-block;          /* shrink to text width */
-    padding: 8px 12px;              /* space around text */
-    background-color: rgba(0,0,0,0.7); /* semi-transparent black */
-    border: none;
-    cursor: pointer;
-    color: white;
-    text-align: center;
-    border-radius: 4px;             /* rounded corners */
-    width: auto !important;         /* override any flex/stretch width */
-    margin: 0 auto;                 /* center horizontally */
-}
+
+
+
+
+
 
 
 
