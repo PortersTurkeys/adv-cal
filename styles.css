@@ -442,6 +442,14 @@
 }
 
 
+.toggle-wrapper {
+    display: inline-block;                 /* shrink to text */
+    background-color: rgba(0,0,0,0.7);    /* semi-transparent black */
+    padding: 5px 10px;                     /* space around text */
+    border-radius: 4px;                    /* rounded corners */
+    cursor: pointer;                       /* pointer cursor */
+    text-align: center;                     /* center text inside */
+}
 
 
 
