@@ -428,28 +428,18 @@
     }
 
 
+@media (max-width: 1024px) {
+    .menu-toggle {
+        display: block;
+        font-size: 1.125em;
+        cursor: pointer;
+        color: white;
+        padding: 12px 20px;
+        background-color: rgba(0, 0, 0, 0.7);
+        border: none;
+        text-align: center;
+    }
 
-.menu-toggle {
-    all: unset;              /* removes all default styling */
-    display: inline-block;   /* shrink to text */
-    padding: 8px 12px;
-    background-color: rgba(0,0,0,0.7); /* desired color */
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-    font-size: 1.125em;
-}
-
-
-.toggle-wrapper {
-    display: inline-block;                 /* shrink to text */
-    background-color: rgba(0,0,0,0.7);    /* semi-transparent black */
-    padding: 5px 10px;                     /* space around text */
-    border-radius: 4px;                    /* rounded corners */
-    cursor: pointer;                       /* pointer cursor */
-    text-align: center;                     /* center text inside */
-}
 
 
 
