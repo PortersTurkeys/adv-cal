@@ -5,6 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.75">
     <title>Porter's Turkey Color Calculator - Porter's Rare Heritage Turkeys</title>
     <link rel="stylesheet" href="https://portersturkeys.github.io/adv-cal/styles.css">
+
+
+
+
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+        const validPasswords = ["Admin#1", "Kevin"]; // List of valid passwords
+
+        if (sessionStorage.getItem("accessGranted") !== "true") {
+            let attempts = 0;
+            while (attempts < 2) {
+                const password = prompt("Enter the password to access this page:");
+                if (validPasswords.includes(password)) { // Check if password is in the list
+                    sessionStorage.setItem("accessGranted", "true");
+                    break;
+                } else {
+                    attempts++;
+                    alert("Incorrect password. Please try again.");
+                }
+            }
+            if (attempts === 2) {
+                alert("Access denied. You have exceeded the maximum number of attempts.");
+                window.location.href = "https://your-redirect-url.com"; // Redirect after failed attempts
+            }
+        }
+    });
+    </script>
+
+
+
+    
 </head>
 <body>
 
@@ -1100,3 +1131,4 @@ function resetSearch() {
 </script>
 
 </body></html>
+
