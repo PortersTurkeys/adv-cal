@@ -1,4 +1,7 @@
 const scripts = [
+   
+"https://portersturkeys.github.io/adv-cal/VariousFunctions-AlleleCombos-Ratios.js,
+"https://portersturkeys.github.io/adv-cal/VariousFunctions-CalOff.js",
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-fdsplitfunct.js",
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-fdAllelecomboratio.js",
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-fdCalOff.js",
