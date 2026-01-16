@@ -1,4 +1,4 @@
-    function playSound(soundId) {
+function playSound(soundId) {
     const sound = document.getElementById(soundId);
     if (sound) {
         sound.currentTime = 0; // Reset to start for replayability
@@ -228,7 +228,8 @@ function calculateOffspring() {
         showDonationPopup();
     }
 }
-
+ 
+ 
 
 
 
