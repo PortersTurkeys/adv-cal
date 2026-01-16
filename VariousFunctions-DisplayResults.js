@@ -8,7 +8,7 @@ function displayResults(containerId, offspring, sex) {
 
         const genotype = removeUnusedAlleles(offspringItem.genotype);
         const phenotype = offspringItem.phenotype || 'To be defined';
-        const basePicturePath = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/';
+        const basePicturePath = 'https://raw.githubusercontent.com/PortersTurkeys/Pictures/refs/heads/main/';
         const fallbackImagePath = 'https://porters-rare-heritage-turkeys.neocities.org/Pictures/image-not-available.jpg'; 
         const heterozygousGenotype = getHeterozygousGenotype(genotype);
         const longGenotype = offspringItem.genotype;
