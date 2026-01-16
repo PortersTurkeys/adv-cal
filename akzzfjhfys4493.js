@@ -1,7 +1,9 @@
 const scripts = [
    
-"https://portersturkeys.github.io/adv-cal/VariousFunctions-AlleleCombos-Ratios.js,
-"https://portersturkeys.github.io/adv-cal/VariousFunctions-CalculateOffspring.js,
+"https://portersturkeys.github.io/adv-cal/VariousFunctions-AlleleCombos-Ratios.js",
+"https://portersturkeys.github.io/adv-cal/VariousFunctions-CalculateOffspring.js",
+"https://portersturkeys.github.io/adv-cal/VariousFunctions-DisplayResults.js",  
+   
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-fdsplitfunct.js",
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-fdAllelecomboratio.js",
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-fdCalOff.js",
@@ -11,7 +13,7 @@ const scripts = [
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-DNALoader.js",
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-Sounds.js",
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-SocialShare.js",
-"https://portersturkeys.github.io/adv-cal/VariousFunctions-LatestFunctions.js,  
+"https://portersturkeys.github.io/adv-cal/VariousFunctions-LatestFunctions.js",  
 
   
   
