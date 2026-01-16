@@ -4388,11 +4388,50 @@ const phenotypeMapping1 = {
 "Bb1 Cc e- Fdfd Pnpn Slsl Spsp": "Barred Chocolate",
 "Bb1 Cc e- Fdfd pnpn Slsl Spsp": "Barred Chocolate",
 
+// BARRED MARBLED LAVENDER
+"Bb cgcg DD nn": "Barred Marbled Lavender",
+"Bb cgcg DD Ee nn": "Barred Marbled Lavender",
+"Bb cgcg DD nn Slsl": "Barred Marbled Lavender",
+"Bb cgcg DD nn Pnpn": "Barred Marbled Lavender",
+"Bb cgcg DD nn pnpn": "Barred Marbled Lavender",
+"Bb cgcg DD Ee nn Slsl": "Barred Marbled Lavender",
+"Bb cgcg DD Ee nn Pnpn": "Barred Marbled Lavender",
+"Bb cgcg DD Ee nn pnpn": "Barred Marbled Lavender",
+"Bb cgcg DD nn Pnpn Slsl": "Barred Marbled Lavender",
+"Bb cgcg DD nn pnpn Slsl": "Barred Marbled Lavender",
+"Bb cgcg DD Ee nn Pnpn Slsl": "Barred Marbled Lavender",
+"Bb cgcg DD Ee nn pnpn Slsl": "Barred Marbled Lavender",
+"Bb cgcm DD nn": "Barred Marbled Lavender",
+"Bb cgcm DD Ee nn": "Barred Marbled Lavender",
+"Bb cgcm DD nn Slsl": "Barred Marbled Lavender",
+"Bb cgcm DD nn Pnpn": "Barred Marbled Lavender",
+"Bb cgcm DD nn pnpn": "Barred Marbled Lavender",
+"Bb cgcm DD Ee nn Slsl": "Barred Marbled Lavender",
+"Bb cgcm DD Ee nn Pnpn": "Barred Marbled Lavender",
+"Bb cgcm DD Ee nn pnpn": "Barred Marbled Lavender",
+"Bb cgcm DD Ee nn Pnpn Slsl": "Barred Marbled Lavender",
+"Bb cgcm DD Ee nn pnpn Slsl": "Barred Marbled Lavender",
+"Bb cgcm DD nn Pnpn Slsl": "Barred Marbled Lavender",
+"Bb cgcm DD nn pnpn Slsl": "Barred Marbled Lavender",
+// Bb BARRED MARBLED LAVENDER FEMALES
+"Bb cgcg DD n-": "Barred Marbled Lavender",
+"Bb cgcg DD n- Slsl": "Barred Marbled Lavender",
+"Bb cgcg DD n- Pnpn": "Barred Marbled Lavender",
+"Bb cgcg DD n- pnpn": "Barred Marbled Lavender",
+"Bb cgcg DD n- Pnpn Slsl": "Barred Marbled Lavender",
+"Bb cgcg DD n- pnpn Slsl": "Barred Marbled Lavender",
+"Bb cgcm DD n-": "Barred Marbled Lavender",
+"Bb cgcm DD n- Slsl": "Barred Marbled Lavender",
+"Bb cgcm DD n- Pnpn": "Barred Marbled Lavender",
+"Bb cgcm DD n- pnpn": "Barred Marbled Lavender",
+"Bb cgcm DD n- Pnpn Slsl": "Barred Marbled Lavender",
+"Bb cgcm DD n- pnpn Slsl": "Barred Marbled Lavender",
 
 
 
 
 };
+
 
 
 
