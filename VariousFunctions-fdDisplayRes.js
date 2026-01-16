@@ -9,7 +9,7 @@ function displayResults(containerId, offspring, sex) {
         const genotype = removeUnusedAlleles(offspringItem.genotype);
         const phenotype = offspringItem.phenotype || 'To be defined';
         const basePicturePath = 'https://raw.githubusercontent.com/PortersTurkeys/Pictures/refs/heads/main/';
-        const fallbackImagePath = 'https://raw.githubusercontent.com/PortersTurkeys/Pictures/refs/heads/main/image-not-available.jpg'; 
+        const fallbackImagePath = 'https://raw.githubusercontent.com/PortersTurkeys/Pictures/refs/heads/main/'; 
         const heterozygousGenotype = getHeterozygousGenotype(genotype);
         const longGenotype = offspringItem.genotype;
         const shortGenotype = genotype;
@@ -134,7 +134,6 @@ const picturePath = phenotype
         </div>
     `;
 }
-
 
 
 
