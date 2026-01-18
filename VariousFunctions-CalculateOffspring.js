@@ -186,7 +186,7 @@ try {
 
 
 // ======================================================
-// ðŸ§¬ GENETICS ENGINE EXPORT (FOR PARENTAGE CALCULATOR)
+// 🧬 GENETICS ENGINE EXPORT (FOR PARENTAGE CALCULATOR)
 // SAFE: DOES NOT MODIFY calculateOffspring() LOGIC
 // ======================================================
 
