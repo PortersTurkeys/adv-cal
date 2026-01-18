@@ -224,7 +224,7 @@
         /* Navbar Styles */
         .navbar {
             width: 100%;
-            background-image: url("https://github.com/PortersTurkeys/Pictures/blob/main/woodbackground.jpg");
+            background-image: url("https://porters-rare-heritage-turkeys.neocities.org/Pictures/wood%20background.jpg");
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -427,8 +427,7 @@
         padding: 10px 20px;
     }
 
-
-@media (max-width: 1024px) {
+  @media (max-width: 1024px) {
     .menu-toggle {
         display: block;
         font-size: 1.125em;
@@ -439,10 +438,6 @@
         border: none;
         text-align: center;
     }
-
-
-
-
 
     .menu-bar {
         display: none;
@@ -820,10 +815,6 @@
 }
 
 
-/* Hide the default bullet points if not desired */
-#results {
-    list-style: none; /* Removes default bullets */
-}
 
 
 
@@ -866,11 +857,15 @@
     background-color: #0056b3; /* Darker blue on hover */
 }
 
+
+
+
+
 /* Style the results container */
 #results {
     margin-top: 20px;
     padding: 15px;
-    border: 2px solid #1E82E6; /* Blue border */
+    border: 3px solid #1E82E6; /* Blue border */
     border-radius: 10px;
     background-color: #f9f9f9; /* Light gray background */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -918,6 +913,8 @@
     color: #007BFF; /* Slightly different blue for error message */
     text-align: center;
 }
+
+
 
 
 
@@ -1001,6 +998,945 @@
         margin-top: 12px;
         font-size: 1.5rem;
     }
+
+
+
+/* Responsive Paywall Layout Fix for Portrait Mobile */
+@media (max-width: 700px) and (orientation: portrait) {
+  .paywall-row {
+    flex-direction: column !important;   /* stack vertically */
+    align-items: center !important;
+  }
+
+  .pay-option {
+    width: 100% !important;
+    max-width: 360px !important;         /* keep them readable size */
+    margin: 6px 0 !important;
+  }
+
+  #donationPopup {
+    max-width: 95vw !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    padding-bottom: 60px !important;
+  }
+
+  .sticky-close {
+    position: static !important;
+    margin-top: 12px !important;
+  }
+}
+
+/* -----New stuff-----  */
+
+
+/* horizontal paywall layout and button polish */
+#donationPopup {
+  max-width: 760px; width: 95vw;
+  max-height: 90vh; overflow-y: auto;
+  padding: 18px 20px; box-sizing: border-box;
+  text-align: center; border-radius: 10px;
+}
+.paywall-row {
+  display: flex; justify-content: space-between;
+  gap: 10px; flex-wrap: nowrap; width: 100%;
+}
+.pay-option {
+  flex: 1; background: #f9f9f9;
+  border: 1px solid #ccc; border-radius: 8px;
+  padding: 8px; text-align: center;
+  font-size: 13px; box-sizing: border-box;
+}
+.pay-option strong {
+  display: block; margin-bottom: 6px;
+  color: #1E82E6; font-size: 14px;
+}
+.amount-btn {
+  background: #f0f0f0; border: 1px solid #ccc;
+  border-radius: 20px; padding: 4px 10px;
+  cursor: pointer; font-size: 13px;
+}
+.amount-btn:hover { background: #1E82E6; color: white; border-color: #1E82E6; }
+
+#donationPopup input[type="email"] {
+  width: 100%; max-width: 320px;
+  font-size: 14px; padding: 6px;
+}
+#unlockEmailBtn {
+  background: #1E82E6; color: #fff;
+}
+#donationPopup button[onclick="resetUnlockEmail()"] {
+  background: #ccc; color: #000;
+}
+.sticky-close button {
+  background: #000; color: #fff;
+  border: none; border-radius: 6px;
+  padding: 6px 12px; cursor: pointer;
+  font-size: 13px; box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+/*  Larger paywall text for all mobile orientations */
+@media (max-device-width: 900px) {
+  #donationPopup {
+    font-size: 18px !important;
+    line-height: 1.4;
+  }
+  #donationPopup strong {
+    font-size: 18px !important;
+  }
+  #donationPopup p,
+  #donationPopup input,
+  #donationPopup button {
+    font-size: 18px !important;
+  }
+}
+
+
+/*  Mobile-only: refined layout for PayPal containers and logos (balanced fit) */
+@media (max-width: 768px) {
+  /* Hide empty PayPal containers by default */
+  [id*="paypal-button-container"] {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* When PayPal is rendered (iframe or button present) */
+  [id*="paypal-button-container"]:has(iframe),
+  [id*="paypal-button-container"]:has(.paypal-buttons) {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    margin-top: 12px !important;
+    margin-bottom: 45px !important;   
+    padding-bottom: 55px !important;  
+    overflow: hidden !important;      
+    position: relative;
+    border-radius: 10px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Slightly reduced scale  */
+  #donationPopup iframe[src*="paypal.com"],
+  #donationPopup .paypal-buttons,
+  #donationPopup .paypal-powered-by,
+  #donationPopup div[class*="powered-by"],
+  #donationPopup img[alt*="PayPal"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: scale(1.12);           
+    transform-origin: top center;
+    display: block !important;
+    margin-top: 8px !important;
+  }
+
+  /* Enlarge credit-card input fields */
+  #donationPopup input[type="text"],
+  #donationPopup input[type="email"],
+  #donationPopup input[type="number"],
+  #donationPopup select {
+    font-size: 1.5rem !important;
+    padding: 0.7em !important;
+  }
+
+  /* Keep form comfortable on Safari/iOS */
+  #donationPopup form {
+    zoom: 1.07;
+  }
+
+
+/*  Landscape mobile refinement: makes popup wider */
+@media (orientation: landscape) and (max-height: 500px) {
+  #donationPopup {
+    max-width: 95vw !important;       /* nearly full width */
+    left: 50% !important;
+    transform: translateX(-50%) translateY(-50%) !important;
+    font-size: 1.05rem;
+  }
+
+  [id*="paypal-button-container"]:has(iframe),
+  [id*="paypal-button-container"]:has(.paypal-buttons) }
+    margin-bottom: 60px !important;
+    padding-bottom: 60px !important;
+    overflow: hidden !important;
+    border-radius: 10px !important;
+  }
+
+  /* Landscape scale balanced to match */
+  #donationPopup iframe[src*="paypal.com"] {
+    transform: scale(1.08) !important; 
+    transform-origin: top center !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+}
+
+/* Mobile portrait: widens the light gray PayPal area */
+@media (max-width: 768px) and (orientation: portrait) {
+  #donationPopup {
+    width: 94vw !important;           
+    max-width: 94vw !important;
+    margin: 0 auto !important;
+    border-radius: 12px !important;
+  }
+
+  /* Gives the PayPal container more breathing room inside */
+  [id*="paypal-button-container"]:has(iframe),
+  [id*="paypal-button-container"]:has(.paypal-buttons) {
+    padding-left: 4vw !important;      /* side space proportional to screen */
+    padding-right: 4vw !important;
+  }
+
+  /* Slightly shrinks iframe  */
+  #donationPopup iframe[src*="paypal.com"] {
+    transform: scale(1.1) !important;
+    transform-origin: top center !important;
+  }
+}
+
+/*  Landscape: widens gray area across the screen */
+@media (orientation: landscape) and (max-height: 500px) {
+  #donationPopup {
+    width: 97vw !important;            
+    max-width: 97vw !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(-50%) !important;
+  }
+
+  [id*="paypal-button-container"]:has(iframe),
+  [id*="paypal-button-container"]:has(.paypal-buttons) {
+    padding-left: 3vw !important;
+    padding-right: 3vw !important;
+  }
+
+  #donationPopup iframe[src*="paypal.com"] {
+    transform: scale(1.08) !important;
+    transform-origin: top center !important;
+  }
+}
+
+
+/*  Make donation message fonts larger on mobile screens */
+@media (max-width: 768px) {
+  #donationPopup #donationMessage {
+    font-size: 22px !important;
+    line-height: 1.5 !important;
+  }
+
+  #donationPopup #donationMessage span {
+    font-size: 24px !important;
+  }
+
+  #donationPopup #donationMessage strong {
+    font-size: 24px !important;
+  }
+}
+
+
+/* Make donation message fonts larger in mobile LANDSCAPE */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  #donationPopup #donationMessage {
+    font-size: 22px !important;
+    line-height: 1.5 !important;
+  }
+
+  #donationPopup #donationMessage span,
+  #donationPopup #donationMessage strong {
+    font-size: 24px !important;
+  }
+}
+
+
+
+/* Base matches theme */
+#switchBeginnerBtn {
+  border: 3px solid black;
+  background: blue;
+  color: white;
+  border-radius: 8px;
+  padding: 4px 4px;          
+  font-size: 15px;          
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  display: inline-block;
+}
+
+/* Portrait Mobile */
+@media screen and (max-width: 768px) and (orientation: portrait) {
+  #switchBeginnerBtn {
+    font-size: 18px !important;
+    padding: 6px 6px !important;
+  }
+}
+
+/* Landscape Mobile */
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  #switchBeginnerBtn {
+    font-size: 18px !important;
+    padding: 6px 6px !important;
+  }
+}
+
+
+
+/* Hover */
+#switchBeginnerBtn:hover {
+  background: lime;
+  color: black;
+  border-color: blue;
+}
+
+
+
+
+
+/* DNA Helix Loader (v27 final line pause for "Now Ready to Calculate") */
+
+#dnaLoaderContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 320px;
+  background: black;
+  border-radius: 16px;
+  box-shadow: 0 0 28px rgba(30,130,230,0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 1s ease;
+  overflow: hidden;
+  border: 4px solid transparent;
+}
+
+#dnaLoaderContainer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 4px;
+  background: linear-gradient(130deg,#1E82E6,#00ffc6,#b84dff,#1E82E6);
+  background-size: 400% 400%;
+  animation: dnaBorderFlow 6s linear infinite;
+  z-index: -1;
+  filter: blur(4px);
+}
+
+@keyframes dnaBorderFlow {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+#dnaLoaderContainer canvas {
+  width: 380px;
+  height: 200px;
+  transform-origin: center center;
+}
+
+#dnaLoaderContainer .loadingText {
+  color:white;
+  font-family:Arial,sans-serif;
+  font-size:1.6rem;
+  font-weight:bold;
+  margin-top:18px;
+  text-shadow:0 0 10px #1E82E6;
+  letter-spacing:0.6px;
+  opacity:0;
+  transition:opacity 0.8s ease;
+  text-align:center;
+}
+
+#dnaLoaderContainer .visible { opacity:1; }
+
+.dot {
+  opacity:0;
+  display:inline-block;
+  animation:dnaDotFade 3s ease-in-out infinite;
+}
+@keyframes dnaDotFade {
+  0%,15%{opacity:0;}
+  30%,70%{opacity:1;}
+  85%,100%{opacity:0;}
+}
+
+@media screen and (max-width:768px) and (orientation:portrait){
+  #dnaLoaderContainer{
+    width:95vw;
+    height:300px;
+    left:50%;               
+    transform:translate(-50%, -50%);
+  }
+  #dnaLoaderContainer canvas{width:85%;height:auto;}
+  #dnaLoaderContainer .loadingText{font-size:1.5rem;}
+}
+
+
+/*  Landscape */
+@media screen and (max-height:480px) and (orientation:landscape){
+  #dnaLoaderContainer{width:70vw;height:330px;}
+  #dnaLoaderContainer canvas{width:63%;height:auto;}
+  #dnaLoaderContainer .loadingText{font-size:1.6rem;margin-top:30px;}
+}
+
+
+.instructionBox {
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    padding: 4px 8px;          
+    border-radius: 4px;
+
+    display: inline-block;
+    width: auto;
+    max-width: 95%;
+    text-align: center;
+    white-space: normal;
+
+    box-shadow: 0 0 6px rgba(0,0,0,0.25);
+}
+
+
+
+#sireVarietyInput,
+#damVarietyInput,
+#searchInput {
+    font-size: 18px !important;
+    
+    color: blue !important;
+    -webkit-text-fill-color: blue !important;
+    background-color: white !important;     
+    border: 2px solid black; 
+    border-radius: 5px;
+}
+
+
+  /* Centered results list */
+#results {
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important; /* centers the box */
+  
+  z-index: 99999 !important;
+  background: white !important;
+
+  width: max-content !important;   /* shrink to contents */
+  max-width: 100% !important;      /* prevent overflow */
+
+  max-height: 200px !important;
+  overflow-y: auto !important;
+
+  padding: 4px 8px;
+  border: 2px solid blue;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* Leave headers unmodified but safe */
+#resultsHeader,
+#resultsAdditionalText {
+  overflow: visible !important;
+}
+
+
+
+
+/* ==============================
+   Variety suggestion dropdowns
+   ============================== */
+.varSuggestionBox {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: 4px;
+    background: white;
+    border: 2px solid blue;
+    border-radius: 6px;
+    max-height: 160px;
+    overflow-y: auto;
+    font-size: 0.95rem;
+    z-index: 50;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    display: none; /* shown via JS when have matches */
+    
+}
+
+.varSuggestionItem {
+    padding: 4px 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    
+    
+}
+
+.varSuggestionItem:hover {
+    background: #e8f1ff;
+}
+
+/* In portrait, let the browser's native horizontal bar do the work */
+@media (orientation: portrait) {
+    .varSuggestionBox {
+        display: none !important;
+    }
+}
+
+
+
+.varSuggestionItem {
+    font-size: 20px !important;
+    font-weight: bold;
+    padding: 10px 12px;
+    color: blue;
+}
+
+#sireSuggestionsBox,
+#damSuggestionsBox {
+    font-size: 20px !important;
+    font-weight: bold;
+    color: blue;
+    
+}
+
+
+/* ===== MOBILE LANDSCAPE: SMART SPLIT SUGGESTION PLACEMENT ===== */
+@media screen and (orientation: landscape) and (max-width: 1024px) {
+
+  /* ===== SIRE: SHOW BOX ON RIGHT SIDE ===== */
+  #sireSuggestionsBox {
+    position: fixed !important;
+    bottom: 120px !important;   /* above keyboard */
+    right: 10px !important;
+    left: auto !important;
+
+    width: auto !important;
+    min-width: 220px !important;
+    max-width: 42vw !important;
+
+    max-height: 40vh !important;
+    overflow-y: auto !important;
+
+    background: white !important;
+    z-index: 999999 !important;
+
+    border: 2px solid #1E82E6 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35) !important;
+  }
+
+  /* ===== DAM: SHOW BOX ON LEFT SIDE ===== */
+  #damSuggestionsBox {
+    position: fixed !important;
+    bottom: 120px !important;   /* above keyboard */
+    left: 10px !important;
+    right: auto !important;
+
+    width: auto !important;
+    min-width: 220px !important;
+    max-width: 42vw !important;
+
+    max-height: 40vh !important;
+    overflow-y: auto !important;
+
+    background: white !important;
+    z-index: 999999 !important;
+
+    border: 2px solid #1E82E6 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35) !important;
+  }
+}
+
+
+
+/* ========================================================= */
+/* MOBILE LANDSCAPE  2-ROW ALLELES  */
+/* ========================================================= */
+@media screen and (orientation: landscape) and (max-width: 1024px) {
+
+  /* Turn ONLY the select elements into inline blocks with fixed width */
+  .genotype-selection.sire-genotypes select,
+  .genotype-selection.dam-genotypes select {
+    display: inline-block !important;
+    width: 17% !important;     /* controls compactness */
+    max-width: 17% !important;
+    box-sizing: border-box !important;
+    margin: 2px 1px !important;
+    padding: 2px 3px !important;
+    font-size: 1.2rem !important;
+    vertical-align: top;
+  }
+
+  /* Keep the label centered normally */
+  .genotype-selection.sire-genotypes .genotype-label,
+  .genotype-selection.dam-genotypes .genotype-label {
+    display: block !important;
+    text-align: center;
+  }
+}
+
+
+
+
+
+/* Center sire & dam images without distortion */
+.genotype-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Make images fill container as much as possible WITHOUT warping or cropping */
+.genotype-image img {
+    max-width: 220px;
+    max-height: 220px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Force offspring images to center and not stretch */
+.offspring-item img {
+    max-width: 180px !important;
+    max-height: 180px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+
+/* FORCE sire & dam enlarge to be smaller than offspring */
+.genotype-image img.enlarged {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(1.2) !important; /* smaller size */
+    z-index: 3000 !important;
+    cursor: zoom-out !important;
+    background-color: rgba(0, 0, 0, 0.85) !important;
+    padding: 6px !important;
+    border-radius: 10px !important;
+    max-width: 80vw !important;
+    max-height: 80vh !important;
+}
+
+
+
+
+
+/* Save button layout */
+  button[onclick="saveSireGenotype()"],
+  button[onclick="saveDamGenotype()"] {
+    max-width: 88px;
+    width: 50%;
+    padding: 3px 3px 3px 3px;
+    font-size: 15px;
+    white-space: nowrap;
+    border: 2px solid blue;
+    border-radius: 4px;
+    cursor: pointer;
+    box-sizing: border-box;
+    background: white;
+     
+}
+
+
+
+
+#sireFavoritesDropdown,
+#damFavoritesDropdown {
+    max-width: 180px;
+    width: 75%;
+    padding: 3px 3px 3px 3px;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 2px solid blue;
+    border-radius: 4px;
+    cursor: pointer;
+    box-sizing: border-box;
+    background: white;
+    
+
+}
+
+
+/* =======================================
+   PORTRAIT ONLY (phones & tablets in portrait)
+   ======================================= */
+@media (max-width: 1200px) and (orientation: portrait) {
+  /* Stack vertically: save button on top, dropdown below */
+  #sireGenotypeContainer .favorites-wrapper,
+  #damGenotypeContainer .favorites-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;                  /* Space between save button and dropdown */
+    align-items: stretch;
+  }
+
+  /* Save button - full width on top */
+  button[onclick="saveSireGenotype()"],
+  button[onclick="saveDamGenotype()"] {
+    width: 45%;
+    padding: 2px 2px;
+    font-size: 1.1rem;
+    border: 2px solid blue;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+
+/* Select dropdown - full width so all saved names show completely */
+#sireFavoritesDropdown,
+#damFavoritesDropdown {
+flex: 1 1 80%; 
+min-width: 80%; 
+padding: 2px 2px;
+font-size: 1.1rem;
+
+border: 2px solid blue;
+border-radius: 4px;
+box-sizing: border-box;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+background: white;
+}
+
+
+}
+
+
+
+
+/* =======================================
+   LANDSCAPE ONLY (phones in landscape)
+   ======================================= */
+@media (max-height: 600px) and (orientation: landscape) and (max-width: 1200px) {
+  /* Stack vertically: save button on top, dropdown below */
+  #sireGenotypeContainer .favorites-wrapper,
+  #damGenotypeContainer .favorites-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Slightly less gap in landscape to save vertical space */
+    align-items: stretch;
+  }
+
+  /* Save button - 45% width on top (same as portrait) */
+  button[onclick="saveSireGenotype()"],
+  button[onclick="saveDamGenotype()"] {
+    width: 45%;
+    padding: 2px 2px;
+    font-size: 1.1rem;
+    border: 2px solid blue;
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+
+  /* Select dropdown - wide to show full names */
+  #sireFavoritesDropdown,
+  #damFavoritesDropdown {
+    flex: 1 1 40%;
+    min-width: 40%;
+    padding: 2px 2px;
+    font-size: 1.1rem;
+    border: 2px solid blue;
+    border-radius: 5px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: white;
+  }
+}
+
+
+
+/* Delete buttons - controls size, color, border */
+.trash-btn {
+  padding: 3px 3px;                
+  font-size: .80rem;               
+  color: red;                     
+  border: 2px solid blue;
+  border-radius: 5px;
+  background: white;
+  
+ 
+}
+
+.trash-btn:hover {
+  background: blue;            
+  border-color: white;
+  color: darkred;
+}
+
+
+
+#summaryChartContainer h2 {
+  text-align: center !important;
+  width: 100%;
+  margin: 20px 0;
+}
+
+/* Extra safety for mobile portrait */
+@media (max-width: 768px) and (orientation: portrait) {
+  #summaryChartContainer h2 {
+    font-size: 1.5em; 
+    padding: 0 10px;
+  }
+}  
+
+
+#resultsCloseBtn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  background: white;
+  border: 1px solid #888;
+  border-radius: 50%;
+  padding: 2px 6px;
+  z-index: 100000;
+}
+
+
+button {
+  cursor: pointer !important;  
+}
+
+button:disabled {
+  cursor: default; 
+}
+
+
+/* Make hand cursor on all allele dropdowns*/
+.sire-genotypes select,
+.dam-genotypes select {
+    cursor: pointer !important;
+}
+
+
+.sire-genotypes option,
+.dam-genotypes option {
+    cursor: pointer;
+}
+
+
+
+
+/* ================================
+   Summary Chart Breeding Display
+   ================================ */
+
+/* The outer box now SHRINK-WRAPS content */
+#summaryBreedingLabel{
+  display: none;                 /* JS controls visibility */
+  background: #fff;
+  border: 2px solid blue;
+  border-radius: 8px;
+
+  padding: 10px 10px;             /* tighter padding */
+  margin: 8px auto 10px;
+
+  text-align: center;
+
+  width: fit-content;            /* <<< key: hug content */
+  max-width: 95%;                /* safety for very long lines */
+  box-sizing: border-box;
+}
+
+/* Each line wraps cleanly if needed */
+#summaryBreedingLabel .breed-line{
+  line-height: 1.3;
+  margin: 2px 0;
+
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Sire / Dam labels */
+#summaryBreedingLabel .breed-role{
+  font-weight: bold;
+}
+
+/* Independent colors */
+#summaryBreedingLabel .breed-role.sire{
+  color: black;
+}
+
+#summaryBreedingLabel .breed-role.dam{
+  color: black;
+}
+
+/* Variety name */
+#summaryBreedingLabel .breed-name{
+  color: blue;
+}
+
+/* Genotype */
+#summaryBreedingLabel .breed-geno{
+  color: maroon;
+  font-family: monospace;
+}
+
+/* Cross symbol */
+#summaryBreedingLabel .breed-x{
+  color: black;
+  font-weight: bold;
+  font-size: 1.50em;
+  margin: 4px 0;
+  line-height: 1;
+  
+}
+
+
+
+
+.variety-dd{
+  position:absolute;
+  z-index:9999999;
+  background:#fff;
+  border:2px solid blue;
+  border-radius:8px;
+  box-shadow:0 6px 16px rgba(0,0,0,.15);
+  max-height:260px;
+  overflow-y:auto;
+  padding:4px;
+}
+
+.variety-dd-item{
+  padding:6px 8px;
+  border-radius:6px;
+  cursor:pointer;
+  user-select:none;
+  font-size:16px;
+  line-height:1.2;
+}
+
+.variety-dd-item:hover,
+.variety-dd-item.active{
+  background:#eaf2ff;
+}
+
+.variety-dd mark{
+  background: #fff3a0;
+  padding:0 2px;
+  border-radius:3px;
+}
 
 
 
