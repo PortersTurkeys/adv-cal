@@ -1562,8 +1562,8 @@
   .genotype-selection.sire-genotypes select,
   .genotype-selection.dam-genotypes select {
     display: inline-block !important;
-    width: 25% !important;     /* controls compactness */
-    max-width: 25% !important;
+    width: 17% !important;     /* controls compactness */
+    max-width: 17% !important;
     box-sizing: border-box !important;
     margin: 2px 1px !important;
     padding: 2px 3px !important;
@@ -1940,7 +1940,15 @@ button:disabled {
 
 
 
-
+@media screen and (orientation: landscape) and (max-width: 1024px) {
+  .genotype-selection.sire-genotypes select,
+  .genotype-selection.dam-genotypes select {
+    width: auto !important;
+    min-width: 80px !important;
+    overflow: visible !important;
+    padding: 4px 28px 4px 6px !important;  /* Extra right padding for arrow */
+  }
+}
 
 
 
