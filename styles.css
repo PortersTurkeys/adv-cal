@@ -1940,18 +1940,16 @@ button:disabled {
 
 /* New */
 
-@supports (-moz-appearance: none) {
-  @media screen and (orientation: landscape) and (max-width: 1024px) {
-    .genotype-selection select {
-      min-width: 84px !important;
-      width: auto !important;
-      padding-right: 30px !important;  /* Arrow space */
-      overflow: visible !important;
-    }
+@media screen and (orientation: landscape) and (max-width: 1024px) {
+  .genotype-selection select {
+    min-height: 40px !important;
+    line-height: 1.5 !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    min-width: 92px !important;
+    overflow: visible !important;
   }
 }
-
-
 
 
 
