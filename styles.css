@@ -1938,18 +1938,18 @@ button:disabled {
   border-radius:3px;
 }
 
+/* New */
 
-
-@media screen and (orientation: landscape) and (max-width: 1024px) {
-  .genotype-selection.sire-genotypes select,
-  .genotype-selection.dam-genotypes select {
-    width: auto !important;
-    min-width: 80px !important;
-    overflow: visible !important;
-    padding: 4px 28px 4px 6px !important;  /* Extra right padding for arrow */
+@supports (-moz-appearance: none) {
+  @media screen and (orientation: landscape) and (max-width: 1024px) {
+    .genotype-selection select {
+      min-width: 84px !important;
+      width: auto !important;
+      padding-right: 30px !important;  /* Arrow space */
+      overflow: visible !important;
+    }
   }
 }
-
 
 
 
