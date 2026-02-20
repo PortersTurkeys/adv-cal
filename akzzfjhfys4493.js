@@ -4,9 +4,7 @@ const scripts = [
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-CalculateOffspring.js",
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-DisplayResults.js",  
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-fdsplitfunct.js",
-"https://portersturkeys.github.io/adv-cal/VariousFunctions-fdAllelecomboratio.js",
-"https://portersturkeys.github.io/adv-cal/VariousFunctions-fdCalOff.js",
-"https://portersturkeys.github.io/adv-cal/VariousFunctions-fdDisplayRes.js",
+
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-fdtranstparent.js",
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-fdsavesirendam.js",
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-DNALoader.js",
