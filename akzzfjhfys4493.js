@@ -10,7 +10,7 @@ const scripts = [
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-DNALoader.js",
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-Sounds.js",
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-SocialShare.js",
-"https://portersturkeys.github.io/adv-cal/VariousFunctions-LatestFunctions.js",  
+"https://raw.githubusercontent.com/PortersTurkeys/adv-cal/refs/heads/main/VariousFunctions-LatestFunctions.js",  
 
   
   
