@@ -1,14 +1,14 @@
 const scripts = [
    
-<script src="https://portersturkeys.github.io/adv-cal/VariousFunctions-AlleleCombos-Ratios.js" defer></script>
-<script src="https://portersturkeys.github.io/adv-cal/VariousFunctions-CalculateOffspring.js" defer></script>
-<script src="https://portersturkeys.github.io/adv-cal/VariousFunctions-DisplayResults.js" defer></script>
-<script src="https://portersturkeys.github.io/adv-cal/VariousFunctions-fdsplitfunct.js" defer></script>
-<script src="https://portersturkeys.github.io/adv-cal/VariousFunctions-fdtranstparent.js" defer></script>
-<script src="https://portersturkeys.github.io/adv-cal/VariousFunctions-fdsavesirendam.js" defer></script>
-<script src="https://portersturkeys.github.io/adv-cal/VariousFunctions-Sounds.js" defer></script>
-<script src="https://portersturkeys.github.io/adv-cal/VariousFunctions-SocialShare.js" defer></script>
-<script src="https://portersturkeys.github.io/adv-cal/VariousFunctions-LatestFunctions.js" defer></script>
+"https://portersturkeys.github.io/adv-cal/VariousFunctions-AlleleCombos-Ratios.js",
+"https://portersturkeys.github.io/adv-cal/VariousFunctions-CalculateOffspring.js",
+"https://portersturkeys.github.io/adv-cal/VariousFunctions-DisplayResults.js",
+"https://portersturkeys.github.io/adv-cal/VariousFunctions-fdsplitfunct.js",
+"https://portersturkeys.github.io/adv-cal/VariousFunctions-fdtranstparent.js",
+"https://portersturkeys.github.io/adv-cal/VariousFunctions-fdsavesirendam.js",
+"https://portersturkeys.github.io/adv-cal/VariousFunctions-Sounds.js",
+"https://portersturkeys.github.io/adv-cal/VariousFunctions-SocialShare.js",
+"https://portersturkeys.github.io/adv-cal/VariousFunctions-LatestFunctions.js",
 
   
   
