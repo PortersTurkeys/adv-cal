@@ -3,7 +3,7 @@ const scripts = [
 "https://raw.githubusercontent.com/PortersTurkeys/adv-cal/refs/heads/main/VariousFunctions-AlleleCombos-Ratios.js",
 "https://raw.githubusercontent.com/PortersTurkeys/adv-cal/refs/heads/main/VariousFunctions-CalculateOffspring.js",
 "https://raw.githubusercontent.com/PortersTurkeys/adv-cal/refs/heads/main/VariousFunctions-DisplayResults.js",  
-"https://portersturkeys.github.io/adv-cal/VariousFunctions-fdsplitfunct.js",
+"https://raw.githubusercontent.com/PortersTurkeys/adv-cal/refs/heads/main/VariousFunctions-fdsplitfunct.js",
 
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-fdtranstparent.js",
 "https://portersturkeys.github.io/adv-cal/VariousFunctions-fdsavesirendam.js",
