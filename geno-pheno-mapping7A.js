@@ -1,1 +1,6 @@
+const phenotypeMapping7 = {
 
+
+
+
+ };  
