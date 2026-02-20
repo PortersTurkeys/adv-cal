@@ -30,6 +30,7 @@ const scripts = [
 "https://portersturkeys.github.io/adv-cal/geno-pheno-mapping5.js",
 "https://portersturkeys.github.io/adv-cal/geno-pheno-mapping6.js",
 "https://portersturkeys.github.io/adv-cal/geno-pheno-mapping7.js",
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping7A.js",  
 "https://portersturkeys.github.io/adv-cal/geno-pheno-mapping8.js",
 "https://portersturkeys.github.io/adv-cal/geno-pheno-mapping9.js",
 "https://portersturkeys.github.io/adv-cal/geno-pheno-mapping10.js",
