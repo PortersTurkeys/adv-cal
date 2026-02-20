@@ -7,7 +7,7 @@ const scripts = [
 "https://raw.githubusercontent.com/PortersTurkeys/adv-cal/refs/heads/main/VariousFunctions-fdtranstparent.js",
 "https://raw.githubusercontent.com/PortersTurkeys/adv-cal/refs/heads/main/VariousFunctions-fdsavesirendam.js",
 "https://raw.githubusercontent.com/PortersTurkeys/adv-cal/refs/heads/main/VariousFunctions-Sounds.js",
-"https://portersturkeys.github.io/adv-cal/VariousFunctions-SocialShare.js",
+"https://raw.githubusercontent.com/PortersTurkeys/adv-cal/refs/heads/main/VariousFunctions-SocialShare.js",
 "https://raw.githubusercontent.com/PortersTurkeys/adv-cal/refs/heads/main/VariousFunctions-LatestFunctions.js",  
 
   
