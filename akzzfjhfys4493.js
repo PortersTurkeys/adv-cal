@@ -1,11 +1,9 @@
-const scripts = [
-   
-
-"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping7A.js",  
+const scripts
+"https://portersturkeys.github.io/adv-cal/geno-pheno-mapping7A.js" 
 
 ];
 
-
+"'"
 scripts.forEach(src => {
   const script = document.createElement('script');
   script.src = src;
