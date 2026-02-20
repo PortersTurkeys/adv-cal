@@ -1,4 +1,4 @@
-const phenotypeMapping7 = {
+const phenotypeMapping7A = {
 // PENCILLED BLUE WINGED RED SLATE
 
 // Base
